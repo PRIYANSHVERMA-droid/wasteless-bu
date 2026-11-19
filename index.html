@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WasteLess BU — From Food Waste to Responsible Consumption</title>
+  <meta name="description" content="WasteLess BU is a BU100 SDG 12 Action Lab initiative at Bennett University investigating avoidable plate waste and testing evidence-based behavioural nudges." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Top Navigation -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="WasteLess BU home">
+        <svg class="brand-mark" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="14.5" stroke="#14452F" stroke-width="2" />
+          <path d="M9.5 18.5C9.5 12.8 14.5 9.2 21.8 9.2C21.8 16.5 18.2 21.5 12.5 21.5C11.1 21.5 10.1 21 9.5 20.4" stroke="#14452F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M9.5 22.5L17.5 14.5" stroke="#D9822B" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <div class="brand-text">
+          <span class="brand-name">WasteLess BU</span>
+          <span class="brand-sub">BU100 • SDG 12 Action Lab</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Primary navigation">
+        <a href="#methodology">Scope</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#tips">Portion Guide</a>
+        <a href="#pledge">Pledge</a>
+        <a href="#campaign">Campaign</a>
+        <a href="#trep">TREP Canvas</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="mode-pill" id="open-editor-btn" aria-haspopup="dialog" title="Open Field Data Editor & CSV Importer">
+          <span class="status-dot" id="header-status-dot" aria-hidden="true"></span>
+          <span id="header-mode-label">Template Data</span>
+        </button>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="7" x2="21" y2="7" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="17" x2="21" y2="17" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="venue-line">
+            Bennett University — <span data-bind="venueName">Main Student Dining Hall / Mess</span>
+          </p>
+          <h1 id="hero-title">Take What You Need. Eat What You Take.</h1>
+          <p class="hero-lead">
+            WasteLess BU is a student-led initiative that investigates avoidable plate waste at Bennett University and develops evidence-based behavioural interventions to encourage responsible food consumption and build a more sustainable campus.
+          </p>
+          <div class="hero-actions">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScOoRConX5wNlVfREDtCTBRBOau9e4KdhgqO_7IbWvxtvu-oQ/viewform" class="btn btn-primary" target="_blank" rel="noopener">Open Live Google Form</a>
+            <a href="#pledge" class="btn btn-secondary">Sign the Student Pledge</a>
+            <button type="button" class="btn btn-ghost" id="open-survey-btn">Quick In-Site Survey</button>
+          </div>
+
+          <dl class="sdg-strip" aria-label="UN Sustainable Development Goals alignment">
+            <div class="sdg-item">
+              <dt>Primary Goal</dt>
+              <dd><strong>SDG 12</strong> Responsible Consumption &amp; Production</dd>
+            </div>
+            <div class="sdg-item">
+              <dt>Secondary Goals</dt>
+              <dd><strong>SDG 11</strong> Sustainable Campuses &amp; <strong>SDG 13</strong> Climate Action</dd>
+            </div>
+            <div class="sdg-item">
+              <dt>Sprint Scope</dt>
+              <dd><strong>15 Days</strong> • 3 Baseline + 3 Post-Pilot Comparable Meals</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Live Pilot Ledger -->
+        <aside class="ledger-panel" aria-label="Live pilot summary ledger">
+          <div class="ledger-head">
+            <span class="data-badge" id="hero-mode-badge">Illustrative Pilot Template</span>
+            <button type="button" class="text-btn" id="hero-edit-btn">Edit numbers</button>
+          </div>
+
+          <div class="ledger-primary">
+            <span class="ledger-label" id="hero-change-label">Normalised Plate Waste Change</span>
+            <div class="ledger-big-num" id="hero-pct-change">-18.2%</div>
+            <p class="ledger-note" id="hero-change-note">
+              Template preview across 3 comparable weekday lunch slots. Replace with verified scale or tally logs.
+            </p>
+          </div>
+
+          <div class="ledger-grid">
+            <div class="ledger-cell">
+              <span class="cell-label" id="hero-base-label">Baseline Mean</span>
+              <strong class="cell-val" id="hero-base-val">88.0 g/meal</strong>
+            </div>
+            <div class="ledger-cell">
+              <span class="cell-label" id="hero-post-label">Post-Pilot Mean</span>
+              <strong class="cell-val" id="hero-post-val">72.0 g/meal</strong>
+            </div>
+            <div class="ledger-cell">
+              <span class="cell-label">Survey Sample</span>
+              <strong class="cell-val" id="hero-survey-n">n = 72</strong>
+            </div>
+            <div class="ledger-cell">
+              <span class="cell-label">Pledges Signed</span>
+              <strong class="cell-val" id="hero-pledge-count">64</strong>
+            </div>
+          </div>
+
+          <div class="ledger-qr-row">
+            <div class="mini-qr-wrap" id="hero-qr" aria-label="QR code to open the WasteLess BU survey or pledge"></div>
+            <div class="mini-qr-copy">
+              <strong id="hero-qr-title">QR-Linked Student Pledge</strong>
+              <p id="hero-qr-desc">Scan at the dining counter or <a href="pledge.html" style="font-weight:700;">open the interactive Pledge Page</a>.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Section 1: Problem Scope & Methodology -->
+    <section class="section section-tinted" id="methodology" aria-labelledby="methodology-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="methodology-title">Evidence Before Action: Scope &amp; Research Protocol</h2>
+          <p class="section-intro">
+            Rather than assuming why students leave meals unfinished, WasteLess BU isolates edible plate waste in one dining space and triangulates survey, observation, weighing, and staff evidence before deploying nudges.
+          </p>
+        </div>
+
+        <div class="scope-grid">
+          <div class="scope-block">
+            <h3>Strict Operational Boundaries</h3>
+            <table class="clean-table">
+              <tbody>
+                <tr>
+                  <th scope="row">Location &amp; Audience</th>
+                  <td>One selected Bennett University venue (<span data-bind="venueName">Main Student Dining Hall / Mess</span>); students dining during comparable weekday lunch periods.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Included Waste</th>
+                  <td><strong>Eligible edible plate waste only</strong> — cooked food left uneaten on student trays and plates.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Excluded Waste</th>
+                  <td>Kitchen preparation trimmings, serving-line surplus, bones/peels where separable, and non-food packaging are never combined into plate waste.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Measurement Rigour</th>
+                  <td>Digital scale readings net of container tare weight across 3 baseline and 3 post-pilot sessions, or an authorised anonymous observation tally if scale access is restricted.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="scope-block">
+            <h3>Three-Phase Evidence Triangulation</h3>
+            <ul class="evidence-list">
+              <li>
+                <strong>Phase A — Anonymous Student Survey (Target: 50–100 responses)</strong>
+                <p>8-question Google Form (or built-in anonymous survey) sampling across hostels, batches, and meal windows to diagnose frequency, top drivers, portion preferences, and display receptivity.</p>
+              </li>
+              <li>
+                <strong>Phase B — Structured Dining Hall Observations &amp; Weighing</strong>
+                <p>Timestamped field notes logging meal counts, peak rush surges (12:45–1:30 PM), commonly discarded items, and verified net plate-waste weights or plate tallies.</p>
+              </li>
+              <li>
+                <strong>Phase C — Cafeteria Staff &amp; Supervisor Interviews</strong>
+                <p>Five structured prompts exploring leftover hotspots, refill feasibility, and operational barriers. Staff views are logged strictly as qualitative context, never measured kilograms.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 15-Day Sprint Sequence -->
+        <div class="roadmap-wrap">
+          <h3>15-Day Execution Roadmap</h3>
+          <ol class="roadmap-grid">
+            <li>
+              <span class="step-days">Days 1–2</span>
+              <strong>Setup &amp; Approvals</strong>
+              <p>Confirm 8-member roles, align dining slot scope, launch anonymous student survey.</p>
+            </li>
+            <li>
+              <span class="step-days">Days 3–5</span>
+              <strong>Baseline Evidence</strong>
+              <p>Collect 50–100 survey responses, interview staff, complete 3 comparable baseline logs.</p>
+            </li>
+            <li>
+              <span class="step-days">Days 6–7</span>
+              <strong>Analysis &amp; Design</strong>
+              <p>Clean datasets, run BU100 bias checks, match behavioural nudges to top waste drivers.</p>
+            </li>
+            <li>
+              <span class="step-days">Days 8–10</span>
+              <strong>Build &amp; Approve</strong>
+              <p>Build WasteLess BU website &amp; QR pledge, print 4 posters &amp; table cards, finalise display plan.</p>
+            </li>
+            <li>
+              <span class="step-days">Days 11–13</span>
+              <strong>Live Campus Pilot</strong>
+              <p>Run campaign across 3 comparable meals, log QR pledges, apply Twist if needed, measure post-pilot.</p>
+            </li>
+            <li>
+              <span class="step-days">Days 14–15</span>
+              <strong>Evaluate &amp; Present</strong>
+              <p>Compute normalised impact, document limitations, finalize Canvas, 8-page Dossier &amp; 7.5-min pitch.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Interactive Research & Impact Dashboard -->
+    <section class="section" id="dashboard" aria-labelledby="dashboard-title">
+      <div class="container">
+        <div class="section-head section-head-split">
+          <div>
+            <h2 id="dashboard-title">Research &amp; Impact Dashboard</h2>
+            <p class="section-intro">
+              Normalised per-meal waste metrics, survey driver breakdown, live mess plate-tally tool, and full session audit log. Edit values or upload Google Form CSVs anytime.
+            </p>
+          </div>
+          <div class="dashboard-toolbar">
+            <button type="button" class="btn btn-primary btn-sm" id="dash-open-editor">Enter / Edit Field Data</button>
+            <button type="button" class="btn btn-secondary btn-sm" id="open-tally-btn">Live Mess Tally Clicker</button>
+            <button type="button" class="btn btn-secondary btn-sm" id="toggle-protocol-btn">Switch to Twist Tally View</button>
+            <button type="button" class="btn btn-ghost btn-sm" id="export-audit-csv">Export Audit CSV</button>
+          </div>
+        </div>
+
+        <!-- Honesty / Anti-Fabrication Banner -->
+        <div class="honesty-banner" id="honesty-banner" role="status">
+          <div class="honesty-icon" aria-hidden="true">!</div>
+          <div class="honesty-body">
+            <strong id="honesty-title">Viewing Illustrative Pilot Template Data (BU100 Integrity Safeguard)</strong>
+            <p id="honesty-text">
+              Per BU100 guidelines, unverified numbers must never be presented as collected campus measurements. Use <strong>Enter / Edit Field Data</strong> to input your authorised weighing/tally logs and Google Form CSV — all badges, charts, and printable posters update automatically.
+            </p>
+          </div>
+        </div>
+
+        <!-- Formulas Strip -->
+        <div class="formula-strip" aria-label="Impact calculation formulas">
+          <div class="formula-item">
+            <span class="formula-name">Normalised Per-Meal Metric (controls for attendance shifts)</span>
+            <code id="formula-per-meal">Waste per Meal (g) = Total Eligible Waste (g) ÷ Meals Served</code>
+          </div>
+          <div class="formula-item">
+            <span class="formula-name">Primary Outcome Formula</span>
+            <code id="formula-pct-change">% Change = ((88.0 − 72.0) ÷ 88.0) × 100 = 18.2% reduction</code>
+          </div>
+        </div>
+
+        <!-- 2x2 Interactive Charts -->
+        <div class="charts-grid">
+          <article class="chart-card chart-card-wide">
+            <div class="chart-head">
+              <div>
+                <h3 id="chart1-title">Baseline vs. Post-Pilot Waste per Meal (g)</h3>
+                <p class="chart-sub" id="chart1-sub">3 comparable weekday lunch sessions before and after counter nudges (hover bars for details)</p>
+              </div>
+              <div class="chart-legend" id="chart1-legend">
+                <span class="legend-item"><i class="swatch swatch-amber"></i>Baseline</span>
+                <span class="legend-item"><i class="swatch swatch-green"></i>Post-Pilot</span>
+              </div>
+            </div>
+            <div class="chart-canvas" id="chart-waste-compare" role="img" aria-label="Grouped bar chart comparing baseline and post-pilot plate waste across three sessions"></div>
+          </article>
+
+          <article class="chart-card">
+            <div class="chart-head">
+              <div>
+                <h3>Top Drivers of Unfinished Food (Survey Q3)</h3>
+                <p class="chart-sub">Share of respondents (<span data-bind="surveyN">n = 72</span>) citing each primary cause</p>
+              </div>
+            </div>
+            <div class="chart-canvas" id="chart-drivers" role="img" aria-label="Horizontal bar chart of primary reasons students leave food unfinished"></div>
+          </article>
+
+          <article class="chart-card">
+            <div class="chart-head">
+              <div>
+                <h3>Student Habits &amp; Nudge Receptivity (Q2, Q4, Q6, Q7)</h3>
+                <p class="chart-sub">Evidence directly validating smaller initial portions and visual displays</p>
+              </div>
+            </div>
+            <div class="chart-canvas" id="chart-readiness" role="img" aria-label="Horizontal bars showing student plate waste habits and support for interventions"></div>
+          </article>
+
+          <article class="chart-card">
+            <div class="chart-head">
+              <div>
+                <h3>Dining Frequency (Q1) &amp; Issue Severity (Q5)</h3>
+                <p class="chart-sub">Sample representation across dining frequency cohorts</p>
+              </div>
+            </div>
+            <div class="chart-canvas" id="chart-frequency" role="img" aria-label="Dining frequency breakdown and Likert severity score"></div>
+          </article>
+        </div>
+
+        <!-- Transparent Session Audit Table -->
+        <div class="audit-wrap">
+          <div class="audit-head">
+            <h3>Measurement Audit Log (Eligible Edible Plate Waste Only)</h3>
+            <span class="audit-meta" id="audit-totals-label">Baseline: 980 meals (86.32 kg) | Post-Pilot: 990 meals (71.28 kg)</span>
+          </div>
+          <div class="table-scroll">
+            <table class="audit-table" id="audit-table">
+              <thead>
+                <tr>
+                  <th>Phase</th>
+                  <th>Session</th>
+                  <th>Date &amp; Meal Period</th>
+                  <th class="num">Meals Served</th>
+                  <th class="num" id="th-col5">Gross (kg)</th>
+                  <th class="num" id="th-col6">Tare (kg)</th>
+                  <th class="num" id="th-col7">Net Waste (kg)</th>
+                  <th class="num" id="th-col8">Normalised Metric</th>
+                </tr>
+              </thead>
+              <tbody id="audit-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Qualitative Perspectives (Dynamically Rendered) -->
+        <div class="qual-grid">
+          <div class="qual-block">
+            <h3>Cafeteria Staff Perspectives (Qualitative Only)</h3>
+            <p class="qual-disclaimer">Logged from structured stakeholder interviews as operational context — never reported as measured kilograms.</p>
+            <ul class="quote-list" id="staff-quotes-list"></ul>
+          </div>
+          <div class="qual-block">
+            <div class="qual-head-row">
+              <div>
+                <h3>Student Open-Ended Suggestions (Survey Q8)</h3>
+                <p class="qual-disclaimer">Updates automatically when responses are submitted or Google Form CSVs are imported.</p>
+              </div>
+              <button type="button" class="text-btn" id="qual-take-survey-btn">Add via survey</button>
+            </div>
+            <ul class="quote-list" id="q8-quotes-list"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Practical Portion Tips & Self-Reflection Tool -->
+    <section class="section section-tinted" id="tips" aria-labelledby="tips-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="tips-title">Practical Portion Tips for Bennett Diners</h2>
+          <p class="section-intro">
+            Small frictionless choices at the serving counter eliminate avoidable plate waste without leaving anyone hungry.
+          </p>
+        </div>
+
+        <div class="tips-layout">
+          <div class="tips-list">
+            <article class="tip-row">
+              <span class="tip-index">1</span>
+              <div>
+                <h3>Start with Half, Refill Freely</h3>
+                <p>Survey findings consistently highlight oversized initial servings as the #1 driver of plate leftovers. Ask serving staff for a half-scoop of rice or one roti first — second helpings stay open.</p>
+              </div>
+            </article>
+            <article class="tip-row">
+              <span class="tip-index">2</span>
+              <div>
+                <h3>Taste Unfamiliar Dishes Before Loading</h3>
+                <p>Menu mismatch is the second major cause of discarded food. Take a single spoonful of any new sabzi or curry first before committing to a full katori.</p>
+              </div>
+            </article>
+            <article class="tip-row">
+              <span class="tip-index">3</span>
+              <div>
+                <h3>Match Your Plate to Your Lecture Clock</h3>
+                <p>Between 12:45 PM and 1:45 PM, class rush causes half-eaten plates to be abandoned. When you have under 15 minutes before class, take a lighter first serving you can comfortably finish.</p>
+              </div>
+            </article>
+          </div>
+
+          <aside class="calc-card" aria-label="Personal semester impact awareness calculator">
+            <h3>Personal Plate-Waste Reflection</h3>
+            <p class="calc-sub">See how one small daily habit adds up across a 16-week Bennett semester. <em>(Personal awareness math — separate from measured pilot results.)</em></p>
+
+            <div class="slider-group">
+              <div class="slider-label-row">
+                <label for="calc-meals">Dining hall meals per week</label>
+                <strong id="calc-meals-out">10 meals</strong>
+              </div>
+              <input type="range" id="calc-meals" min="2" max="21" value="10" />
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-label-row">
+                <label for="calc-grams">Avoidable leftovers prevented per meal</label>
+                <strong id="calc-grams-out">45 g</strong>
+              </div>
+              <input type="range" id="calc-grams" min="15" max="150" step="5" value="45" />
+            </div>
+
+            <div class="calc-results">
+              <div class="calc-stat">
+                <span>One student (16-week semester)</span>
+                <strong id="calc-semester-kg">7.2 kg saved</strong>
+              </div>
+              <div class="calc-stat">
+                <span>If 100 peers adopt the habit</span>
+                <strong id="calc-cohort-kg">720 kg saved</strong>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: QR-Linked Student Pledge (Dark Canopy Anchor) -->
+    <section class="section section-dark" id="pledge" aria-labelledby="pledge-title">
+      <div class="container pledge-grid">
+        <div class="pledge-form-wrap">
+          <h2 id="pledge-title">Take the WasteLess BU Student Pledge</h2>
+          <p class="pledge-intro">
+            Commit to one practical change at <span data-bind="venueName">Main Student Dining Hall / Mess</span>. Names are optional — every pledge updates the live engagement log and generates a downloadable badge.
+          </p>
+
+          <form id="pledge-form" class="pledge-form" novalidate>
+            <div class="form-row-2">
+              <div class="field">
+                <label for="pledge-name">First Name or Initials (optional)</label>
+                <input type="text" id="pledge-name" placeholder="Leave blank to sign anonymously" maxlength="40" />
+              </div>
+              <div class="field">
+                <label for="pledge-cohort">School / Hostel (optional)</label>
+                <input type="text" id="pledge-cohort" placeholder="e.g., B.Tech CSE / C-Block" maxlength="40" />
+              </div>
+            </div>
+
+            <fieldset class="commit-fieldset">
+              <legend>My Dining Counter Commitments</legend>
+              <label class="check-row">
+                <input type="checkbox" name="commitment" value="Start with smaller initial portions and refill only if hungry" checked />
+                <span>Start with smaller initial portions and take refills only if still hungry.</span>
+              </label>
+              <label class="check-row">
+                <input type="checkbox" name="commitment" value="Try a small spoonful of unfamiliar menu items first" checked />
+                <span>Try a small spoonful of unfamiliar curries or dishes before loading a full bowl.</span>
+              </label>
+              <label class="check-row">
+                <input type="checkbox" name="commitment" value="Match portion size to available time before classes" />
+                <span>Match my plate portion to the minutes I actually have before my next class.</span>
+              </label>
+            </fieldset>
+
+            <div class="pledge-actions">
+              <button type="submit" class="btn btn-amber">Sign the Student Pledge</button>
+              <a href="pledge.html" class="btn btn-dark-outline">Open Full Interactive Pledge Page</a>
+              <button type="button" class="btn btn-dark-outline" id="download-badge-btn" hidden>Download Pledge Card (PNG)</button>
+            </div>
+
+            <div class="pledge-confirm" id="pledge-confirm" role="status" aria-live="polite" hidden></div>
+          </form>
+
+          <div class="recent-pledges">
+            <div class="recent-head">
+              <h3>Recent Student Pledges (<span id="pledge-wall-count">64</span> total)</h3>
+              <div class="recent-head-actions">
+                <button type="button" class="link-light" id="export-pledges-csv">Export Pledges CSV</button>
+              </div>
+            </div>
+            <ul class="pledge-wall" id="pledge-wall"></ul>
+          </div>
+        </div>
+
+        <!-- QR Station -->
+        <aside class="qr-station" aria-label="Printable QR pledge station">
+          <div class="qr-card">
+            <div class="qr-card-brand">WasteLess BU • SDG 12</div>
+            <div class="qr-canvas-box" id="pledge-qr"></div>
+            <p class="qr-card-slogan">Take What You Need.<br />Eat What You Take.</p>
+            <p class="qr-card-caption" id="qr-card-caption">Scan to view plate-waste findings &amp; sign the 20-second campus pledge.</p>
+          </div>
+
+          <div class="qr-controls">
+            <div class="qr-presets">
+              <button type="button" class="preset-chip active" id="qr-preset-pledge">Pledge Page (pledge.html)</button>
+              <button type="button" class="preset-chip" id="qr-preset-survey">Google Form Link</button>
+            </div>
+            <label for="qr-url-input">Live QR Target URL (linked to your hosted GitHub Pages Pledge Page)</label>
+            <div class="qr-input-row">
+              <input type="url" id="qr-url-input" value="https://priyanshverma-droid.github.io/wasteless-bu/pledge.html" placeholder="https://..." />
+              <button type="button" class="btn btn-dark-outline btn-sm" id="update-qr-btn">Update QR</button>
+            </div>
+            <div class="qr-btn-grid">
+              <button type="button" class="btn btn-dark-outline btn-sm" id="download-qr-png">Download QR (PNG)</button>
+              <button type="button" class="btn btn-dark-outline btn-sm" id="copy-qr-url">Copy Target URL</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Section 5: Awareness Campaign Posters & Live Campus Field Photos -->
+    <section class="section" id="campaign" aria-labelledby="campaign-title">
+      <div class="container">
+        <div class="section-head section-head-split">
+          <div>
+            <h2 id="campaign-title">Physical Awareness Campaign &amp; Field Photo Evidence</h2>
+            <p class="section-intro">
+              Click any poster to inspect full size, open the print-ready pack (auto-synced to your verified data and QR code), or upload your own mess &amp; plate photos below.
+            </p>
+          </div>
+          <div class="dashboard-toolbar">
+            <a href="posters/posters.html" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Open Print-Ready Poster Pack</a>
+          </div>
+        </div>
+
+        <div class="poster-grid">
+          <article class="poster-thumb">
+            <button type="button" class="poster-frame poster-preview-btn" data-src="posters/poster-1-main.png" data-caption="Poster 1 — Entrance Anchor: Take What You Need. Eat What You Take.">
+              <img src="posters/poster-1-main.png" alt="Poster 1: Take What You Need, Eat What You Take awareness poster" loading="lazy" />
+            </button>
+            <h3>Poster 1 — Entrance Anchor</h3>
+            <p>Establishes the WasteLess BU slogan and SDG 12 campus norm right at tray pickup.</p>
+          </article>
+          <article class="poster-thumb">
+            <button type="button" class="poster-frame poster-preview-btn" data-src="posters/poster-2-portions.png" data-caption="Poster 2 — Serving Counter Nudge: Start Half. Refill Free.">
+              <img src="posters/poster-2-portions.png" alt="Poster 2: Start Half, Refill Free serving counter portion nudge" loading="lazy" />
+            </button>
+            <h3>Poster 2 — Serving Counter Nudge</h3>
+            <p>Directly targets the #1 survey driver (portion size) with guilt-free half-scoop prompting.</p>
+          </article>
+          <article class="poster-thumb">
+            <button type="button" class="poster-frame poster-preview-btn" data-src="posters/poster-3-impact.png" data-caption="Poster 3 — Dish-Drop Feedback Board: Plate Waste by the Numbers">
+              <img src="posters/poster-3-impact.png" alt="Poster 3: Plate Waste Tracker display for dish-drop area" loading="lazy" />
+            </button>
+            <h3>Poster 3 — Dish-Drop Feedback Board</h3>
+            <p>Displays verified normalised waste per meal (g) with clear template/live write-in boxes.</p>
+          </article>
+          <article class="poster-thumb">
+            <button type="button" class="poster-frame poster-preview-btn" data-src="posters/poster-4-qr-pledge.png" data-caption="Asset 4 — Folding Table-Top Tent Card & Counter QR Pledge Cards">
+              <img src="posters/poster-4-qr-pledge.png" alt="Poster 4: Table-top tent card and QR pledge cards" loading="lazy" />
+            </button>
+            <h3>Asset 4 — Table Tent &amp; QR Cards</h3>
+            <p>Compact dining-table nudges linking straight to this page’s interactive student pledge.</p>
+          </article>
+        </div>
+
+        <!-- Campus Field Evidence Photo Uploader -->
+        <div class="field-photos-wrap">
+          <div class="field-photos-head">
+            <div>
+              <h3>Campus Dining Hall Photo Evidence</h3>
+              <p>Upload your mess serving counter, meal tray, and leftover plate photos (no identifiable student faces). Saved locally in your browser for live demos.</p>
+            </div>
+            <label class="btn btn-secondary btn-sm">
+              Upload Mess / Plate Photos
+              <input type="file" id="field-photo-input" accept="image/*" multiple hidden />
+            </label>
+          </div>
+          <div class="field-photos-grid" id="field-photos-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: TREP Canvas, BU100 Readings, Editable Team Roles & Limitations -->
+    <section class="section section-tinted" id="trep" aria-labelledby="trep-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="trep-title">TREP Canvas, BU100 Readings &amp; Methodological Integrity</h2>
+          <p class="section-intro">
+            Structured project blueprint aligned to all five BU100 evaluation parameters (5 × 8 = 40 marks).
+          </p>
+        </div>
+
+        <div class="tabs-bar" role="tablist" aria-label="Project documentation tabs">
+          <button type="button" class="tab-btn active" role="tab" aria-selected="true" data-tab="tab-canvas">TREP Canvas (Boxes 1–8)</button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="tab-readings">BU100 Readings (4 Concepts)</button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="tab-team">8-Student Roles (Editable)</button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="tab-limits">Safeguards &amp; Limitations</button>
+        </div>
+
+        <!-- Tab 1: TREP Canvas -->
+        <div class="tab-panel active" id="tab-canvas" role="tabpanel">
+          <div class="canvas-grid">
+            <div class="canvas-box">
+              <span class="box-num">Box 1 • Problem &amp; SDG Alignment</span>
+              <h3>Avoidable Plate Waste (SDG 12)</h3>
+              <p>Students take more food than they consume in the <span data-bind="venueName">Main Student Dining Hall / Mess</span> without visibility into waste volume. Primary SDG 12; Secondary SDGs 11 &amp; 13.</p>
+            </div>
+            <div class="canvas-box">
+              <span class="box-num">Box 2 • Research &amp; Evidence Plan</span>
+              <h3>Triangulated Field Inquiry</h3>
+              <p>Anonymous Google Form survey (n = 50–100), 3 baseline + 3 post-pilot comparable weekday lunch observations/weighings, and structured cafeteria staff interviews.</p>
+            </div>
+            <div class="canvas-box">
+              <span class="box-num">Box 3 • Solution &amp; Deliverables</span>
+              <h3>Behavioural Nudges + Web Hub</h3>
+              <p>Four print-ready campaign posters &amp; table cards, “Start Half, Refill Free” prompts, responsive WasteLess BU website, QR-linked student pledge, and live impact dashboard.</p>
+            </div>
+            <div class="canvas-box">
+              <span class="box-num">Box 4 • Core Competencies</span>
+              <h3>Six BMI TREP Capabilities</h3>
+              <p>Leadership, Critical Thinking, Communication, Research, Analytical Thinking, Creativity, Digital Literacy, and Adaptability mapped across all 8 roles.</p>
+            </div>
+            <div class="canvas-box">
+              <span class="box-num">Box 5 • Engaged Campus Resources</span>
+              <h3>Verified Bennett Stakeholders</h3>
+              <p>Only genuinely consulted resources: Dining Hall / Mess supervisors &amp; serving staff, BU100 Faculty Mentor, and Campus Sustainability / Student Affairs approvals.</p>
+            </div>
+            <div class="canvas-box">
+              <span class="box-num">Box 6 • Impact Metrics</span>
+              <h3>Normalised Reduction + Reach</h3>
+              <p>Primary: % change in normalised Waste per Meal (g). Supporting: valid survey n, QR scans &amp; site visits, pre/post awareness shift, and digital pledge signatures.</p>
+            </div>
+            <div class="canvas-box">
+              <span class="box-num">Box 7 • Twist Adaptation</span>
+              <h3>Protocol Pivot Readiness</h3>
+              <p>If direct bin weighing is restricted by dining operations, pivot seamlessly to an approved anonymous plate-leftover observation tally + survey evaluation without fabricating kg.</p>
+            </div>
+            <div class="canvas-box">
+              <span class="box-num">Box 8 • Mentor Reflections</span>
+              <h3>Checkpoint Self-Correction</h3>
+              <p>Documented mid-sprint course corrections: separating kitchen prep from plate waste, controlling attendance via g/meal, and repositioning QR cards where students actually pause.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: BU100 Readings -->
+        <div class="tab-panel" id="tab-readings" role="tabpanel" hidden>
+          <div class="readings-grid">
+            <article class="reading-item">
+              <h3>1. Scout Mindset</h3>
+              <p>Investigated actual drivers of plate leftovers objectively rather than assuming student carelessness. When survey patterns point to portion sizing, unfamiliar menus, or lecture time crushes, the intervention shifts from guilt slogans to practical half-scoop and tasting nudges.</p>
+            </article>
+            <article class="reading-item">
+              <h3>2. Sampling &amp; Confirmation Bias</h3>
+              <p>Avoided convenience sampling limited to close friends or eco-club volunteers. Survey distribution spans different meal times, hostels, and academic cohorts so findings represent typical Bennett dining habits rather than pre-confirmed assumptions.</p>
+            </article>
+            <article class="reading-item">
+              <h3>3. Evidence Checking &amp; Factfulness</h3>
+              <p>Subtracted container tare weights, strictly separated kitchen preparation waste and packaging from edible plate waste, reported exact sample sizes (n), and used normalised per-meal averages (g/meal) instead of exaggerated total-weight claims.</p>
+            </article>
+            <article class="reading-item">
+              <h3>4. Uncertainty &amp; Self-Correction</h3>
+              <p>Explicitly acknowledged menu changes, daily attendance shifts, and the short 3-day pilot window as confounding factors. Built mid-pilot feedback checks to relocate QR cards or pivot to observation tallies if constraints arise.</p>
+            </article>
+          </div>
+        </div>
+
+        <!-- Tab 3: Editable 8-Student Roles -->
+        <div class="tab-panel" id="tab-team" role="tabpanel" hidden>
+          <p class="team-edit-hint">Click any member name below to personalize the roster — changes save automatically in your browser.</p>
+          <div class="table-scroll">
+            <table class="audit-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Role Title</th>
+                  <th>Assigned Member (Editable)</th>
+                  <th>Primary Responsibilities &amp; Accountability Proof</th>
+                  <th>Key Competency</th>
+                </tr>
+              </thead>
+              <tbody id="team-roster-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 4: Safeguards & Limitations -->
+        <div class="tab-panel" id="tab-limits" role="tabpanel" hidden>
+          <div class="scope-grid">
+            <div class="scope-block">
+              <h3>Mandatory Ethical &amp; Data Safeguards</h3>
+              <ul class="evidence-list">
+                <li><strong>Respectful Field Conduct:</strong> Follow dining operations norms before weighing bins or placing physical posters.</li>
+                <li><strong>Zero Identifiable Student Photos:</strong> Photograph only trays, counters, displays, or consenting volunteers — never student faces.</li>
+                <li><strong>Strict Survey Anonymity:</strong> Collect zero emails, roll numbers, or personally identifying fields in Google Forms.</li>
+                <li><strong>Zero Data Fabrication:</strong> Report actual measured or tallied outcomes honestly — even a 0% shift earns high BU100 marks when rigorously analyzed.</li>
+              </ul>
+            </div>
+            <div class="scope-block">
+              <h3>Honest Methodological Limitations</h3>
+              <ul class="evidence-list">
+                <li><strong>Single-Venue Scope:</strong> Findings apply strictly to <span data-bind="venueName">Main Student Dining Hall / Mess</span> — never extrapolated as a campus-wide reduction.</li>
+                <li><strong>Menu Variability:</strong> Popular vs. less-preferred weekday menus naturally fluctuate plate leftovers across lunch slots.</li>
+                <li><strong>Short Pilot Window:</strong> A 3-day post-pilot snapshot captures immediate nudge response rather than permanent semester-long habit formation.</li>
+                <li><strong>Self-Report Bias:</strong> Survey responses and digital pledges measure stated intent alongside — not in place of — physical observations.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>WasteLess BU</strong> — From Food Waste to Responsible Consumption
+        <p class="footer-meta">BU100 – BMI TREP Semester 1 • SDG Action Lab (SDG 12 Primary • SDG 11 &amp; 13 Secondary) • Bennett University</p>
+      </div>
+      <div class="footer-right">
+        <span id="footer-mode-note">Currently displaying Illustrative Pilot Template Data</span>
+        <button type="button" class="text-btn" id="footer-edit-btn">Configure Field Data</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chart Hover Tooltip -->
+  <div class="chart-tooltip" id="chart-tooltip" role="tooltip" hidden></div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <!-- Lightbox Modal (Posters & Field Photos) -->
+  <div class="modal-backdrop" id="lightbox-backdrop" hidden>
+    <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption">
+      <div class="lightbox-bar">
+        <strong id="lightbox-caption">Preview</strong>
+        <button type="button" class="icon-close" id="close-lightbox-btn" aria-label="Close preview">&times;</button>
+      </div>
+      <div class="lightbox-stage">
+        <img id="lightbox-img" src="" alt="Preview" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive 8-Question Anonymous Survey Modal -->
+  <div class="modal-backdrop" id="survey-backdrop" hidden>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="survey-modal-title">
+      <div class="drawer-header">
+        <div>
+          <h2 id="survey-modal-title">Anonymous Student Survey (Q1–Q8)</h2>
+          <p>Submit a live anonymous response directly into this dashboard, or open your hosted Google Form.</p>
+        </div>
+        <button type="button" class="icon-close" id="close-survey-btn" aria-label="Close survey">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="survey-ext-bar" id="survey-ext-bar" hidden>
+          <span>External Google Form connected:</span>
+          <a href="#" id="survey-ext-link" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">Open Google Form</a>
+        </div>
+
+        <form id="live-survey-form" class="survey-form">
+          <div class="field-light">
+            <label for="sv-q1">1. How frequently do you eat at the <span data-bind="venueName">Main Student Dining Hall / Mess</span>?</label>
+            <select id="sv-q1" required>
+              <option value="Daily">Daily</option>
+              <option value="3–4x per week">3–4x per week</option>
+              <option value="Weekly">Weekly</option>
+              <option value="Rarely">Rarely</option>
+            </select>
+          </div>
+          <div class="editor-row-2">
+            <div class="field-light">
+              <label for="sv-q2">2. Do you sometimes leave edible food unfinished?</label>
+              <select id="sv-q2" required>
+                <option value="Yes">Yes</option>
+                <option value="Sometimes">Sometimes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+            <div class="field-light">
+              <label for="sv-q3">3. Most common reason for unfinished food?</label>
+              <select id="sv-q3" required>
+                <option value="Portion size">Portion size</option>
+                <option value="Taste">Taste</option>
+                <option value="Time rush">Time rush</option>
+                <option value="Appetite">Appetite</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="editor-row-2">
+            <div class="field-light">
+              <label for="sv-q4">4. Take more initially than you can consume?</label>
+              <select id="sv-q4" required>
+                <option value="Yes">Yes</option>
+                <option value="Sometimes">Sometimes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+            <div class="field-light">
+              <label for="sv-q5">5. Food waste is a significant campus issue (1–5)</label>
+              <select id="sv-q5" required>
+                <option value="5">5 — Strongly Agree</option>
+                <option value="4" selected>4 — Agree</option>
+                <option value="3">3 — Neutral</option>
+                <option value="2">2 — Disagree</option>
+                <option value="1">1 — Strongly Disagree</option>
+              </select>
+            </div>
+          </div>
+          <div class="editor-row-2">
+            <div class="field-light">
+              <label for="sv-q6">6. Would smaller initial portions (+ refills) help?</label>
+              <select id="sv-q6" required>
+                <option value="Yes">Yes</option>
+                <option value="Maybe">Maybe</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+            <div class="field-light">
+              <label for="sv-q7">7. Would visual waste data &amp; displays influence you?</label>
+              <select id="sv-q7" required>
+                <option value="Yes">Yes</option>
+                <option value="Maybe">Maybe</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-light">
+            <label for="sv-q8">8. What practical changes would encourage you to waste less food? (optional)</label>
+            <input type="text" id="sv-q8" maxlength="160" placeholder="e.g., Ask half or full scoop at rice counter, daily menu display..." />
+          </div>
+          <div class="survey-submit-row">
+            <span class="editor-hint" style="margin:0;">100% anonymous — updates charts immediately.</span>
+            <button type="submit" class="btn btn-primary btn-sm">Submit Anonymous Response</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Live Mess Plate-Tally Clicker Modal (Solo Field Helper) -->
+  <div class="modal-backdrop" id="tally-backdrop" hidden>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="tally-modal-title">
+      <div class="drawer-header">
+        <div>
+          <h2 id="tally-modal-title">Live Mess Plate-Tally Clicker (Twist Mode)</h2>
+          <p>Tap once per tray observed at dish-drop, then save straight into any Baseline or Post-Pilot session.</p>
+        </div>
+        <button type="button" class="icon-close" id="close-tally-btn" aria-label="Close tally clicker">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="field-light" style="margin-bottom:1rem;">
+          <label for="tally-session-select">Target Audit Session</label>
+          <select id="tally-session-select"></select>
+        </div>
+
+        <div class="tally-readout">
+          <div>
+            <span>Plates Observed</span>
+            <strong id="tally-total-out">0</strong>
+          </div>
+          <div>
+            <span>With Edible Leftovers</span>
+            <strong id="tally-leftover-out" style="color:var(--amber-ink);">0</strong>
+          </div>
+          <div>
+            <span>Leftover Incidence</span>
+            <strong id="tally-rate-out" style="color:var(--forest);">0.0%</strong>
+          </div>
+        </div>
+
+        <div class="tally-buttons">
+          <button type="button" class="btn btn-primary tally-big-btn" id="tally-add-clean">+1 Clean Plate</button>
+          <button type="button" class="btn btn-amber tally-big-btn" id="tally-add-leftover">+1 Plate with Leftovers</button>
+        </div>
+
+        <div class="tally-footer-actions">
+          <div>
+            <button type="button" class="btn btn-ghost btn-sm" id="tally-undo-btn">Undo Last Tap</button>
+            <button type="button" class="btn btn-ghost btn-sm" id="tally-clear-btn">Zero Counter</button>
+          </div>
+          <button type="button" class="btn btn-primary btn-sm" id="tally-save-btn">Save Count to Session</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Field Data Editor Drawer -->
+  <div class="drawer-backdrop" id="editor-backdrop" hidden></div>
+  <aside class="editor-drawer" id="editor-drawer" role="dialog" aria-modal="true" aria-labelledby="editor-title" hidden>
+    <div class="drawer-header">
+      <div>
+        <h2 id="editor-title">Field Data Editor &amp; CSV Importer</h2>
+        <p>Update verified survey, sessions, Google Form link &amp; staff notes. Auto-syncs with printable posters.</p>
+      </div>
+      <button type="button" class="icon-close" id="close-editor-btn" aria-label="Close editor">&times;</button>
+    </div>
+
+    <div class="drawer-body">
+      <div class="editor-section">
+        <h3>1. Data Verification Mode, Venue &amp; Links</h3>
+        <div class="editor-row-2">
+          <div class="field-light">
+            <label for="ed-mode">Dataset Status</label>
+            <select id="ed-mode">
+              <option value="template">Illustrative Pilot Template (Pre-Fieldwork)</option>
+              <option value="verified">Verified Field Data (Authorised Measurements)</option>
+            </select>
+          </div>
+          <div class="field-light">
+            <label for="ed-protocol">Measurement Protocol</label>
+            <select id="ed-protocol">
+              <option value="weight">Direct Digital Scale Weighing (g/meal)</option>
+              <option value="tally">Twist Adaptation: Anonymous Observation Tally (%)</option>
+            </select>
+          </div>
+        </div>
+        <div class="editor-row-2">
+          <div class="field-light">
+            <label for="ed-venue">Selected Bennett Dining Venue</label>
+            <input type="text" id="ed-venue" value="Main Student Dining Hall / Mess" />
+          </div>
+          <div class="field-light">
+            <label for="ed-google-form">Google Form Link (optional)</label>
+            <input type="url" id="ed-google-form" placeholder="https://forms.gle/..." />
+          </div>
+        </div>
+      </div>
+
+      <div class="editor-section">
+        <h3>2. Quick CSV / JSON Import</h3>
+        <p class="editor-hint">Upload raw Google Forms CSV exports (no column renaming needed!), filled audit logs, or a saved JSON backup.</p>
+        <div class="import-row">
+          <label class="file-btn">
+            Import Audit Log CSV
+            <input type="file" id="import-audit-file" accept=".csv" hidden />
+          </label>
+          <label class="file-btn">
+            Import Survey CSV (Google Forms)
+            <input type="file" id="import-survey-file" accept=".csv" hidden />
+          </label>
+          <label class="file-btn">
+            Import JSON Backup
+            <input type="file" id="import-json-file" accept=".json" hidden />
+          </label>
+        </div>
+        <div class="import-status" id="import-status"></div>
+      </div>
+
+      <div class="editor-section">
+        <h3>3. Baseline &amp; Post-Pilot Sessions (3 + 3)</h3>
+        <div id="editor-sessions-list" class="sessions-editor"></div>
+      </div>
+
+      <div class="editor-section">
+        <h3>4. Student Survey Summary (Q1–Q7)</h3>
+        <div class="editor-row-2">
+          <div class="field-light">
+            <label for="ed-survey-n">Total Valid Responses (n)</label>
+            <input type="number" id="ed-survey-n" min="1" max="5000" />
+          </div>
+          <div class="field-light">
+            <label for="ed-likert">Q5 Mean Issue Score (1–5)</label>
+            <input type="number" id="ed-likert" min="1" max="5" step="0.1" />
+          </div>
+        </div>
+        <p class="editor-subhead">Q3 Primary Waste Drivers (counts)</p>
+        <div class="editor-row-5">
+          <div class="field-light"><label for="ed-d-portion">Portion</label><input type="number" id="ed-d-portion" min="0" /></div>
+          <div class="field-light"><label for="ed-d-taste">Taste</label><input type="number" id="ed-d-taste" min="0" /></div>
+          <div class="field-light"><label for="ed-d-rush">Time rush</label><input type="number" id="ed-d-rush" min="0" /></div>
+          <div class="field-light"><label for="ed-d-appetite">Appetite</label><input type="number" id="ed-d-appetite" min="0" /></div>
+          <div class="field-light"><label for="ed-d-other">Other</label><input type="number" id="ed-d-other" min="0" /></div>
+        </div>
+        <p class="editor-subhead">Q2 / Q4 / Q6 / Q7 Positive Share (%)</p>
+        <div class="editor-row-2">
+          <div class="field-light"><label for="ed-q2">Q2 Leave Food (Yes/Sometimes %)</label><input type="number" id="ed-q2" min="0" max="100" step="0.1" /></div>
+          <div class="field-light"><label for="ed-q4">Q4 Take More Initially (%)</label><input type="number" id="ed-q4" min="0" max="100" step="0.1" /></div>
+          <div class="field-light"><label for="ed-q6">Q6 Smaller Portions Help (%)</label><input type="number" id="ed-q6" min="0" max="100" step="0.1" /></div>
+          <div class="field-light"><label for="ed-q7">Q7 Visual Data Helps (%)</label><input type="number" id="ed-q7" min="0" max="100" step="0.1" /></div>
+        </div>
+      </div>
+
+      <div class="editor-section">
+        <h3>5. Pledge &amp; Staff Notes Controls</h3>
+        <div class="editor-row-2">
+          <div class="field-light">
+            <label for="ed-offline-pledges">Offline / Paper Pledges Count</label>
+            <input type="number" id="ed-offline-pledges" min="0" max="5000" />
+          </div>
+          <div class="field-light" style="display:flex;align-items:flex-end;">
+            <button type="button" class="btn btn-ghost btn-sm btn-full" id="clear-template-pledges-btn">Clear Template Pledges</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drawer-footer">
+      <button type="button" class="btn btn-ghost btn-sm" id="reset-template-btn">Reset to Template</button>
+      <div class="drawer-footer-right">
+        <button type="button" class="btn btn-secondary btn-sm" id="export-json-btn">Export JSON</button>
+        <button type="button" class="btn btn-primary btn-sm" id="save-editor-btn">Apply &amp; Update Site</button>
+      </div>
+    </div>
+  </aside>
+
+  <script src="qr.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

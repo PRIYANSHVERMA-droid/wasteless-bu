@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WasteLess BU — Print-Ready Awareness Campaign Pack (4 Assets)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Source+Serif+4:opsz,wght@8..60,700;8..60,800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --forest: #14452F;
+      --forest-deep: #0D3020;
+      --leaf: #2E7D52;
+      --mist: #F3F7F4;
+      --amber: #D9822B;
+      --amber-soft: #FDF3E7;
+      --ink: #18221D;
+      --muted: #4B5E54;
+      --border: #D6E2DB;
+      --serif: 'Source Serif 4', 'Cambria', Georgia, serif;
+      --sans: 'Plus Jakarta Sans', 'Segoe UI', Calibri, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #E8EFEA;
+      font-family: var(--sans);
+      color: var(--ink);
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    .toolbar {
+      max-width: 900px;
+      margin: 0 auto 2rem;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .toolbar h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      color: var(--forest);
+    }
+
+    .toolbar p {
+      margin: 0.2rem 0 0;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .print-btn {
+      background: var(--forest);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 5px;
+      padding: 0.65rem 1.2rem;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Poster Sheets (3:4 portrait aspect — 720x960 px exact for crisp export & A4/A3 print) */
+    .sheets {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .poster {
+      width: 720px;
+      height: 960px;
+      background: #FFFFFF;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #C6D5CC;
+      box-shadow: 0 12px 32px rgba(20, 69, 47, 0.1);
+    }
+
+    /* Poster 1: Dark Canopy Entrance Anchor */
+    .p1 {
+      background: var(--forest);
+      color: #FFFFFF;
+      padding: 52px 54px;
+      justify-content: space-between;
+    }
+
+    .p1-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+      padding-bottom: 18px;
+    }
+
+    .p-brand {
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: 0.02em;
+    }
+
+    .sdg-pill {
+      background: var(--amber);
+      color: #FFFFFF;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 999px;
+    }
+
+    .p1-center {
+      text-align: left;
+      margin: 14px 0;
+    }
+
+    .p1-emblem {
+      margin-bottom: 24px;
+    }
+
+    .p1 h2 {
+      font-family: var(--serif);
+      font-size: 68px;
+      line-height: 1.04;
+      margin: 0 0 22px;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+
+    .p1-sub {
+      font-size: 20px;
+      line-height: 1.5;
+      color: #D5E8DC;
+      max-width: 520px;
+      margin: 0 0 32px;
+    }
+
+    .p1-rules {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.24);
+      padding-top: 24px;
+    }
+
+    .p1-rule strong {
+      display: block;
+      font-size: 16px;
+      color: #F7CFA2;
+      margin-bottom: 5px;
+    }
+
+    .p1-rule span {
+      font-size: 14px;
+      color: #E3F0E8;
+      line-height: 1.45;
+      display: block;
+    }
+
+    .p1-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #FFFFFF;
+      color: var(--ink);
+      border-radius: 10px;
+      padding: 18px 22px;
+      gap: 18px;
+    }
+
+    .p1-foot-text strong {
+      display: block;
+      font-size: 17px;
+      color: var(--forest);
+      margin-bottom: 4px;
+    }
+
+    .p1-foot-text span {
+      font-size: 13.5px;
+      color: var(--muted);
+    }
+
+    .poster-qr {
+      width: 92px;
+      height: 92px;
+      flex-shrink: 0;
+      padding: 4px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #FFFFFF;
+    }
+
+    .poster-qr svg { width: 100%; height: 100%; display: block; }
+
+    /* Poster 2: Serving Counter Portion Nudge */
+    .p2 {
+      background: #FFFFFF;
+      padding: 50px 54px;
+      justify-content: space-between;
+    }
+
+    .p2-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--forest);
+    }
+
+    .p2-top .tag {
+      font-weight: 800;
+      color: var(--forest);
+      font-size: 16px;
+    }
+
+    .p2-top .loc {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--leaf);
+    }
+
+    .p2 h2 {
+      font-family: var(--serif);
+      font-size: 74px;
+      line-height: 1.02;
+      color: var(--forest);
+      margin: 24px 0 14px;
+      letter-spacing: -0.025em;
+    }
+
+    .p2-lead {
+      font-size: 20px;
+      line-height: 1.45;
+      color: var(--muted);
+      margin: 0 0 28px;
+    }
+
+    .p2-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 26px;
+    }
+
+    .plate-card {
+      border-radius: 10px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .plate-card.bad {
+      background: var(--amber-soft);
+      border: 2px solid #ECC497;
+    }
+
+    .plate-card.good {
+      background: var(--mist);
+      border: 2px solid var(--forest);
+    }
+
+    .plate-card svg {
+      margin: 0 auto 14px;
+    }
+
+    .plate-card strong {
+      display: block;
+      font-size: 19px;
+      margin-bottom: 6px;
+    }
+
+    .plate-card.bad strong { color: #9A520B; }
+    .plate-card.good strong { color: var(--forest); }
+
+    .plate-card p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .p2-steps {
+      background: var(--forest);
+      color: #FFFFFF;
+      border-radius: 10px;
+      padding: 22px 26px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .p2-steps div strong {
+      display: block;
+      font-size: 15px;
+      color: #F7CFA2;
+      margin-bottom: 4px;
+    }
+
+    .p2-steps div span {
+      font-size: 13.5px;
+      color: #E3F0E8;
+      line-height: 1.4;
+      display: block;
+    }
+
+    .p2-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* Poster 3: Dish-Drop Feedback Board */
+    .p3 {
+      background: var(--mist);
+      padding: 48px 52px;
+      justify-content: space-between;
+    }
+
+    .p3-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .p3 h2 {
+      font-family: var(--serif);
+      font-size: 50px;
+      line-height: 1.06;
+      color: var(--forest);
+      margin: 8px 0 8px;
+    }
+
+    .p3-sub {
+      margin: 0;
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    .p3-badge {
+      background: var(--amber-soft);
+      color: #8E4F0E;
+      border: 1px solid #EBC494;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .p3-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 22px 0;
+    }
+
+    .p3-stat {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 18px;
+    }
+
+    .p3-stat.highlight {
+      background: var(--forest);
+      border-color: var(--forest);
+      color: #FFFFFF;
+    }
+
+    .p3-stat span {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .p3-stat.highlight span { color: #CFE6D8; }
+
+    .p3-stat strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 42px;
+      line-height: 1.1;
+      margin: 8px 0 4px;
+      color: var(--forest);
+    }
+
+    .p3-stat.highlight strong { color: #FFFFFF; }
+
+    .p3-stat small {
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+
+    .p3-stat.highlight small { color: #F7CFA2; }
+
+    .p3-chart-box {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 24px;
+    }
+
+    .p3-chart-box h3 {
+      margin: 0 0 14px;
+      font-size: 16px;
+      color: var(--forest);
+    }
+
+    .p3-writein {
+      background: #FFFFFF;
+      border: 2px dashed var(--leaf);
+      border-radius: 10px;
+      padding: 18px 22px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .p3-writein strong {
+      font-size: 15px;
+      color: var(--forest);
+      display: block;
+    }
+
+    .p3-writein span {
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+
+    .blank-slot {
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #FAFDFB;
+    }
+
+    .blank-slot label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .blank-slot .line {
+      border-bottom: 1.5px solid var(--ink);
+    }
+
+    .p3-foot {
+      font-size: 12.5px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+    }
+
+    /* Asset 4: Table-Top Tent Card & 2 QR Pledge Cards */
+    .p4 {
+      background: #FFFFFF;
+      padding: 40px 44px;
+      justify-content: space-between;
+    }
+
+    .p4-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .tent-card {
+      border: 2px solid var(--forest);
+      border-radius: 12px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr;
+      background: var(--mist);
+      height: 410px;
+    }
+
+    .tent-left {
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .tent-left .kicker {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--leaf);
+    }
+
+    .tent-left h2 {
+      font-family: var(--serif);
+      font-size: 40px;
+      line-height: 1.08;
+      color: var(--forest);
+      margin: 10px 0;
+    }
+
+    .tent-left p {
+      margin: 0;
+      font-size: 15.5px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .tent-checklist {
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .tent-right {
+      background: var(--forest);
+      color: #FFFFFF;
+      padding: 28px 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 14px;
+    }
+
+    .tent-qr {
+      width: 168px;
+      height: 168px;
+      background: #FFFFFF;
+      padding: 8px;
+      border-radius: 8px;
+    }
+
+    .tent-qr svg { width: 100%; height: 100%; display: block; }
+
+    .tent-right strong {
+      font-size: 16px;
+      color: #F7CFA2;
+    }
+
+    .tent-right span {
+      font-size: 13px;
+      color: #D6E9DD;
+      line-height: 1.4;
+    }
+
+    .cut-line {
+      border-top: 2px dashed #9EB3A7;
+      margin: 18px 0 12px;
+      position: relative;
+      text-align: center;
+    }
+
+    .cut-line span {
+      position: relative;
+      top: -10px;
+      background: #FFFFFF;
+      padding: 0 12px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .mini-cards-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      height: 365px;
+    }
+
+    .qr-pledge-card {
+      border: 2px solid var(--forest);
+      border-radius: 10px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+      background: #FFFFFF;
+    }
+
+    .qr-pledge-card.alt {
+      background: var(--forest);
+      color: #FFFFFF;
+    }
+
+    .qr-pledge-card h3 {
+      font-family: var(--serif);
+      font-size: 24px;
+      margin: 0 0 4px;
+      color: var(--forest);
+    }
+
+    .qr-pledge-card.alt h3 { color: #FFFFFF; }
+
+    .qr-pledge-card p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .qr-pledge-card.alt p { color: #CFE6D8; }
+
+    .card-qr {
+      width: 148px;
+      height: 148px;
+      margin: 10px auto;
+      padding: 6px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+
+    .card-qr svg { width: 100%; height: 100%; display: block; }
+
+    .card-slogan {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--amber);
+    }
+
+    @media print {
+      body { background: #FFFFFF; padding: 0; }
+      .toolbar { display: none; }
+      .sheets { gap: 0; }
+      .poster {
+        box-shadow: none;
+        border: none;
+        page-break-after: always;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <div>
+      <h1>WasteLess BU — Awareness Campaign Print Pack (4 Assets)</h1>
+      <p>Designed for Bennett University Main Student Dining Hall / Mess. Press Print → Save as PDF (A4/A3) after obtaining written cafeteria approval.</p>
+    </div>
+    <button type="button" class="print-btn" onclick="window.print()">Print / Save All as PDF</button>
+  </div>
+
+  <div class="sheets">
+    <!-- POSTER 1 -->
+    <section class="poster p1" id="poster-1">
+      <div class="p1-top">
+        <span class="p-brand">WASTELESS BU • BENNETT UNIVERSITY</span>
+        <span class="sdg-pill">UN SDG 12 ACTION LAB</span>
+      </div>
+
+      <div class="p1-center">
+        <svg class="p1-emblem" width="84" height="84" viewBox="0 0 84 84" fill="none">
+          <circle cx="42" cy="42" r="39" stroke="#F7CFA2" stroke-width="3" />
+          <circle cx="42" cy="42" r="29" stroke="rgba(255,255,255,0.35)" stroke-width="2" />
+          <path d="M26 48C26 33 38 24 56 24C56 42 47 54 32 54C29 54 27 53 26 51" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M26 58L46 38" stroke="#D9822B" stroke-width="3.2" stroke-linecap="round" />
+        </svg>
+
+        <h2>Take What You Need.<br />Eat What You Take.</h2>
+        <p class="p1-sub">
+          Every unfinished plate at the Main Student Dining Hall adds up across hundreds of lunches each day. Smarter first portions protect food, water, and campus sustainability.
+        </p>
+
+        <div class="p1-rules">
+          <div class="p1-rule">
+            <strong>1. Start Half</strong>
+            <span>Ask for half a scoop first. Second helpings stay open anytime.</span>
+          </div>
+          <div class="p1-rule">
+            <strong>2. Taste First</strong>
+            <span>Try one spoon of unfamiliar curries before loading a full bowl.</span>
+          </div>
+          <div class="p1-rule">
+            <strong>3. Beat the Rush</strong>
+            <span>Match your plate portion to the minutes left before class.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="p1-foot">
+        <div class="p1-foot-text">
+          <strong>Join the 20-Second WasteLess BU Pledge</strong>
+          <span>Scan the QR code to view campus plate-waste insights and commit to responsible portions. BU100 – BMI TREP Semester 1.</span>
+        </div>
+        <div class="poster-qr" data-qr></div>
+      </div>
+    </section>
+
+    <!-- POSTER 2 -->
+    <section class="poster p2" id="poster-2">
+      <div class="p2-top">
+        <span class="tag">WASTELESS BU • SERVING COUNTER NUDGE</span>
+        <span class="loc">Main Student Dining Hall / Mess</span>
+      </div>
+
+      <div>
+        <h2>Start Half.<br />Refill Free.</h2>
+        <p class="p2-lead">
+          Why load a full plate when seconds are always welcome? Oversized initial servings are the #1 driver of avoidable plate leftovers.
+        </p>
+
+        <div class="p2-compare">
+          <div class="plate-card bad">
+            <svg width="110" height="110" viewBox="0 0 110 110" fill="none">
+              <circle cx="55" cy="55" r="48" fill="#FFFFFF" stroke="#D9822B" stroke-width="4" />
+              <circle cx="55" cy="55" r="35" fill="#F6D7B6" />
+              <path d="M32 62C38 42 70 40 78 60C72 78 38 78 32 62Z" fill="#D9822B" />
+              <line x1="25" y1="25" x2="85" y2="85" stroke="#9A520B" stroke-width="4" stroke-linecap="round" />
+            </svg>
+            <strong>Overloaded First Plate</strong>
+            <p>Full default ladles + rushing to a 1 PM lecture = edible food left behind at tray drop.</p>
+          </div>
+
+          <div class="plate-card good">
+            <svg width="110" height="110" viewBox="0 0 110 110" fill="none">
+              <circle cx="55" cy="55" r="48" fill="#FFFFFF" stroke="#14452F" stroke-width="4" />
+              <circle cx="55" cy="55" r="35" fill="#E3F0E8" />
+              <path d="M38 56L50 68L74 42" stroke="#14452F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <strong>Right-Sized + Easy Refill</strong>
+            <p>Ask for half a scoop of rice or 1 roti first. Come back guilt-free if you are still hungry.</p>
+          </div>
+        </div>
+
+        <div class="p2-steps">
+          <div>
+            <strong>Just Say “Half”</strong>
+            <span>Dining staff gladly adjust initial servings when you ask at the counter.</span>
+          </div>
+          <div>
+            <strong>Sample New Dishes</strong>
+            <span>Take a small test spoon of today’s sabzi before committing.</span>
+          </div>
+          <div>
+            <strong>Zero Hunger Trade-off</strong>
+            <span>Eating what you take saves food without cutting your meal.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="p2-foot">
+        <span>BU100 – BMI TREP Semester 1 • SDG 12, 11 &amp; 13</span>
+        <span>“Take What You Need. Eat What You Take.”</span>
+      </div>
+    </section>
+
+    <!-- POSTER 3 -->
+    <section class="poster p3" id="poster-3">
+      <div class="p3-head">
+        <div>
+          <span style="font-size:13px;font-weight:800;color:#2E7D52;">DISH-DROP FEEDBACK DISPLAY • WASTELESS BU</span>
+          <h2>Plate Waste by the Numbers</h2>
+          <p class="p3-sub">Tracking eligible edible plate waste per meal at Main Student Dining Hall / Mess.</p>
+        </div>
+        <span class="p3-badge">ILLUSTRATIVE TEMPLATE</span>
+      </div>
+
+      <div class="p3-stats">
+        <div class="p3-stat">
+          <span>Baseline Mean (3 Lunches)</span>
+          <strong>88.0 g</strong>
+          <small>Per meal served (Template)</small>
+        </div>
+        <div class="p3-stat">
+          <span>Post-Pilot Mean (3 Lunches)</span>
+          <strong>72.0 g</strong>
+          <small>Per meal served (Template)</small>
+        </div>
+        <div class="p3-stat highlight">
+          <span>Normalised Change</span>
+          <strong>-18.2%</strong>
+          <small>Controlled for attendance</small>
+        </div>
+      </div>
+
+      <div class="p3-chart-box">
+        <h3>Why Plate Waste Happens (Survey Q3 — Template, n = 72)</h3>
+        <svg viewBox="0 0 560 190" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Plus Jakarta Sans, Segoe UI, sans-serif">
+          <text x="0" y="24" font-size="14" font-weight="700" fill="#18221D">Portion size too large</text>
+          <rect x="190" y="9" width="285" height="22" rx="4" fill="#EEF4F0" />
+          <rect x="190" y="9" width="240" height="22" rx="4" fill="#14452F" />
+          <text x="485" y="25" font-size="14" font-weight="800" fill="#14452F">41.7%</text>
+
+          <text x="0" y="64" font-size="14" font-weight="700" fill="#18221D">Taste / menu mismatch</text>
+          <rect x="190" y="49" width="285" height="22" rx="4" fill="#EEF4F0" />
+          <rect x="190" y="49" width="152" height="22" rx="4" fill="#2E7D52" />
+          <text x="485" y="65" font-size="14" font-weight="800" fill="#18221D">26.4%</text>
+
+          <text x="0" y="104" font-size="14" font-weight="700" fill="#18221D">Time rush before class</text>
+          <rect x="190" y="89" width="285" height="22" rx="4" fill="#EEF4F0" />
+          <rect x="190" y="89" width="105" height="22" rx="4" fill="#D9822B" />
+          <text x="485" y="105" font-size="14" font-weight="800" fill="#18221D">18.1%</text>
+
+          <text x="0" y="144" font-size="14" font-weight="700" fill="#18221D">Misjudged appetite</text>
+          <rect x="190" y="129" width="285" height="22" rx="4" fill="#EEF4F0" />
+          <rect x="190" y="129" width="56" height="22" rx="4" fill="#5C8A72" />
+          <text x="485" y="145" font-size="14" font-weight="800" fill="#18221D">9.7%</text>
+
+          <text x="0" y="180" font-size="12" fill="#4B5E54">Eligible edible plate waste ONLY (kitchen prep waste &amp; packaging strictly excluded).</text>
+        </svg>
+      </div>
+
+      <div class="p3-writein">
+        <div>
+          <strong>Live Pilot Write-In Board</strong>
+          <span>Update after each authorised weighing or observation tally session.</span>
+        </div>
+        <div class="blank-slot">
+          <label>TODAY’S VERIFIED WASTE / MEAL (g)</label>
+          <div class="line"></div>
+        </div>
+        <div class="blank-slot">
+          <label>DATE &amp; MEAL SLOT</label>
+          <div class="line"></div>
+        </div>
+      </div>
+
+      <div class="p3-foot">
+        <span>WasteLess BU • BU100 SDG 12</span>
+        <span>Template values shown — replace with verified logs before posting</span>
+      </div>
+    </section>
+
+    <!-- ASSET 4: Table-Top Tent Card + 2 QR Pledge Cards -->
+    <section class="poster p4" id="poster-4">
+      <div>
+        <div class="p4-label">
+          <span>TABLE-TOP PORTION NUDGE TENT CARD (FOLD STANDING DISPLAY)</span>
+          <span>WasteLess BU • SDG 12</span>
+        </div>
+        <div class="tent-card">
+          <div class="tent-left">
+            <div>
+              <span class="kicker">BENNETT UNIVERSITY • DINING TABLE REMINDER</span>
+              <h2>Take What You Need. Eat What You Take.</h2>
+              <p>Small serving choices add up across every weekday lunch at our dining hall.</p>
+              <ul class="tent-checklist">
+                <li>✓ Start with a half scoop of rice or dal</li>
+                <li>✓ Taste new dishes before taking a full bowl</li>
+                <li>✓ Go back for refills only when still hungry</li>
+              </ul>
+            </div>
+            <div style="font-size:12.5px;font-weight:700;color:#2E7D52;">
+              BU100 – BMI TREP Semester 1 • Approved Pilot Display
+            </div>
+          </div>
+          <div class="tent-right">
+            <div class="tent-qr" data-qr></div>
+            <strong>20-Second Student Pledge</strong>
+            <span>Scan to log your commitment and view verified dining hall waste metrics.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cut-line"><span>CUT HERE — COUNTER QR PLEDGE CARDS (2-UP)</span></div>
+
+      <div class="mini-cards-row">
+        <div class="qr-pledge-card">
+          <div>
+            <h3>WasteLess BU</h3>
+            <p>Main Student Dining Hall / Mess</p>
+          </div>
+          <div class="card-qr" data-qr></div>
+          <div>
+            <div class="card-slogan">Start Half. Refill Free.</div>
+            <p style="margin-top:4px;">Scan to sign the SDG 12 Student Pledge</p>
+          </div>
+        </div>
+
+        <div class="qr-pledge-card alt">
+          <div>
+            <h3>WasteLess BU</h3>
+            <p>BU100 SDG 12 Action Lab</p>
+          </div>
+          <div class="card-qr" data-qr></div>
+          <div>
+            <div class="card-slogan">Take What You Need. Eat What You Take.</div>
+            <p style="margin-top:4px;">Scan to see live plate-waste tracker &amp; pledge</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="../qr.js"></script>
+  <script>
+    (function () {
+      let state = null;
+      try {
+        const raw = localStorage.getItem("wasteless_bu_state_v3") || localStorage.getItem("wasteless_bu_state_v2");
+        if (raw) state = JSON.parse(raw);
+      } catch {}
+
+      const LIVE_PLEDGE = "https://priyanshverma-droid.github.io/wasteless-bu/pledge.html";
+      const qrUrl = (state && state.qrUrl && !state.qrUrl.includes("wasteless-bu.github.io")) ? state.qrUrl : LIVE_PLEDGE;
+
+      // Sync QR codes across all 4 posters
+      if (typeof window.qrcode === "function") {
+        const qr = window.qrcode(0, "M");
+        qr.addData(qrUrl);
+        qr.make();
+        const count = qr.getModuleCount();
+        const pad = 2;
+        const size = count + pad * 2;
+        let d = "";
+        for (let r = 0; r < count; r++) {
+          for (let c = 0; c < count; c++) {
+            if (qr.isDark(r, c)) d += `M${c + pad},${r + pad}h1v1h-1z`;
+          }
+        }
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" shape-rendering="crispEdges"><rect width="${size}" height="${size}" fill="#FFFFFF"/><path d="${d}" fill="#14452F"/></svg>`;
+        document.querySelectorAll("[data-qr]").forEach((el) => { el.innerHTML = svg; });
+      }
+
+      // Auto-sync live metrics, venue name & data status from index.html state
+      if (state && Array.isArray(state.sessions) && state.survey) {
+        const venue = state.venueName || "Main Student Dining Hall / Mess";
+        const locEl = document.querySelector(".p2-top .loc");
+        if (locEl) locEl.textContent = venue;
+        const p3Sub = document.querySelector(".p3-sub");
+        if (p3Sub) p3Sub.textContent = `Tracking eligible edible plate waste per meal at ${venue}.`;
+
+        const isVerified = state.mode === "verified";
+        const isTally = state.protocol === "tally";
+        const badge = document.querySelector(".p3-badge");
+        if (badge) {
+          badge.textContent = isVerified ? "VERIFIED FIELD DATA" : "ILLUSTRATIVE TEMPLATE";
+          if (isVerified) {
+            badge.style.background = "#E5F1EA";
+            badge.style.color = "#14452F";
+            badge.style.borderColor = "#A8D3BA";
+          }
+        }
+
+        const base = state.sessions.filter((s) => s.phase === "baseline");
+        const post = state.sessions.filter((s) => s.phase === "post");
+        const metricOf = (s) => isTally
+          ? (s.meals ? (s.tallyPlates / s.meals) * 100 : 0)
+          : (s.meals ? (Math.max(0, s.grossKg - s.tareKg) * 1000) / s.meals : 0);
+
+        const bAvg = base.length ? base.reduce((a, b) => a + metricOf(b), 0) / base.length : 0;
+        const pAvg = post.length ? post.reduce((a, b) => a + metricOf(b), 0) / post.length : 0;
+        const pct = bAvg > 0 ? ((bAvg - pAvg) / bAvg) * 100 : 0;
+
+        const statCards = document.querySelectorAll(".p3-stat");
+        if (statCards.length === 3) {
+          statCards[0].querySelector("strong").textContent = isTally ? `${bAvg.toFixed(1)}%` : `${bAvg.toFixed(1)} g`;
+          statCards[0].querySelector("small").textContent = isTally ? "Plates w/ leftovers" : (isVerified ? "Verified per meal" : "Per meal served (Template)");
+          statCards[1].querySelector("strong").textContent = isTally ? `${pAvg.toFixed(1)}%` : `${pAvg.toFixed(1)} g`;
+          statCards[1].querySelector("small").textContent = isTally ? "Plates w/ leftovers" : (isVerified ? "Verified per meal" : "Per meal served (Template)");
+          statCards[2].querySelector("strong").textContent = `${pct >= 0 ? "-" : "+"}${Math.abs(pct).toFixed(1)}%`;
+        }
+
+        // Sync Poster 3 Q3 drivers bars
+        const q3 = state.survey.q3 || {};
+        const tot = Math.max(1, (q3.portion || 0) + (q3.taste || 0) + (q3.rush || 0) + (q3.appetite || 0) + (q3.other || 0));
+        const rows = [
+          { label: "Portion size too large", v: q3.portion || 0, c: "#14452F" },
+          { label: "Taste / menu mismatch", v: q3.taste || 0, c: "#2E7D52" },
+          { label: "Time rush before class", v: q3.rush || 0, c: "#D9822B" },
+          { label: "Misjudged appetite", v: q3.appetite || 0, c: "#5C8A72" }
+        ].sort((a, b) => b.v - a.v);
+
+        const chartBox = document.querySelector(".p3-chart-box");
+        if (chartBox) {
+          chartBox.querySelector("h3").textContent = `Why Plate Waste Happens (Survey Q3 — ${isVerified ? "Verified" : "Template"}, n = ${state.survey.n})`;
+          let svg = `<svg viewBox="0 0 560 190" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Plus Jakarta Sans, Segoe UI, sans-serif">`;
+          rows.forEach((r, i) => {
+            const p = (r.v / tot) * 100;
+            const y = 24 + i * 40;
+            const bw = Math.max(6, (p / 100) * 285);
+            svg += `<text x="0" y="${y}" font-size="14" font-weight="700" fill="#18221D">${r.label}</text>`;
+            svg += `<rect x="190" y="${y - 15}" width="285" height="22" rx="4" fill="#EEF4F0" />`;
+            svg += `<rect x="190" y="${y - 15}" width="${bw.toFixed(1)}" height="22" rx="4" fill="${r.c}" />`;
+            svg += `<text x="485" y="${y + 1}" font-size="14" font-weight="800" fill="${i === 0 ? "#14452F" : "#18221D"}">${p.toFixed(1)}%</text>`;
+          });
+          svg += `<text x="0" y="180" font-size="12" fill="#4B5E54">Eligible edible plate waste ONLY (kitchen prep waste &amp; packaging strictly excluded).</text></svg>`;
+          const oldSvg = chartBox.querySelector("svg");
+          if (oldSvg) oldSvg.outerHTML = svg;
+        }
+      }
+    })();
+  </script>
+</body>
+</html>

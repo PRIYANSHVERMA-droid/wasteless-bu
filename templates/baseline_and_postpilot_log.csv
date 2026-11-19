@@ -1,0 +1,7 @@
+phase,session_label,date_meal,meals_served,gross_weight_kg,tare_weight_kg,net_waste_kg,observation_tally_plates,notes
+baseline,Baseline 1,Day 3 - Mon Lunch (12:30-14:30),320,31.36,3.20,28.16,118,Illustrative template entry - replace with verified scale reading after written permission
+baseline,Baseline 2,Day 4 - Tue Lunch (12:30-14:30),340,34.48,3.20,31.28,131,Illustrative template entry - replace with verified scale reading
+baseline,Baseline 3,Day 5 - Wed Lunch (12:30-14:30),320,30.08,3.20,26.88,112,Illustrative template entry - replace with verified scale reading
+post,Post-Pilot 1,Day 11 - Mon Lunch (12:30-14:30),325,27.90,3.20,24.70,96,Illustrative template entry - posters + table cards + QR pledge active
+post,Post-Pilot 2,Day 12 - Tue Lunch (12:30-14:30),340,27.68,3.20,24.48,94,Illustrative template entry - adjusted QR placement near tray return
+post,Post-Pilot 3,Day 13 - Wed Lunch (12:30-14:30),325,25.30,3.20,22.10,87,Illustrative template entry - comparable weekday lunch slot

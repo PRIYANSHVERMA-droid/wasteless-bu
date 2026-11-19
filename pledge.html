@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign the Pledge — WasteLess BU (SDG 12 Campus Action Lab)</title>
+  <meta name="description" content="Take the 20-second WasteLess BU Student Responsible Dining Pledge at Bennett University. Sign digitally, draw your initials, and download your campus pledge certificate." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --forest: #14452F;
+      --forest-deep: #0E3121;
+      --leaf: #2E7D52;
+      --leaf-soft: #E5F1EA;
+      --mist: #F3F7F4;
+      --amber: #D9822B;
+      --amber-soft: #FDF3E7;
+      --amber-ink: #8E4F0E;
+      --ink: #18221D;
+      --muted: #4B5E54;
+      --border: #D6E2DB;
+      --border-strong: #B8CBC0;
+      --serif: 'Source Serif 4', 'Cambria', Georgia, serif;
+      --sans: 'Plus Jakarta Sans', 'Segoe UI', Calibri, -apple-system, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--mist);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Confetti canvas overlay */
+    #celebrate-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 900;
+    }
+
+    /* Top Compact Bar */
+    .top-bar {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 80;
+    }
+
+    .top-bar-inner {
+      width: min(100% - 2rem, 1040px);
+      margin-inline: auto;
+      min-height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .brand-title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--forest);
+      display: block;
+      line-height: 1.1;
+    }
+
+    .brand-sub {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .top-links {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .top-link {
+      font-size: 0.84rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--forest);
+      padding: 0.42rem 0.78rem;
+      border-radius: 5px;
+      border: 1px solid var(--border-strong);
+      background: #FFFFFF;
+    }
+
+    .top-link:hover { background: var(--leaf-soft); }
+
+    .top-link-primary {
+      background: var(--forest);
+      color: #FFFFFF;
+      border-color: var(--forest);
+    }
+    .top-link-primary:hover { background: var(--forest-deep); }
+
+    /* Main Shell */
+    .shell {
+      width: min(100% - 2rem, 1040px);
+      margin: 2rem auto 4rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.38fr) minmax(290px, 0.78fr);
+      gap: 1.75rem;
+      align-items: start;
+    }
+
+    /* Hero Banner inside Left Column */
+    .pledge-hero {
+      background: var(--forest);
+      color: #FFFFFF;
+      border-radius: 10px;
+      padding: 2rem 2rem 1.8rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .venue-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #F7CFA2;
+      margin-bottom: 0.55rem;
+    }
+
+    .pledge-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.85rem, 3.6vw, 2.65rem);
+      line-height: 1.1;
+      margin: 0 0 0.7rem;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+
+    .pledge-hero p {
+      margin: 0 0 1.25rem;
+      font-size: 0.96rem;
+      color: #D5E8DC;
+      max-width: 56ch;
+    }
+
+    .live-counter-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 0.85rem 1.1rem;
+    }
+
+    .counter-big {
+      display: flex;
+      align-items: baseline;
+      gap: 0.55rem;
+    }
+
+    .counter-big strong {
+      font-family: var(--serif);
+      font-size: 2.1rem;
+      line-height: 1;
+      color: #FFFFFF;
+    }
+
+    .counter-big span {
+      font-size: 0.84rem;
+      color: #D5E8DC;
+      font-weight: 500;
+    }
+
+    .goal-pill {
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: var(--amber);
+      color: #FFFFFF;
+      padding: 0.28rem 0.72rem;
+      border-radius: 999px;
+    }
+
+    /* Interactive Card */
+    .card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.65rem 1.75rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .step-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .step-head h2 {
+      font-family: var(--serif);
+      font-size: 1.32rem;
+      margin: 0;
+      color: var(--forest);
+    }
+
+    .step-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--leaf);
+      background: var(--leaf-soft);
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+    }
+
+    /* Tactile Habit Cards */
+    .habit-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .habit-card {
+      position: relative;
+      text-align: left;
+      font-family: inherit;
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-strong);
+      border-radius: 8px;
+      padding: 1rem 1rem 0.95rem;
+      cursor: pointer;
+      transition: border-color 0.14s ease, background 0.14s ease, transform 0.1s ease;
+    }
+
+    .habit-card:hover {
+      border-color: var(--forest);
+      background: var(--mist);
+    }
+
+    .habit-card.selected {
+      border-color: var(--forest);
+      background: var(--leaf-soft);
+    }
+
+    .habit-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.45rem;
+    }
+
+    .habit-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--mist);
+      color: var(--forest);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+
+    .habit-card.selected .habit-icon {
+      background: var(--forest);
+      color: #FFFFFF;
+    }
+
+    .habit-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: transparent;
+      background: #FFFFFF;
+    }
+
+    .habit-card.selected .habit-check {
+      background: var(--forest);
+      border-color: var(--forest);
+      color: #FFFFFF;
+    }
+
+    .habit-card > strong {
+      display: block;
+      font-size: 0.92rem;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+
+    .habit-card > span {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* Impact Estimator Strip */
+    .impact-preview {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: var(--mist);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.95rem 1.15rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .freq-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.35rem;
+    }
+
+    .pill-btn {
+      font-family: inherit;
+      font-size: 0.79rem;
+      font-weight: 600;
+      padding: 0.34rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-strong);
+      background: #FFFFFF;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .pill-btn.active {
+      background: var(--forest);
+      color: #FFFFFF;
+      border-color: var(--forest);
+    }
+
+    .impact-kg-box {
+      text-align: right;
+    }
+
+    .impact-kg-box small {
+      display: block;
+      font-size: 0.73rem;
+      color: var(--muted);
+    }
+
+    .impact-kg-box strong {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      color: var(--forest);
+    }
+
+    /* Form Fields & Hostel Chips */
+    .row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+
+    .field input {
+      width: 100%;
+      padding: 0.62rem 0.8rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+      border: 1.5px solid var(--border-strong);
+      border-radius: 6px;
+      color: var(--ink);
+      background: #FFFFFF;
+    }
+
+    .field input:focus {
+      outline: none;
+      border-color: var(--forest);
+    }
+
+    .hostel-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.45rem;
+    }
+
+    .chip-sm {
+      font-family: inherit;
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.22rem 0.55rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: var(--mist);
+      color: var(--muted);
+      cursor: pointer;
+    }
+    .chip-sm:hover, .chip-sm.active {
+      background: var(--leaf-soft);
+      border-color: var(--forest);
+      color: var(--forest);
+    }
+
+    /* Interactive Signature Pad */
+    .sig-wrap {
+      margin: 1rem 0 1.25rem;
+    }
+
+    .sig-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.35rem;
+    }
+
+    .sig-head label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .sig-clear {
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--amber-ink);
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+    }
+
+    #sig-canvas {
+      width: 100%;
+      height: 112px;
+      display: block;
+      background: #FAFDFB;
+      border: 1.5px dashed var(--border-strong);
+      border-radius: 6px;
+      cursor: crosshair;
+      touch-action: none;
+    }
+
+    /* Primary Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.78rem 1.3rem;
+      font-family: inherit;
+      font-size: 0.94rem;
+      font-weight: 700;
+      border-radius: 6px;
+      border: 1.5px solid transparent;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.14s ease, border-color 0.14s ease;
+    }
+
+    .btn-primary { background: var(--forest); color: #FFFFFF; }
+    .btn-primary:hover { background: var(--forest-deep); }
+
+    .btn-amber { background: var(--amber); color: #FFFFFF; }
+    .btn-amber:hover { background: #BF6E1E; }
+
+    .btn-outline { background: #FFFFFF; color: var(--forest); border-color: var(--forest); }
+    .btn-outline:hover { background: var(--leaf-soft); }
+
+    .btn-sm { padding: 0.52rem 0.9rem; font-size: 0.83rem; }
+    .btn-full { width: 100%; }
+
+    .form-error {
+      margin-top: 0.65rem;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--amber-ink);
+      background: var(--amber-soft);
+      border: 1px solid #ECC497;
+      border-radius: 6px;
+      padding: 0.6rem 0.85rem;
+    }
+
+    /* Post-Sign Certificate Result */
+    .cert-card {
+      background: var(--forest);
+      color: #FFFFFF;
+      border-radius: 10px;
+      padding: 1.75rem;
+      border: 2px solid var(--amber);
+      margin-bottom: 1.15rem;
+    }
+
+    .cert-kicker {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #F7CFA2;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.65rem;
+    }
+
+    .cert-card h2 {
+      font-family: var(--serif);
+      font-size: 1.85rem;
+      color: #FFFFFF;
+      margin: 0 0 0.45rem;
+    }
+
+    .cert-who {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #F7CFA2;
+      margin: 0 0 0.95rem;
+    }
+
+    .cert-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.42rem;
+      font-size: 0.88rem;
+      color: #E8F4EC;
+    }
+
+    .cert-footer-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.22);
+      padding-top: 0.85rem;
+    }
+
+    .cert-sig-img {
+      max-height: 46px;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 4px;
+      padding: 2px 6px;
+    }
+
+    .cert-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .next-step-box {
+      background: var(--amber-soft);
+      border: 1.5px solid #ECC497;
+      border-radius: 8px;
+      padding: 1.05rem 1.15rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .next-step-box strong {
+      display: block;
+      font-size: 0.94rem;
+      color: var(--amber-ink);
+    }
+
+    .next-step-box span {
+      font-size: 0.82rem;
+      color: var(--ink);
+    }
+
+    /* Right Rail: QR Card + Live Wall */
+    .rail-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.35rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .rail-card h3 {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: var(--forest);
+      margin: 0 0 0.35rem;
+    }
+
+    .rail-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin: 0 0 0.9rem;
+    }
+
+    .qr-box {
+      width: 196px;
+      height: 196px;
+      margin: 0 auto 0.85rem;
+      padding: 8px;
+      border: 1.5px solid var(--forest);
+      border-radius: 8px;
+      background: #FFFFFF;
+    }
+
+    .qr-box svg { width: 100%; height: 100%; display: block; }
+
+    .qr-url-field {
+      width: 100%;
+      font-family: inherit;
+      font-size: 0.78rem;
+      padding: 0.48rem 0.62rem;
+      border: 1px solid var(--border-strong);
+      border-radius: 5px;
+      margin-bottom: 0.55rem;
+    }
+
+    .qr-btn-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.45rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .wall-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .wall-list li {
+      background: var(--mist);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.65rem 0.8rem;
+      font-size: 0.8rem;
+    }
+
+    .wall-list strong {
+      display: block;
+      color: var(--forest);
+      margin-bottom: 0.15rem;
+    }
+
+    .wall-list span {
+      color: var(--muted);
+      display: block;
+      line-height: 1.35;
+    }
+
+    .toast {
+      position: fixed;
+      right: 1.1rem;
+      bottom: 1.1rem;
+      z-index: 950;
+      background: var(--forest-deep);
+      color: #FFFFFF;
+      padding: 0.7rem 1.05rem;
+      border-radius: 6px;
+      border-left: 4px solid var(--amber);
+      font-size: 0.85rem;
+      font-weight: 500;
+      box-shadow: 0 10px 24px rgba(14, 49, 33, 0.25);
+    }
+
+    @media (max-width: 860px) {
+      .shell { grid-template-columns: 1fr; margin-top: 1.2rem; }
+    }
+
+    @media (max-width: 560px) {
+      .habit-grid, .row-2 { grid-template-columns: 1fr; }
+      .pledge-hero, .card { padding: 1.25rem; }
+      .top-bar-inner { gap: 0.5rem; }
+      .brand-title { font-size: 0.98rem; white-space: nowrap; }
+      .brand-sub { display: none; }
+      .top-links { gap: 0.35rem; }
+      .top-link { padding: 0.36rem 0.58rem; font-size: 0.75rem; white-space: nowrap; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="celebrate-canvas" aria-hidden="true"></canvas>
+
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a href="index.html" class="brand">
+        <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="14.5" stroke="#14452F" stroke-width="2" />
+          <path d="M9.5 18.5C9.5 12.8 14.5 9.2 21.8 9.2C21.8 16.5 18.2 21.5 12.5 21.5C11.1 21.5 10.1 21 9.5 20.4" stroke="#14452F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M9.5 22.5L17.5 14.5" stroke="#D9822B" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <div>
+          <span class="brand-title">WasteLess BU</span>
+          <span class="brand-sub">SDG 12 Student Pledge</span>
+        </div>
+      </a>
+
+      <div class="top-links">
+        <a href="index.html" class="top-link">Full Dashboard</a>
+        <a id="top-survey-link" href="https://docs.google.com/forms/d/e/1FAIpQLScOoRConX5wNlVfREDtCTBRBOau9e4KdhgqO_7IbWvxtvu-oQ/viewform" class="top-link top-link-primary" target="_blank" rel="noopener">Take Survey</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <!-- Left Column: Interactive Pledge Flow -->
+    <section>
+      <div class="pledge-hero">
+        <span class="venue-tag">BENNETT UNIVERSITY • <span id="venue-label">MAIN STUDENT DINING HALL / MESS</span></span>
+        <h1>Take What You Need.<br />Eat What You Take.</h1>
+        <p>Join Bennett students cutting avoidable plate waste — pick your practical dining habits below, sign in 20 seconds, and download your WasteLess BU digital certificate.</p>
+
+        <div class="live-counter-strip">
+          <div class="counter-big">
+            <strong id="live-count">64</strong>
+            <span>campus dining pledges logged</span>
+          </div>
+          <span class="goal-pill" id="goal-pill">Goal: 100 Pledges</span>
+        </div>
+      </div>
+
+      <!-- Interactive Form Card -->
+      <div class="card" id="pledge-step-form">
+        <div class="step-head">
+          <h2>1. Choose Your Counter Commitments</h2>
+          <span class="step-badge" id="selected-count-badge">2 selected</span>
+        </div>
+
+        <div class="habit-grid" id="habit-grid">
+          <button type="button" class="habit-card selected" data-habit="Start with a half scoop of rice or dal and refill only if still hungry">
+            <div class="habit-top">
+              <span class="habit-icon">½</span>
+              <span class="habit-check">✓</span>
+            </div>
+            <strong>Start Half, Refill Free</strong>
+            <span>Take a smaller first scoop at rice/dal counters and return guilt-free for seconds.</span>
+          </button>
+
+          <button type="button" class="habit-card selected" data-habit="Taste one spoon of unfamiliar curries before loading a full bowl">
+            <div class="habit-top">
+              <span class="habit-icon">1</span>
+              <span class="habit-check">✓</span>
+            </div>
+            <strong>One-Spoon Taste Check</strong>
+            <span>Sample new or seasonal sabzis before committing to a full katori.</span>
+          </button>
+
+          <button type="button" class="habit-card" data-habit="Match my lunch portion to the minutes left before afternoon classes">
+            <div class="habit-top">
+              <span class="habit-icon">⏱</span>
+              <span class="habit-check">✓</span>
+            </div>
+            <strong>Beat the 1 PM Class Rush</strong>
+            <span>Serve a lighter initial plate when I have under 15 minutes before lectures.</span>
+          </button>
+
+          <button type="button" class="habit-card" data-habit="Take one roti or serving at a time instead of stacking extras">
+            <div class="habit-top">
+              <span class="habit-icon">✓</span>
+              <span class="habit-check">✓</span>
+            </div>
+            <strong>One Roti at a Time</strong>
+            <span>Avoid stacking extra rotis or sides that cool down and get left behind.</span>
+          </button>
+        </div>
+
+        <!-- Real-Time Personal Semester Impact Estimator -->
+        <div class="impact-preview">
+          <div>
+            <strong style="font-size:0.86rem;color:var(--forest);">How often do you dine at the mess?</strong>
+            <div class="freq-pills" id="freq-pills">
+              <button type="button" class="pill-btn active" data-meals="14">Daily (14+/wk)</button>
+              <button type="button" class="pill-btn" data-meals="9">Regular (8–12/wk)</button>
+              <button type="button" class="pill-btn" data-meals="5">Occasional (4–7/wk)</button>
+            </div>
+          </div>
+          <div class="impact-kg-box">
+            <small>Est. food you’ll save / semester</small>
+            <strong id="est-saved-out">10.1 kg</strong>
+          </div>
+        </div>
+
+        <div class="step-head" style="margin-top:0.4rem;">
+          <h2>2. Sign Your Pledge (Anonymous Allowed)</h2>
+          <span class="step-badge">Zero email required</span>
+        </div>
+
+        <form id="interactive-pledge-form" novalidate>
+          <div class="row-2">
+            <div class="field">
+              <label for="inp-name">First Name or Initials (optional)</label>
+              <input type="text" id="inp-name" maxlength="36" placeholder="Leave blank for Anonymous Diner" />
+            </div>
+            <div class="field">
+              <label for="inp-cohort">Hostel / School (optional)</label>
+              <input type="text" id="inp-cohort" maxlength="36" placeholder="e.g., B.Tech CSE • C-Block" />
+              <div class="hostel-chips" id="hostel-chips">
+                <button type="button" class="chip-sm" data-chip="C-Block">C-Block</button>
+                <button type="button" class="chip-sm" data-chip="B-Block">B-Block</button>
+                <button type="button" class="chip-sm" data-chip="D-Block">D-Block</button>
+                <button type="button" class="chip-sm" data-chip="A-Block">A-Block</button>
+                <button type="button" class="chip-sm" data-chip="Day Scholar">Day Scholar</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Optional Touch/Mouse Signature Pad -->
+          <div class="sig-wrap">
+            <div class="sig-head">
+              <label for="sig-canvas">Draw Your Initials / Signature (optional — appears on your badge)</label>
+              <button type="button" class="sig-clear" id="sig-clear-btn">Clear pad</button>
+            </div>
+            <canvas id="sig-canvas" width="600" height="112"></canvas>
+          </div>
+
+          <button type="submit" class="btn btn-amber btn-full" id="sign-submit-btn">Sign the WasteLess BU Pledge</button>
+          <div class="form-error" id="form-error" hidden></div>
+        </form>
+      </div>
+
+      <!-- Post-Submission Live Certificate Card -->
+      <div class="card" id="pledge-step-done" hidden>
+        <div class="cert-card">
+          <div class="cert-kicker">
+            <span>WASTELESS BU • BENNETT UNIVERSITY • SDG 12</span>
+            <span id="cert-num">PLEDGE #065</span>
+          </div>
+          <h2>Responsible Dining Pledge</h2>
+          <p class="cert-who" id="cert-who">Signed by Anonymous Diner</p>
+          <ul class="cert-list" id="cert-list"></ul>
+          <div class="cert-footer-row">
+            <div>
+              <strong style="font-family:var(--serif);font-style:italic;font-size:1rem;">“Take What You Need. Eat What You Take.”</strong>
+              <div style="font-size:0.76rem;color:#CFE6D8;margin-top:2px;" id="cert-date-line">BU100 SDG 12 Action Lab</div>
+            </div>
+            <img id="cert-sig-preview" class="cert-sig-img" alt="Student signature" hidden />
+          </div>
+        </div>
+
+        <div class="cert-actions">
+          <button type="button" class="btn btn-primary btn-sm" id="dl-cert-btn">Download Certificate (PNG)</button>
+          <button type="button" class="btn btn-outline btn-sm" id="copy-share-btn">Copy Share Message</button>
+          <button type="button" class="btn btn-outline btn-sm" id="sign-another-btn">Sign Another Pledge</button>
+        </div>
+
+        <div class="next-step-box">
+          <div>
+            <strong>Got 45 more seconds? Help our BU100 campus research!</strong>
+            <span>Your anonymous answers on the Google Form directly shape dining hall improvements.</span>
+          </div>
+          <a id="done-survey-link" href="https://docs.google.com/forms/d/e/1FAIpQLScOoRConX5wNlVfREDtCTBRBOau9e4KdhgqO_7IbWvxtvu-oQ/viewform" class="btn btn-amber btn-sm" target="_blank" rel="noopener">Open Google Form Survey</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Rail: Live QR Linking & Recent Campus Pledges -->
+    <aside>
+      <div class="rail-card">
+        <h3>QR Code Linked to This Page</h3>
+        <p class="rail-sub" id="qr-rail-sub">Scan on campus or update the URL once hosted live on Netlify / GitHub Pages.</p>
+        <div class="qr-box" id="page-qr"></div>
+        <input type="url" class="qr-url-field" id="page-qr-input" aria-label="Pledge QR URL" />
+        <div class="qr-btn-row">
+          <button type="button" class="btn btn-primary btn-sm" id="sync-qr-btn">Sync QR URL</button>
+          <button type="button" class="btn btn-outline btn-sm" id="dl-page-qr-btn">Download PNG</button>
+        </div>
+        <button type="button" class="btn btn-outline btn-sm btn-full" id="export-csv-btn">Export Pledges CSV</button>
+      </div>
+
+      <div class="rail-card">
+        <h3>Recent Bennett Pledges</h3>
+        <p class="rail-sub">Synced live with your main WasteLess BU dashboard.</p>
+        <ul class="wall-list" id="rail-wall"></ul>
+      </div>
+    </aside>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="qr.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      const STORAGE_KEY = "wasteless_bu_state_v3";
+      const LIVE_PLEDGE_URL = "https://priyanshverma-droid.github.io/wasteless-bu/pledge.html";
+      const LIVE_FORM = "https://docs.google.com/forms/d/e/1FAIpQLScOoRConX5wNlVfREDtCTBRBOau9e4KdhgqO_7IbWvxtvu-oQ/viewform";
+
+      function defaultThisPageUrl() {
+        if (window.location && /^https?:\/\//i.test(window.location.href)) {
+          return window.location.origin + window.location.pathname;
+        }
+        return LIVE_PLEDGE_URL;
+      }
+
+      function loadState() {
+        const fallback = {
+          mode: "template",
+          venueName: "Main Student Dining Hall / Mess",
+          qrUrl: defaultThisPageUrl(),
+          googleFormUrl: LIVE_FORM,
+          qrPreset: "pledge",
+          pledgeBaseCount: 60,
+          offlinePledges: 0,
+          pledges: [
+            { name: "Aarav S.", cohort: "B.Tech CSE • C-Block", commitments: ["Start with a half scoop of rice or dal and refill only if still hungry"], ts: "Template log", isTemplate: true },
+            { name: "Ananya M.", cohort: "BBA • B-Block", commitments: ["Taste one spoon of unfamiliar curries before loading a full bowl"], ts: "Template log", isTemplate: true },
+            { name: "Anonymous", cohort: "B.Tech AI • D-Block", commitments: ["Match my lunch portion to the minutes left before afternoon classes"], ts: "Template log", isTemplate: true },
+            { name: "Rohan K.", cohort: "BAJMC • A-Block", commitments: ["Start with a half scoop of rice or dal and refill only if still hungry"], ts: "Template log", isTemplate: true }
+          ]
+        };
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return fallback;
+          const parsed = JSON.parse(raw);
+          return Object.assign(fallback, parsed);
+        } catch {
+          return fallback;
+        }
+      }
+
+      let state = loadState();
+      let selectedMealsPerWeek = 14;
+      let latestEntry = null;
+      let latestSigDataUrl = "";
+      let toastTimer = null;
+
+      function saveState() {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch {}
+      }
+
+      function showToast(msg) {
+        const el = document.getElementById("toast");
+        el.textContent = msg;
+        el.hidden = false;
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => { el.hidden = true; }, 3200);
+      }
+
+      function totalPledgeCount() {
+        const baseSeed = state.mode === "template" ? Number(state.pledgeBaseCount || 0) : 0;
+        return baseSeed + Number(state.offlinePledges || 0) + (state.pledges ? state.pledges.length : 0);
+      }
+
+      function escapeHtml(str) {
+        return String(str).replace(/[&<>"']/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
+      }
+
+      /* ---- Pure-JS QR SVG + Direct-Canvas PNG ---- */
+      function getActiveQrUrl() {
+        if (window.location && /^https?:\/\//i.test(window.location.href)) {
+          return state.pledgePageUrl || (window.location.origin + window.location.pathname);
+        }
+        return state.pledgePageUrl || state.qrUrl || defaultThisPageUrl();
+      }
+
+      function makeQrSvg(url) {
+        if (typeof window.qrcode !== "function") return "";
+        const qr = window.qrcode(0, "M");
+        qr.addData(url);
+        qr.make();
+        const c = qr.getModuleCount();
+        const pad = 2;
+        const size = c + pad * 2;
+        let d = "";
+        for (let r = 0; r < c; r++) {
+          for (let k = 0; k < c; k++) {
+            if (qr.isDark(r, k)) d += `M${k + pad},${r + pad}h1v1h-1z`;
+          }
+        }
+        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" shape-rendering="crispEdges"><rect width="${size}" height="${size}" fill="#FFFFFF"/><path d="${d}" fill="#14452F"/></svg>`;
+      }
+
+      function downloadQrPng(url) {
+        if (typeof window.qrcode !== "function") return;
+        const qr = window.qrcode(0, "M");
+        qr.addData(url);
+        qr.make();
+        const count = qr.getModuleCount();
+        const pad = 3;
+        const total = count + pad * 2;
+        const scale = Math.max(16, Math.floor(860 / total));
+        const px = total * scale;
+
+        const canvas = document.createElement("canvas");
+        canvas.width = px;
+        canvas.height = px + 92;
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#FFFFFF";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#14452F";
+        for (let r = 0; r < count; r++) {
+          for (let c = 0; c < count; c++) {
+            if (qr.isDark(r, c)) ctx.fillRect((c + pad) * scale, (r + pad) * scale, scale, scale);
+          }
+        }
+        ctx.textAlign = "center";
+        ctx.font = "700 28px Cambria, Georgia, serif";
+        ctx.fillText("Scan to Take the WasteLess BU Pledge", canvas.width / 2, px + 36);
+        ctx.fillStyle = "#4B5E54";
+        ctx.font = "600 18px Segoe UI, sans-serif";
+        ctx.fillText(url.length > 62 ? url.slice(0, 59) + "..." : url, canvas.width / 2, px + 68);
+
+        const a = document.createElement("a");
+        a.download = "WasteLess_BU_Pledge_QR.png";
+        a.href = canvas.toDataURL("image/png");
+        a.click();
+        showToast("Downloaded high-res Pledge QR PNG.");
+      }
+
+      /* ---- Render Shared State ---- */
+      function renderUI() {
+        const count = totalPledgeCount();
+        document.getElementById("live-count").textContent = String(count);
+        document.getElementById("venue-label").textContent = (state.venueName || "Main Student Dining Hall / Mess").toUpperCase();
+        const nextGoal = count < 100 ? 100 : Math.ceil((count + 1) / 50) * 50;
+        document.getElementById("goal-pill").textContent = `${count} / ${nextGoal} Goal`;
+
+        const formUrl = state.googleFormUrl || LIVE_FORM;
+        document.getElementById("top-survey-link").href = formUrl;
+        document.getElementById("done-survey-link").href = formUrl;
+
+        const qrUrl = getActiveQrUrl();
+        document.getElementById("page-qr").innerHTML = makeQrSvg(qrUrl);
+        const qrInp = document.getElementById("page-qr-input");
+        if (document.activeElement !== qrInp) qrInp.value = qrUrl;
+
+        const wall = document.getElementById("rail-wall");
+        wall.innerHTML = (state.pledges || [])
+          .slice(0, 6)
+          .map(
+            (p) => `<li>
+              <strong>${escapeHtml(p.name || "Anonymous Diner")}${p.cohort ? ` · ${escapeHtml(p.cohort)}` : ""}</strong>
+              <span>${escapeHtml((p.commitments && p.commitments[0]) || "Committed to responsible portions")} (${escapeHtml(p.ts || "Today")})</span>
+            </li>`
+          )
+          .join("");
+      }
+
+      /* ---- Habits & Semester Impact ---- */
+      function getSelectedHabits() {
+        return Array.from(document.querySelectorAll(".habit-card.selected")).map((el) => el.dataset.habit);
+      }
+
+      function updateEstimate() {
+        const habits = getSelectedHabits();
+        document.getElementById("selected-count-badge").textContent = `${habits.length} selected`;
+        const gramsPerMeal = Math.min(85, habits.length * 22);
+        const semKg = (selectedMealsPerWeek * gramsPerMeal * 16) / 1000;
+        document.getElementById("est-saved-out").textContent = `${semKg.toFixed(1)} kg`;
+      }
+
+      document.querySelectorAll(".habit-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          card.classList.toggle("selected");
+          updateEstimate();
+        });
+      });
+
+      document.querySelectorAll("#freq-pills .pill-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll("#freq-pills .pill-btn").forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          selectedMealsPerWeek = Number(btn.dataset.meals) || 14;
+          updateEstimate();
+        });
+      });
+
+      document.querySelectorAll("#hostel-chips .chip-sm").forEach((chip) => {
+        chip.addEventListener("click", () => {
+          document.querySelectorAll("#hostel-chips .chip-sm").forEach((c) => c.classList.remove("active"));
+          chip.classList.add("active");
+          const inp = document.getElementById("inp-cohort");
+          inp.value = chip.dataset.chip;
+        });
+      });
+
+      /* ---- Interactive Signature Pad ---- */
+      const sigCanvas = document.getElementById("sig-canvas");
+      const sigCtx = sigCanvas.getContext("2d");
+      let drawing = false;
+      let hasSignedStroke = false;
+
+      function setupSigPad() {
+        sigCtx.strokeStyle = "#14452F";
+        sigCtx.lineWidth = 2.6;
+        sigCtx.lineCap = "round";
+        sigCtx.lineJoin = "round";
+
+        function getPos(e) {
+          const rect = sigCanvas.getBoundingClientRect();
+          const pt = e.touches ? e.touches[0] : e;
+          return {
+            x: (pt.clientX - rect.left) * (sigCanvas.width / rect.width),
+            y: (pt.clientY - rect.top) * (sigCanvas.height / rect.height)
+          };
+        }
+
+        function start(e) {
+          drawing = true;
+          hasSignedStroke = true;
+          const p = getPos(e);
+          sigCtx.beginPath();
+          sigCtx.moveTo(p.x, p.y);
+        }
+
+        function move(e) {
+          if (!drawing) return;
+          if (e.cancelable) e.preventDefault();
+          const p = getPos(e);
+          sigCtx.lineTo(p.x, p.y);
+          sigCtx.stroke();
+        }
+
+        function end() { drawing = false; }
+
+        sigCanvas.addEventListener("mousedown", start);
+        sigCanvas.addEventListener("mousemove", move);
+        window.addEventListener("mouseup", end);
+        sigCanvas.addEventListener("touchstart", start, { passive: true });
+        sigCanvas.addEventListener("touchmove", move, { passive: false });
+        sigCanvas.addEventListener("touchend", end);
+
+        document.getElementById("sig-clear-btn").addEventListener("click", () => {
+          sigCtx.clearRect(0, 0, sigCanvas.width, sigCanvas.height);
+          hasSignedStroke = false;
+        });
+      }
+
+      /* ---- Subtle Celebration Burst ---- */
+      function celebrateBurst() {
+        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        const c = document.getElementById("celebrate-canvas");
+        const ctx = c.getContext("2d");
+        c.width = window.innerWidth;
+        c.height = window.innerHeight;
+        const colors = ["#14452F", "#2E7D52", "#D9822B", "#F7CFA2", "#88C2A2"];
+        const pieces = Array.from({ length: 46 }, () => ({
+          x: c.width * (0.25 + Math.random() * 0.5),
+          y: c.height * 0.35,
+          vx: (Math.random() - 0.5) * 9,
+          vy: -4 - Math.random() * 7,
+          r: 4 + Math.random() * 5,
+          rot: Math.random() * Math.PI * 2,
+          vrot: (Math.random() - 0.5) * 0.2,
+          col: colors[Math.floor(Math.random() * colors.length)],
+          life: 1
+        }));
+        function frame() {
+          ctx.clearRect(0, 0, c.width, c.height);
+          let alive = false;
+          pieces.forEach((p) => {
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += 0.24;
+            p.rot += p.vrot;
+            p.life -= 0.016;
+            if (p.life > 0) {
+              alive = true;
+              ctx.save();
+              ctx.globalAlpha = Math.max(0, p.life);
+              ctx.translate(p.x, p.y);
+              ctx.rotate(p.rot);
+              ctx.fillStyle = p.col;
+              ctx.fillRect(-p.r, -p.r * 0.5, p.r * 2, p.r);
+              ctx.restore();
+            }
+          });
+          if (alive) requestAnimationFrame(frame);
+          else ctx.clearRect(0, 0, c.width, c.height);
+        }
+        requestAnimationFrame(frame);
+      }
+
+      /* ---- Certificate PNG Generator ---- */
+      function downloadCertificatePng(entry, pledgeNo, sigUrl) {
+        const canvas = document.createElement("canvas");
+        canvas.width = 1000;
+        canvas.height = 580;
+        const ctx = canvas.getContext("2d");
+
+        ctx.fillStyle = "#14452F";
+        ctx.fillRect(0, 0, 1000, 580);
+
+        ctx.strokeStyle = "#D9822B";
+        ctx.lineWidth = 4;
+        ctx.strokeRect(26, 26, 948, 528);
+
+        ctx.fillStyle = "#F7CFA2";
+        ctx.font = "700 18px Segoe UI, sans-serif";
+        ctx.fillText("WASTELESS BU  •  BENNETT UNIVERSITY  •  UN SDG 12 ACTION LAB", 58, 78);
+        ctx.textAlign = "right";
+        ctx.fillText(`PLEDGE #${String(pledgeNo).padStart(3, "0")}`, 942, 78);
+        ctx.textAlign = "left";
+
+        ctx.fillStyle = "#FFFFFF";
+        ctx.font = "700 46px Cambria, Georgia, serif";
+        ctx.fillText("Student Responsible Dining Pledge", 58, 146);
+
+        const who = `${entry.name}${entry.cohort ? " • " + entry.cohort : ""}`;
+        ctx.fillStyle = "#F7CFA2";
+        ctx.font = "700 26px Segoe UI, sans-serif";
+        ctx.fillText(`Signed by: ${who.slice(0, 50)}`, 58, 206);
+
+        ctx.fillStyle = "#E8F4EC";
+        ctx.font = "500 20px Segoe UI, sans-serif";
+        let y = 264;
+        entry.commitments.slice(0, 4).forEach((c) => {
+          ctx.fillText(`✓  ${c.slice(0, 68)}`, 58, y);
+          y += 38;
+        });
+
+        ctx.strokeStyle = "rgba(255,255,255,0.25)";
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(58, 444);
+        ctx.lineTo(942, 444);
+        ctx.stroke();
+
+        ctx.fillStyle = "#FFFFFF";
+        ctx.font = "italic 700 24px Cambria, Georgia, serif";
+        ctx.fillText("“Take What You Need. Eat What You Take.”", 58, 492);
+        ctx.fillStyle = "#CFE6D8";
+        ctx.font = "500 16px Segoe UI, sans-serif";
+        ctx.fillText(`${state.venueName}  •  Logged ${entry.ts}`, 58, 524);
+
+        const finish = () => {
+          const a = document.createElement("a");
+          a.download = `WasteLess_BU_Pledge_${pledgeNo}.png`;
+          a.href = canvas.toDataURL("image/png");
+          a.click();
+          showToast("Downloaded your WasteLess BU Pledge Certificate!");
+        };
+
+        if (sigUrl) {
+          const img = new Image();
+          img.onload = () => {
+            ctx.fillStyle = "#FFFFFF";
+            ctx.fillRect(720, 460, 220, 68);
+            ctx.drawImage(img, 726, 464, 208, 60);
+            finish();
+          };
+          img.onerror = finish;
+          img.src = sigUrl;
+        } else {
+          finish();
+        }
+      }
+
+      /* ---- Form Submit & Actions ---- */
+      document.getElementById("interactive-pledge-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const errBox = document.getElementById("form-error");
+        const habits = getSelectedHabits();
+        if (!habits.length) {
+          errBox.hidden = false;
+          errBox.textContent = "Tap at least one dining commitment card above to sign your pledge.";
+          return;
+        }
+        errBox.hidden = true;
+
+        const name = document.getElementById("inp-name").value.trim() || "Anonymous Diner";
+        const cohort = document.getElementById("inp-cohort").value.trim();
+        const ts = new Date().toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
+        const entry = { name, cohort, commitments: habits, ts, isTemplate: false };
+
+        state.pledges = state.pledges || [];
+        state.pledges.unshift(entry);
+        saveState();
+        latestEntry = entry;
+        latestSigDataUrl = hasSignedStroke ? sigCanvas.toDataURL("image/png") : "";
+
+        const pledgeNo = totalPledgeCount();
+        document.getElementById("cert-num").textContent = `PLEDGE #${String(pledgeNo).padStart(3, "0")}`;
+        document.getElementById("cert-who").textContent = `Signed by ${name}${cohort ? " • " + cohort : ""}`;
+        document.getElementById("cert-list").innerHTML = habits.map((h) => `<li>✓ ${escapeHtml(h)}</li>`).join("");
+        document.getElementById("cert-date-line").textContent = `${state.venueName} • Logged ${ts}`;
+
+        const sigImg = document.getElementById("cert-sig-preview");
+        if (latestSigDataUrl) {
+          sigImg.src = latestSigDataUrl;
+          sigImg.hidden = false;
+        } else {
+          sigImg.hidden = true;
+        }
+
+        document.getElementById("pledge-step-form").hidden = true;
+        document.getElementById("pledge-step-done").hidden = false;
+        renderUI();
+        celebrateBurst();
+        showToast(`Thank you, ${name}! Pledge #${pledgeNo} recorded.`);
+      });
+
+      document.getElementById("dl-cert-btn").addEventListener("click", () => {
+        if (latestEntry) downloadCertificatePng(latestEntry, totalPledgeCount(), latestSigDataUrl);
+      });
+
+      document.getElementById("copy-share-btn").addEventListener("click", () => {
+        const msg = `I just signed the WasteLess BU Responsible Dining Pledge at Bennett University! "Take What You Need. Eat What You Take." Join the SDG 12 survey here: ${state.googleFormUrl || LIVE_FORM}`;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(msg).then(() => showToast("Share text copied — paste in WhatsApp or Instagram!"));
+        } else {
+          showToast("Ready to share: " + msg.slice(0, 60) + "...");
+        }
+      });
+
+      document.getElementById("sign-another-btn").addEventListener("click", () => {
+        document.getElementById("interactive-pledge-form").reset();
+        sigCtx.clearRect(0, 0, sigCanvas.width, sigCanvas.height);
+        hasSignedStroke = false;
+        document.querySelectorAll("#hostel-chips .chip-sm").forEach((c) => c.classList.remove("active"));
+        document.getElementById("pledge-step-done").hidden = true;
+        document.getElementById("pledge-step-form").hidden = false;
+      });
+
+      document.getElementById("sync-qr-btn").addEventListener("click", () => {
+        const val = document.getElementById("page-qr-input").value.trim();
+        if (!val) return;
+        state.pledgePageUrl = val;
+        state.qrUrl = val;
+        state.qrPreset = "pledge";
+        saveState();
+        renderUI();
+        showToast("Updated QR across Pledge Page, Main Website, and Printable Posters!");
+      });
+
+      document.getElementById("dl-page-qr-btn").addEventListener("click", () => {
+        downloadQrPng(getActiveQrUrl());
+      });
+
+      document.getElementById("export-csv-btn").addEventListener("click", () => {
+        const esc = (v) => /[,"\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v);
+        const header = "name,cohort,commitments,logged_at\n";
+        const rows = (state.pledges || [])
+          .map((p) => [p.name, p.cohort || "", (p.commitments || []).join(" | "), p.ts || ""].map(esc).join(","))
+          .join("\n");
+        const blob = new Blob([header + rows], { type: "text/csv" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "wasteless_bu_pledges.csv";
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+        showToast("Exported student pledges CSV.");
+      });
+
+      setupSigPad();
+      updateEstimate();
+      renderUI();
+    })();
+  </script>
+</body>
+</html>

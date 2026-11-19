@@ -1,0 +1,11 @@
+response_id,q1_frequency,q2_leave_food,q3_reason,q4_take_more,q5_issue_likert,q6_smaller_portions,q7_visual_displays,q8_suggestion
+1,Daily,Yes,Portion size,Yes,5,Yes,Yes,Offer half-scoop serving spoons at main counters
+2,Daily,Sometimes,Taste,Sometimes,4,Yes,Yes,Let students taste unfamiliar curries before taking a full bowl
+3,Daily,Sometimes,Time rush,Sometimes,4,Yes,Maybe,Keep a quick-serve counter before 1 PM classes
+4,3-4x,Yes,Portion size,Yes,5,Yes,Yes,Default to one roti or smaller rice portion with easy seconds
+5,Daily,No,Appetite,No,4,Maybe,Yes,Display daily plate waste in kg near the plate drop area
+6,Weekly,Sometimes,Taste,Sometimes,3,Yes,No,Post accurate daily menu boards outside the entrance
+7,Daily,Yes,Portion size,Yes,5,Yes,Yes,Train serving staff to ask half or full scoop
+8,Daily,Sometimes,Time rush,Yes,4,Yes,Yes,Put short reminders on serving counters
+9,3-4x,Sometimes,Appetite,Sometimes,4,Yes,Maybe,Provide smaller serving ladles for dal and rice
+10,Rarely,No,Other,No,3,Maybe,Maybe,Maintain consistent serving temperatures
