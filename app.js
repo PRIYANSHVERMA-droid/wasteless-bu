@@ -7,6 +7,40 @@
   const LIVE_PLEDGE_URL = "https://priyanshverma-droid.github.io/wasteless-bu/pledge.html";
   const LIVE_GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScOoRConX5wNlVfREDtCTBRBOau9e4KdhgqO_7IbWvxtvu-oQ/viewform";
 
+  const BUILTIN_FIELD_PHOTOS = [
+    {
+      dataUrl: "photos/field-1-serving-counter.jpg",
+      tag: "Serving Line",
+      caption: "Main Mess buffet serving counter: fixed large ladles and rice/gravy spillage during peak lunch service.",
+      builtin: true
+    },
+    {
+      dataUrl: "photos/field-2-tray-comparison.jpg",
+      tag: "Portion Contrast",
+      caption: "Side-by-side student trays showing full initial lunch portions vs. unfinished paneer curry and roti.",
+      builtin: true
+    },
+    {
+      dataUrl: "photos/field-3-plate-leftovers.jpg",
+      tag: "Eligible Plate Waste",
+      caption: "Close-up of avoidable edible plate waste left behind: unfinished rice, paneer gravy, and half a roti.",
+      builtin: true
+    },
+    {
+      dataUrl: "photos/field-4-dish-drop-trays.jpg",
+      tag: "Dish-Drop Audit",
+      caption: "Dish-drop return trays with uneaten food and paper tissues — demonstrating why non-food tissues are excluded in our protocol.",
+      builtin: true
+    },
+    {
+      dataUrl: "photos/field-5-existing-signage-gap.jpg",
+      tag: "Signage Gap Insight",
+      pos: "50% 18%",
+      caption: "Returned trays piled with leftovers directly beneath an existing generic 'Please Don't Waste Food' sign — proving passive dish-drop reminders fail.",
+      builtin: true
+    }
+  ];
+
   const DEFAULT_TEAM = [
     { num: 1, role: "Project Coordinator", member: "[Student 1 Name]", proof: "Coordinates meetings, 15-day sprint timeline, approvals, and final deliverable integration.", comp: "Leadership" },
     { num: 2, role: "Research & SDG Lead", member: "[Student 2 Name]", proof: "Maps SDG 12/11/13 targets, frames problem scope, and embeds 4 BU100 reading concepts.", comp: "Critical Thinking" },
@@ -62,7 +96,7 @@
       { name: "Anonymous", cohort: "B.Tech AI • D-Block", commitments: ["Match portion size to available time before classes"], ts: "Template log", isTemplate: true },
       { name: "Rohan K.", cohort: "BAJMC • A-Block", commitments: ["Start with smaller initial portions and refill only if hungry"], ts: "Template log", isTemplate: true }
     ],
-    fieldPhotos: [],
+    fieldPhotos: BUILTIN_FIELD_PHOTOS,
     team: DEFAULT_TEAM
   };
 
@@ -95,7 +129,14 @@
       if (!Array.isArray(merged.team) || merged.team.length !== 8) {
         merged.team = clone(DEFAULT_TEAM);
       }
-      if (!Array.isArray(merged.fieldPhotos)) merged.fieldPhotos = [];
+      if (!Array.isArray(merged.fieldPhotos) || !merged.fieldPhotos.length) {
+        merged.fieldPhotos = clone(BUILTIN_FIELD_PHOTOS);
+      } else {
+        // Ensure all 5 verified campus field photos are present even if returning from an older localStorage session
+        const existingUrls = new Set(merged.fieldPhotos.map((p) => p.dataUrl));
+        const missing = BUILTIN_FIELD_PHOTOS.filter((bp) => !existingUrls.has(bp.dataUrl));
+        if (missing.length) merged.fieldPhotos = [...clone(missing), ...merged.fieldPhotos];
+      }
       if (!merged.googleFormUrl) merged.googleFormUrl = LIVE_GOOGLE_FORM_URL;
       if (!merged.pledgePageUrl || merged.pledgePageUrl.includes("wasteless-bu.github.io")) {
         merged.pledgePageUrl = LIVE_PLEDGE_URL;
@@ -573,16 +614,23 @@
     const grid = document.getElementById("field-photos-grid");
     if (!grid) return;
     if (!state.fieldPhotos.length) {
-      grid.innerHTML = `<div class="field-photo-empty">No campus photos uploaded yet. Click <strong>Upload Mess / Plate Photos</strong> above to add your 4–5 dining counter, meal tray, and plate-leftover photos (no student faces).</div>`;
+      grid.innerHTML = `<div class="field-photo-empty">No campus photos uploaded yet. Click <strong>Upload Extra Photos</strong> above to add dining hall photos (no student faces).</div>`;
       return;
     }
     grid.innerHTML = state.fieldPhotos
       .map(
         (ph, i) => `<article class="field-photo-card">
-          <img class="field-photo-thumb" src="${ph.dataUrl}" alt="${escapeAttr(ph.caption)}" data-photo-idx="${i}" />
+          <div class="field-photo-img-wrap">
+            <img class="field-photo-thumb" src="${ph.dataUrl}" alt="${escapeAttr(ph.caption)}" data-photo-idx="${i}" loading="lazy"${ph.pos ? ` style="object-position:${ph.pos}"` : ""} />
+            ${ph.tag ? `<span class="photo-tag">${escapeHtml(ph.tag)}</span>` : ""}
+          </div>
           <div class="field-photo-meta">
-            <input type="text" value="${escapeAttr(ph.caption)}" data-photo-cap="${i}" aria-label="Photo caption" />
-            <button type="button" class="photo-del-btn" data-photo-del="${i}">Remove photo</button>
+            ${
+              ph.builtin
+                ? `<p class="field-photo-cap">${escapeHtml(ph.caption)}</p>`
+                : `<input type="text" value="${escapeAttr(ph.caption)}" data-photo-cap="${i}" aria-label="Photo caption" />
+                   <button type="button" class="photo-del-btn" data-photo-del="${i}">Remove photo</button>`
+            }
           </div>
         </article>`
       )
