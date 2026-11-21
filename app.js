@@ -55,14 +55,14 @@
   ];
 
   const DEFAULT_TEAM = [
-    { num: 1, role: "Project Coordinator", member: "[Student 1 Name]", proof: "Coordinates meetings, 15-day sprint timeline, approvals, and final deliverable integration.", comp: "Leadership" },
-    { num: 2, role: "Research & SDG Lead", member: "[Student 2 Name]", proof: "Maps SDG 12/11/13 targets, frames problem scope, and embeds 4 BU100 reading concepts.", comp: "Critical Thinking" },
-    { num: 3, role: "Survey & Interview Lead", member: "[Student 3 Name]", proof: "Builds anonymous Google Form (Q1–Q8), drives 50–100 responses, and runs staff interviews.", comp: "Communication" },
-    { num: 4, role: "Field Observation Lead", member: "[Student 4 Name]", proof: "Leads 3 baseline & 3 post-pilot observations, timestamped notes, and authorised weighing/tally.", comp: "Research" },
-    { num: 5, role: "Data Analysis Lead", member: "[Student 5 Name]", proof: "Cleans survey datasets, computes normalised baseline vs. post-pilot metrics, charts & limitations.", comp: "Analytical Thinking" },
-    { num: 6, role: "Creative & Campaign Lead", member: "[Student 6 Name]", proof: "Designs 4 awareness posters, table-top portion nudges, QR cards, and 8-page dossier layouts.", comp: "Creativity" },
-    { num: 7, role: "Technology Lead", member: "[Student 7 Name]", proof: "Builds responsive WasteLess BU website (HTML/CSS/JS), offline QR pledge & live dashboard.", comp: "Digital Literacy" },
-    { num: 8, role: "Implementation & Impact Lead", member: "[Student 8 Name]", proof: "Executes live pilot rollout, logs QR/pledge engagement, manages Twist Adaptation & evaluation.", comp: "Adaptability" }
+    { num: 1, role: "Team Lead & Project Coordinator", member: "Priyansh Verma (Team Lead)", proof: "Coordinates team meetings, 15-day sprint timeline, dining coordination, and final deliverable integration.", comp: "Leadership" },
+    { num: 2, role: "Research & SDG Lead", member: "Yati", proof: "Maps SDG 12/11/13 targets, frames problem scope, and embeds 4 BU100 reading concepts.", comp: "Critical Thinking" },
+    { num: 3, role: "Survey & Interview Lead", member: "Shubh", proof: "Builds anonymous Google Form (Q1–Q8), drives 122 verified responses, and runs staff interviews.", comp: "Communication" },
+    { num: 4, role: "Field Observation Lead", member: "Madhavi", proof: "Leads 3 baseline & 3 post-pilot observations, 7 multi-menu privacy-screened photos, and authorised weighing/tally.", comp: "Research" },
+    { num: 5, role: "Data Analysis Lead", member: "Tanmay", proof: "Cleans survey datasets, computes normalised baseline vs. post-pilot metrics, charts & limitations.", comp: "Analytical Thinking" },
+    { num: 6, role: "Creative & Campaign Lead", member: "Chirag", proof: "Designs 4 awareness posters, table-top portion nudges, QR cards, and 8-page dossier layouts.", comp: "Creativity" },
+    { num: 7, role: "Technology Lead", member: "Praneel Varshney", proof: "Builds responsive WasteLess BU website (HTML/CSS/JS), offline QR pledge & live dashboard.", comp: "Digital Literacy" },
+    { num: 8, role: "Implementation & Impact Lead", member: "Drishti", proof: "Executes live pilot rollout, logs QR/pledge engagement, manages Twist Adaptation & evaluation.", comp: "Adaptability" }
   ];
 
   const DEFAULT_STATE = {
@@ -143,7 +143,7 @@
       if (!Array.isArray(merged.staffQuotes) || !merged.staffQuotes.length) {
         merged.staffQuotes = clone(DEFAULT_STATE.staffQuotes);
       }
-      if (!Array.isArray(merged.team) || merged.team.length !== 8) {
+      if (!Array.isArray(merged.team) || merged.team.length !== 8 || merged.team.some((t) => /^\[Student \d+ Name\]$/i.test(String(t.member || "").trim()))) {
         merged.team = clone(DEFAULT_TEAM);
       }
       if (!Array.isArray(merged.fieldPhotos) || !merged.fieldPhotos.length) {

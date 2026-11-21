@@ -3,42 +3,40 @@
 **From Food Waste to Responsible Consumption • Bennett University Main Student Dining Hall / Mess**  
 **Course:** BU100 – BMI TREP Semester 1 • SDG Action Lab (40 Marks)  
 **Primary SDG:** SDG 12 (Responsible Consumption & Production) | **Secondary SDGs:** SDG 11 & SDG 13  
-**Campaign Slogan:** *"Take What You Need. Eat What You Take."*
+**Campaign Slogan:** *"Take What You Need. Eat What You Take."*  
+**Live Website:** https://priyanshverma-droid.github.io/wasteless-bu/  
+**Interactive QR Pledge Page:** https://priyanshverma-droid.github.io/wasteless-bu/pledge.html  
+**Live Anonymous Survey (n = 122 verified responses):** https://docs.google.com/forms/d/e/1FAIpQLScOoRConX5wNlVfREDtCTBRBOau9e4KdhgqO_7IbWvxtvu-oQ/viewform
+
+---
+
+## Team Roster (8 Students)
+
+| # | Team Member | Role | Core Competency |
+|---|---|---|---|
+| 1 | **Priyansh Verma (Team Lead)** | Team Lead & Project Coordinator | Leadership |
+| 2 | **Yati** | Research & SDG Lead | Critical Thinking |
+| 3 | **Shubh** | Survey & Interview Lead | Communication |
+| 4 | **Madhavi** | Field Observation Lead | Research |
+| 5 | **Tanmay** | Data Analysis Lead | Analytical Thinking |
+| 6 | **Chirag** | Creative & Campaign Lead | Creativity |
+| 7 | **Praneel Varshney** | Technology Lead | Digital Literacy |
+| 8 | **Drishti** | Implementation & Impact Lead | Adaptability |
 
 ---
 
 ## Included Deliverables
 
-1. **Responsive Website (`index.html`, `styles.css`, `app.js`, `qr.js`)**
-   - Works **100% offline** (double-click `index.html`) or hosted live on GitHub Pages / Netlify / Vercel.
-   - Features: Live Pilot Summary Ledger, 4 interactive SVG data charts, **Field Data Editor & CSV Importer** (switches between *Illustrative Pilot Template* and *Verified Field Data* mode), **Twist Tally Mode** toggle (if bin weighing is restricted), **Offline ISO-Standard QR Pledge Studio** (with downloadable PNG pledge badge & CSV export), Campaign Poster Gallery, and interactive TREP Canvas + BU100 Readings tabs.
+1. **Responsive Website & Interactive QR Pledge App (`index.html`, `pledge.html`, `styles.css`, `app.js`, `qr.js`)**
+   - Hosted live on GitHub Pages and works 100% offline.
+   - Features verified `n = 122` student survey charts, 7 privacy-screened multi-menu Bennett Mess field photos (`photos/`), Field Data Editor with raw Google Forms CSV import, Live Mess Plate-Tally Clicker (Box 7 Twist Adaptation), touch-signature QR Pledge App with downloadable PNG certificates, and interactive TREP Canvas + BU100 Readings tabs.
 2. **Print-Ready Awareness Campaign Pack (`posters/`)**
-   - Open `posters/posters.html` and press **Print → Save as PDF** (A4 or A3) after obtaining written cafeteria approval.
-   - Includes high-resolution PNG exports:
-     - `posters/poster-1-main.png` — Entrance Anchor (*Take What You Need. Eat What You Take.*)
-     - `posters/poster-2-portions.png` — Serving Counter Nudge (*Start Half. Refill Free.*)
-     - `posters/poster-3-impact.png` — Dish-Drop Feedback Board (with live write-in slots)
-     - `posters/poster-4-qr-pledge.png` — Folding Table-Top Tent Card & 2-Up Cuttable QR Pledge Cards
+   - Open `posters/posters.html` and press **Print → Save as PDF** (A4 or A3).
+   - High-resolution PNG exports: `poster-1-main.png`, `poster-2-portions.png`, `poster-3-impact.png`, `poster-4-qr-pledge.png` (linked to live QR pledge URL).
 3. **8-Page Visual Project Dossier (`WasteLess_BU_Visual_Dossier.docx`)**
-   - Follows Section 8 page-by-page across exactly 8 formatted pages with embedded charts, real website screenshots, all 4 poster visuals, complete TREP Canvas (Boxes 1–8), 4 BU100 reading reflections, editable `[Student Name]` tables, field photo slots, safeguards, scaling roadmap, and viva Q&A prep.
+   - Follows Section 8 page-by-page across exactly 8 formatted pages with verified `n = 122` charts, 7 multi-menu privacy-screened mess photos, website screenshots, all 4 posters, TREP Canvas (Boxes 1–8), 4 BU100 reading reflections, team roster & contribution log, safeguards, scaling roadmap, and viva Q&A prep.
 4. **12-Slide Executive Pitch Deck (`WasteLess_BU_Pitch_Deck.pptx`)**
-   - Built with native editable PowerPoint charts, embedded real website & poster visuals, scannable QR code, and complete timed speaker notes matching the **7m 25s** presentation structure (plus solo-presenter cues).
-5. **Field Research & Permissions Toolkit (`templates/`)**
-   - `templates/cafeteria_permission_letter.txt` — Ready-to-sign permission letter for Dining Hall Management.
-   - `templates/google_form_questions.md` — Exact Q1–Q8 survey instrument ready to copy into Google Forms.
-   - `templates/baseline_and_postpilot_log.csv` — Direct weighing & Twist tally log (importable into the website).
-   - `templates/survey_responses_template.csv` — Survey export format (importable into the website).
-
----
-
-## Quick Checklist Before Final Submission
-
-1. **Replace Name Placeholders:** Open `WasteLess_BU_Visual_Dossier.docx` and `WasteLess_BU_Pitch_Deck.pptx` and replace `[Student 1 Name / Roll]` … `[Student 8 Name]` (or note solo execution transparently in the contribution log if teammates did not participate).
-2. **Swap Template Data with Verified Field Data (BU100 Page 6 Integrity Rule):**
-   - Collect written dining permission (`templates/cafeteria_permission_letter.txt`) before weighing bins or placing posters.
-   - Once you collect real Google Form responses and baseline/post-pilot logs, open `index.html`, click **Template Data → Enter / Edit Field Data**, upload your CSVs (or enter values directly), and switch Dataset Status to **Verified Field Data**.
-   - Right-click the two native PowerPoint charts in `WasteLess_BU_Pitch_Deck.pptx` → **Edit Data** to update your verified numbers directly in PowerPoint.
-   - Update the tables and drop your real bin/poster photos (no identifiable student faces) into the 3 dashed photo slots in `WasteLess_BU_Visual_Dossier.docx`.
-3. **Make the QR Code Scan Live on Campus (Optional — 2 Minutes Free):**
-   - Upload this folder (`index.html`, `styles.css`, `app.js`, `qr.js`, `posters/`) to **GitHub Pages** or **Netlify Drop** (`app.netlify.com/drop`).
-   - Paste your live URL + `#pledge` into the **Live QR Target URL** box in the Pledge section of `index.html`, click **Update QR → Download High-Res QR (PNG)**, and print!
+   - Native editable PowerPoint charts, 4-photo dining-journey strip, live scannable GitHub Pages QR code, and timed speaker notes mapped across all 8 team members (7m 25s).
+5. **Verified Data & Field Toolkit (`data/`, `templates/`)**
+   - `data/survey_responses_verified.csv` — Verified anonymous Bennett University survey dataset (`n = 122`).
+   - `templates/cafeteria_permission_letter.txt`, `templates/google_form_questions.md`, `templates/baseline_and_postpilot_log.csv`.
