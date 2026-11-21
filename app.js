@@ -3,7 +3,7 @@
 (function () {
   "use strict";
 
-  const STORAGE_KEY = "wasteless_bu_state_v3";
+  const STORAGE_KEY = "wasteless_bu_state_v4";
   const LIVE_PLEDGE_URL = "https://priyanshverma-droid.github.io/wasteless-bu/pledge.html";
   const LIVE_GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScOoRConX5wNlVfREDtCTBRBOau9e4KdhgqO_7IbWvxtvu-oQ/viewform";
 
@@ -69,18 +69,22 @@
       { phase: "post", label: "Post-Pilot 3", dateMeal: "Day 13 — Wed Lunch (12:30–14:30)", meals: 325, grossKg: 25.3, tareKg: 3.2, tallyPlates: 87 }
     ],
     survey: {
-      n: 72,
-      likertMean: 4.2,
-      q1: { daily: 48, threeFour: 15, weekly: 6, rarely: 3 },
-      q3: { portion: 30, taste: 19, rush: 13, appetite: 7, other: 3 },
-      q2Pct: 84.7,
-      q4Pct: 80.6,
-      q6Pct: 76.4,
-      q7Pct: 68.1,
+      n: 122,
+      verifiedSurvey: true,
+      likertMean: 4.21,
+      q1: { daily: 34, threeFour: 44, weekly: 12, rarely: 32 },
+      q3: { portion: 23, taste: 55, rush: 15, appetite: 22, other: 7 },
+      q2Pct: 75.4,
+      q4Pct: 71.3,
+      q6Pct: 65.6,
+      q6MaybePct: 29.5,
+      q7Pct: 32.0,
+      q7MaybePct: 59.8,
       q8Quotes: [
-        { title: "Half-scoop default option", text: "Offer a clear “half or full?” choice at rice, curry, and roti stations with guilt-free seconds." },
-        { title: "Visible menu clarity", text: "Display daily menu boards and small taste-checks so students avoid taking dishes they dislike." },
-        { title: "Feedback at tray return", text: "Show verified daily plate-waste totals in grams per meal near the dish-drop station." }
+        { title: "Tasting unfamiliar dishes first (10+ mentions)", text: "“Tasting samples for unfamiliar items so it is easy to decide whether to take that dish or not.”" },
+        { title: "Consistent taste & seasoning (14+ mentions)", text: "“Consistent taste in curries and rice, better seasoning, warm food, and better quality chapatis and dal.”" },
+        { title: "Visible daily menu & spice labels (8+ mentions)", text: "“Visible daily menu with ingredients and clear labeling of spicy or unfamiliar dishes before entering the line.”" },
+        { title: "Smaller scoops & shorter refill lines (10+ mentions)", text: "“Serve smaller scoops initially, smaller serving spoons, and shorter refill lines so students don’t overfill plates.”" }
       ]
     },
     staffQuotes: [
@@ -115,7 +119,7 @@
   function loadState() {
     const base = clone(DEFAULT_STATE);
     try {
-      const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem("wasteless_bu_state_v2");
+      const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) return base;
       const parsed = JSON.parse(raw);
       const merged = Object.assign(base, parsed);
@@ -456,10 +460,10 @@
     if (!el) return;
     const s = state.survey;
     const rows = [
-      { label: "Q2: Leave food unfinished (Yes / Sometimes)", pct: s.q2Pct, color: "#D9822B" },
-      { label: "Q4: Take more initially than eaten (Yes / Sometimes)", pct: s.q4Pct, color: "#C97524" },
-      { label: "Q6: Smaller initial portions + refills would help (Yes)", pct: s.q6Pct, color: "#14452F" },
-      { label: "Q7: Visual waste data & displays influence choice (Yes)", pct: s.q7Pct, color: "#2E7D52" }
+      { label: "Q2: Leave food unfinished (Yes / Sometimes)", pct: s.q2Pct, color: "#D9822B", extra: "" },
+      { label: "Q4: Take more initially than eaten (Yes / Sometimes)", pct: s.q4Pct, color: "#C97524", extra: "" },
+      { label: "Q6: Smaller initial portions + refills help (Yes | +29.5% Maybe)", pct: s.q6Pct, color: "#14452F", extra: s.q6MaybePct ? ` (${(s.q6Pct + s.q6MaybePct).toFixed(1)}% Yes+Maybe)` : "" },
+      { label: "Q7: Visual waste displays influence choice (Yes | +59.8% Maybe)", pct: s.q7Pct, color: "#2E7D52", extra: s.q7MaybePct ? ` (${(s.q7Pct + s.q7MaybePct).toFixed(1)}% Yes+Maybe)` : "" }
     ];
 
     const W = 500, rowH = 54, barW = 435;
@@ -469,8 +473,8 @@
       const y = 6 + i * rowH;
       const clamped = Math.max(0, Math.min(100, Number(r.pct) || 0));
       const w = (clamped / 100) * barW;
-      const tip = `${r.label}: ${clamped.toFixed(1)}% (n = ${s.n})`;
-      svg += `<text x="0" y="${y + 14}" font-size="12" font-weight="600" fill="#18221D">${r.label}</text>`;
+      const tip = `${r.label}: ${clamped.toFixed(1)}%${r.extra} (n = ${s.n})`;
+      svg += `<text x="0" y="${y + 14}" font-size="11.5" font-weight="600" fill="#18221D">${r.label}</text>`;
       svg += `<rect x="0" y="${y + 23}" width="${barW}" height="14" rx="3" fill="#EEF4F0"/>`;
       svg += `<rect class="chart-bar-hit" data-tip="${escapeAttr(tip)}" x="0" y="${y + 23}" width="${w.toFixed(1)}" height="14" rx="3" fill="${r.color}"/>`;
       svg += `<text x="${barW + 10}" y="${y + 34}" font-size="12.5" font-weight="700" fill="#14452F">${clamped.toFixed(1)}%</text>`;
@@ -674,26 +678,26 @@
     const footerNote = document.getElementById("footer-mode-note");
 
     if (dot) dot.classList.toggle("verified", isVerified);
-    if (headerMode) headerMode.textContent = isVerified ? "Verified Field Data" : "Template Data";
+    if (headerMode) headerMode.textContent = isVerified ? "All Data Verified" : "Survey Verified (n=" + state.survey.n + ")";
     if (heroBadge) {
-      heroBadge.textContent = isVerified ? "Verified Field Data" : "Illustrative Pilot Template";
+      heroBadge.textContent = isVerified ? "Verified Field Data" : `Survey Verified (n=${state.survey.n}) • Weighing Template`;
       heroBadge.classList.toggle("verified", isVerified);
     }
     if (banner) banner.classList.toggle("verified", isVerified);
     if (hTitle) {
       hTitle.textContent = isVerified
-        ? "Displaying Verified Campus Field Data"
-        : "Viewing Illustrative Pilot Template Data (BU100 Integrity Safeguard)";
+        ? "Displaying Full Verified Campus Field Data"
+        : `Verified Student Survey (n = ${state.survey.n}) + 5 Mess Photos Active • Weighing Log in Template Mode`;
     }
     if (hText) {
       hText.innerHTML = isVerified
-        ? `Showing verified measurements for <strong>${escapeHtml(state.venueName)}</strong>. All charts and printable posters in <code>posters/posters.html</code> reflect this dataset.`
-        : `Per BU100 guidelines, unverified numbers must never be presented as collected campus measurements. Use <strong>Enter / Edit Field Data</strong> to input your logs or import your raw Google Form CSV — all charts and printable posters update automatically.`;
+        ? `Showing verified survey and weighing/tally measurements for <strong>${escapeHtml(state.venueName)}</strong>. All charts and printable posters reflect this dataset.`
+        : `<strong>Survey charts (Q1–Q8, n = ${state.survey.n}) and all 5 dining hall photos are 100% verified primary data</strong> from Bennett University. Per BU100 anti-fabrication safeguards, the 3+3 weighing comparison remains clearly tagged as an illustrative protocol template until physical weighing/tally sessions are logged via <strong>Enter / Edit Field Data</strong>.`;
     }
     if (footerNote) {
       footerNote.textContent = isVerified
-        ? "Currently displaying Verified Field Data"
-        : "Currently displaying Illustrative Pilot Template Data";
+        ? "Full Verified Field Data active"
+        : `Verified Survey (n = ${state.survey.n}) & Photos • Weighing Log in Template Mode`;
     }
 
     const pctEl = document.getElementById("hero-pct-change");
