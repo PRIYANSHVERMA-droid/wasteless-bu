@@ -9,6 +9,13 @@
 
   const BUILTIN_FIELD_PHOTOS = [
     {
+      dataUrl: "photos/field-7-dining-hall-overview.jpg",
+      tag: "Dining Hall Scale",
+      pos: "50% 62%",
+      caption: "Bennett University Main Student Dining Hall during peak weekday lunch showing high seating volume and serving queue (student faces blurred per BU100 privacy protocol).",
+      builtin: true
+    },
+    {
       dataUrl: "photos/field-1-serving-counter.jpg",
       tag: "Serving Line",
       caption: "Main Mess buffet serving counter: fixed large ladles and rice/gravy spillage during peak lunch service.",
@@ -16,8 +23,14 @@
     },
     {
       dataUrl: "photos/field-2-tray-comparison.jpg",
-      tag: "Portion Contrast",
+      tag: "Day 1: Paneer Menu",
       caption: "Side-by-side student trays showing full initial lunch portions vs. unfinished paneer curry and roti.",
+      builtin: true
+    },
+    {
+      dataUrl: "photos/field-6-rajma-trays.jpg",
+      tag: "Day 2: Rajma Menu",
+      caption: "Three post-lunch trays on a second weekday menu (rajma-chawal, roti & curd), confirming recurring edible leftovers across different menus.",
       builtin: true
     },
     {
@@ -136,10 +149,9 @@
       if (!Array.isArray(merged.fieldPhotos) || !merged.fieldPhotos.length) {
         merged.fieldPhotos = clone(BUILTIN_FIELD_PHOTOS);
       } else {
-        // Ensure all 5 verified campus field photos are present even if returning from an older localStorage session
-        const existingUrls = new Set(merged.fieldPhotos.map((p) => p.dataUrl));
-        const missing = BUILTIN_FIELD_PHOTOS.filter((bp) => !existingUrls.has(bp.dataUrl));
-        if (missing.length) merged.fieldPhotos = [...clone(missing), ...merged.fieldPhotos];
+        // Keep user-uploaded custom photos while refreshing the 7 verified campus field photos in canonical order
+        const customPhotos = merged.fieldPhotos.filter((p) => !p.builtin);
+        merged.fieldPhotos = [...clone(BUILTIN_FIELD_PHOTOS), ...customPhotos];
       }
       if (!merged.googleFormUrl) merged.googleFormUrl = LIVE_GOOGLE_FORM_URL;
       if (!merged.pledgePageUrl || merged.pledgePageUrl.includes("wasteless-bu.github.io")) {
@@ -687,12 +699,12 @@
     if (hTitle) {
       hTitle.textContent = isVerified
         ? "Displaying Full Verified Campus Field Data"
-        : `Verified Student Survey (n = ${state.survey.n}) + 5 Mess Photos Active • Weighing Log in Template Mode`;
+        : `Verified Student Survey (n = ${state.survey.n}) + 7 Mess Photos Active • Weighing Log in Template Mode`;
     }
     if (hText) {
       hText.innerHTML = isVerified
         ? `Showing verified survey and weighing/tally measurements for <strong>${escapeHtml(state.venueName)}</strong>. All charts and printable posters reflect this dataset.`
-        : `<strong>Survey charts (Q1–Q8, n = ${state.survey.n}) and all 5 dining hall photos are 100% verified primary data</strong> from Bennett University. Per BU100 anti-fabrication safeguards, the 3+3 weighing comparison remains clearly tagged as an illustrative protocol template until physical weighing/tally sessions are logged via <strong>Enter / Edit Field Data</strong>.`;
+        : `<strong>Survey charts (Q1–Q8, n = ${state.survey.n}) and all 7 dining hall photos (multi-menu, privacy-screened) are 100% verified primary data</strong> from Bennett University. Per BU100 anti-fabrication safeguards, the 3+3 weighing comparison remains clearly tagged as an illustrative protocol template until physical weighing/tally sessions are logged via <strong>Enter / Edit Field Data</strong>.`;
     }
     if (footerNote) {
       footerNote.textContent = isVerified
