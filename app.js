@@ -3,7 +3,7 @@
 (function () {
   "use strict";
 
-  const STORAGE_KEY = "wasteless_bu_state_v4";
+  const STORAGE_KEY = "wasteless_bu_state_v5";
   const LIVE_PLEDGE_URL = "https://priyanshverma-droid.github.io/wasteless-bu/pledge.html";
   const LIVE_GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScOoRConX5wNlVfREDtCTBRBOau9e4KdhgqO_7IbWvxtvu-oQ/viewform";
 
@@ -57,7 +57,7 @@
   const DEFAULT_TEAM = [
     { num: 1, role: "Team Lead & Project Coordinator", member: "Priyansh Verma (Team Lead)", proof: "Coordinates team meetings, 15-day sprint timeline, dining coordination, and final deliverable integration.", comp: "Leadership" },
     { num: 2, role: "Research & SDG Lead", member: "Yati", proof: "Maps SDG 12/11/13 targets, frames problem scope, and embeds 4 BU100 reading concepts.", comp: "Critical Thinking" },
-    { num: 3, role: "Survey & Interview Lead", member: "Shubh", proof: "Builds anonymous Google Form (Q1–Q8), drives 122 verified responses, and runs staff interviews.", comp: "Communication" },
+    { num: 3, role: "Survey & Interview Lead", member: "Shubh", proof: "Builds anonymous Google Form (Q1–Q8), drives 60 verified responses, and runs staff interviews.", comp: "Communication" },
     { num: 4, role: "Field Observation Lead", member: "Madhavi", proof: "Leads 3 baseline & 3 post-pilot observations, 7 multi-menu privacy-screened photos, and authorised weighing/tally.", comp: "Research" },
     { num: 5, role: "Data Analysis Lead", member: "Tanmay", proof: "Cleans survey datasets, computes normalised baseline vs. post-pilot metrics, charts & limitations.", comp: "Analytical Thinking" },
     { num: 6, role: "Creative & Campaign Lead", member: "Chirag", proof: "Designs 4 awareness posters, table-top portion nudges, QR cards, and 8-page dossier layouts.", comp: "Creativity" },
@@ -82,22 +82,22 @@
       { phase: "post", label: "Post-Pilot 3", dateMeal: "Day 13 — Wed Lunch (12:30–14:30)", meals: 325, grossKg: 25.3, tareKg: 3.2, tallyPlates: 87 }
     ],
     survey: {
-      n: 122,
+      n: 60,
       verifiedSurvey: true,
-      likertMean: 4.21,
-      q1: { daily: 34, threeFour: 44, weekly: 12, rarely: 32 },
-      q3: { portion: 23, taste: 55, rush: 15, appetite: 22, other: 7 },
-      q2Pct: 75.4,
-      q4Pct: 71.3,
-      q6Pct: 65.6,
-      q6MaybePct: 29.5,
-      q7Pct: 32.0,
-      q7MaybePct: 59.8,
+      likertMean: 3.47,
+      q1: { daily: 16, threeFour: 26, weekly: 7, rarely: 11 },
+      q3: { portion: 12, taste: 17, rush: 17, appetite: 12, other: 2 },
+      q2Pct: 90.0,
+      q4Pct: 86.7,
+      q6Pct: 56.67,
+      q6MaybePct: 35.0,
+      q7Pct: 26.67,
+      q7MaybePct: 56.67,
       q8Quotes: [
-        { title: "Tasting unfamiliar dishes first (10+ mentions)", text: "“Tasting samples for unfamiliar items so it is easy to decide whether to take that dish or not.”" },
-        { title: "Consistent taste & seasoning (14+ mentions)", text: "“Consistent taste in curries and rice, better seasoning, warm food, and better quality chapatis and dal.”" },
-        { title: "Visible daily menu & spice labels (8+ mentions)", text: "“Visible daily menu with ingredients and clear labeling of spicy or unfamiliar dishes before entering the line.”" },
-        { title: "Smaller scoops & shorter refill lines (10+ mentions)", text: "“Serve smaller scoops initially, smaller serving spoons, and shorter refill lines so students don’t overfill plates.”" }
+        { title: "Tasting unfamiliar dishes first", text: "“Tasting unfamiliar food dishes so that it would be easy to take that particular dish or not.”" },
+        { title: "Visible full daily menu & spice labels", text: "“Visible full menu at the entrance — knowing all options upfront prevents overfilling plates; clear spice/ingredient labels avoid abandoned food.”" },
+        { title: "Half-scoop options & slightly smaller plates", text: "“Half-scoop options & tasting spoons: take smaller portions first, going back for seconds only if needed; slightly smaller plates curb over-serving.”" },
+        { title: "Consistent taste & counter waste tallies", text: "“Improve taste consistency and place simple signs or daily waste tallies at serving and return counters to keep portion mindfulness top of mind.”" }
       ]
     },
     staffQuotes: [
@@ -474,8 +474,8 @@
     const rows = [
       { label: "Q2: Leave food unfinished (Yes / Sometimes)", pct: s.q2Pct, color: "#D9822B", extra: "" },
       { label: "Q4: Take more initially than eaten (Yes / Sometimes)", pct: s.q4Pct, color: "#C97524", extra: "" },
-      { label: "Q6: Smaller initial portions + refills help (Yes | +29.5% Maybe)", pct: s.q6Pct, color: "#14452F", extra: s.q6MaybePct ? ` (${(s.q6Pct + s.q6MaybePct).toFixed(1)}% Yes+Maybe)` : "" },
-      { label: "Q7: Visual waste displays influence choice (Yes | +59.8% Maybe)", pct: s.q7Pct, color: "#2E7D52", extra: s.q7MaybePct ? ` (${(s.q7Pct + s.q7MaybePct).toFixed(1)}% Yes+Maybe)` : "" }
+      { label: `Q6: Smaller initial portions + refills help (Yes | +${(s.q6MaybePct || 35.0).toFixed(1)}% Maybe)`, pct: s.q6Pct, color: "#14452F", extra: s.q6MaybePct ? ` (${(s.q6Pct + s.q6MaybePct).toFixed(1)}% Yes+Maybe)` : "" },
+      { label: `Q7: Visual waste displays influence choice (Yes | +${(s.q7MaybePct || 56.7).toFixed(1)}% Maybe)`, pct: s.q7Pct, color: "#2E7D52", extra: s.q7MaybePct ? ` (${(s.q7Pct + s.q7MaybePct).toFixed(1)}% Yes+Maybe)` : "" }
     ];
 
     const W = 500, rowH = 54, barW = 435;
