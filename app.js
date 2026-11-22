@@ -602,6 +602,17 @@
     }
   }
 
+  function bumpPledgeCounters() {
+    const countA = document.getElementById("hero-pledge-count");
+    const countB = document.getElementById("pledge-wall-count");
+    [countA, countB].forEach((el) => {
+      if (!el) return;
+      el.classList.remove("counter-bump");
+      void el.offsetWidth;
+      el.classList.add("counter-bump");
+    });
+  }
+
   function renderPledgeWall(sum) {
     const wall = document.getElementById("pledge-wall");
     const countA = document.getElementById("hero-pledge-count");
@@ -616,13 +627,17 @@
     }
 
     wall.innerHTML = state.pledges
-      .slice(0, 6)
-      .map(
-        (p) => `<li>
-          <strong>${escapeHtml(p.name || "Anonymous Diner")}${p.cohort ? ` · ${escapeHtml(p.cohort)}` : ""}</strong>
-          ${escapeHtml(p.commitments[0] || "Committed to responsible portions")} <span style="opacity:0.7">(${escapeHtml(p.ts)})</span>
-        </li>`
-      )
+      .slice(0, 8)
+      .map((p) => {
+        const isNewClass = p._isNewArrival ? " wall-item-new" : "";
+        const justNowTag = p._isNewArrival ? '<span class="badge-just-now">Just now</span>' : "";
+        const commitmentsText = (p.commitments && p.commitments[0]) || "Committed to responsible portions";
+        const timeTag = p.time ? `${escapeHtml(p.ts || "Today")}, ${escapeHtml(p.time)}` : escapeHtml(p.ts || "Today");
+        return `<li class="${isNewClass}">
+          <strong>${escapeHtml(p.name || "Anonymous Diner")}${p.cohort ? ` · ${escapeHtml(p.cohort)}` : ""}${justNowTag}</strong>
+          ${escapeHtml(commitmentsText)} <span style="opacity:0.75">(${timeTag})</span>
+        </li>`;
+      })
       .join("");
   }
 
@@ -1030,11 +1045,19 @@
 
       const now = new Date();
       const ts = now.toLocaleDateString("en-IN", { day: "2-digit", month: "short" });
-      const entry = { name, cohort, commitments: checked, ts, isTemplate: false };
+      const time = now.toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" });
+      const id = "p_" + Date.now() + "_" + Math.random().toString(36).substring(2, 7);
+      const entry = { id, name, cohort, commitments: checked, ts, time, isTemplate: false, _isNewArrival: true };
       state.pledges.unshift(entry);
       lastSignedPledge = entry;
       saveState();
       renderAll();
+      bumpPledgeCounters();
+
+      if (window.WasteLessSync) {
+        const realPledges = state.pledges.filter((p) => !p.isTemplate);
+        window.WasteLessSync.broadcastPledge(entry, realPledges);
+      }
 
       confirmBox.hidden = false;
       confirmBox.textContent = `Pledge recorded for ${name}. Thank you for backing responsible dining at ${state.venueName}.`;
@@ -1606,5 +1629,44 @@
     setupLightboxAndPhotos();
     setupEditor();
     renderAll();
+
+    /* Real-Time Campus Synchronization */
+    if (window.WasteLessSync) {
+      window.WasteLessSync.init();
+
+      window.WasteLessSync.onNewPledge((pledge, isRemote) => {
+        state.pledges = state.pledges || [];
+        const exists = state.pledges.find((p) => (p.id && p.id === pledge.id) || (p.name === pledge.name && p.cohort === pledge.cohort && p.ts === pledge.ts && JSON.stringify(p.commitments) === JSON.stringify(pledge.commitments)));
+        if (exists) return;
+
+        pledge._isNewArrival = true;
+        state.pledges.unshift(pledge);
+        saveState();
+        renderAll();
+        bumpPledgeCounters();
+
+        if (isRemote) {
+          showToast(`✨ Real-time: ${pledge.name || "A Bennett student"} just signed the pledge!`);
+        }
+      });
+
+      window.WasteLessSync.onSnapshot((data) => {
+        if (!data || !Array.isArray(data.pledges)) return;
+        let added = false;
+        state.pledges = state.pledges || [];
+        data.pledges.forEach((remoteP) => {
+          const found = state.pledges.some((p) => (p.id && p.id === remoteP.id) || (p.name === remoteP.name && p.cohort === remoteP.cohort && p.ts === remoteP.ts));
+          if (!found) {
+            state.pledges.unshift(remoteP);
+            added = true;
+          }
+        });
+        if (added) {
+          saveState();
+          renderAll();
+          bumpPledgeCounters();
+        }
+      });
+    }
   });
 })();

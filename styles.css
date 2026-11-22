@@ -1234,6 +1234,64 @@ select:focus-visible {
   margin-bottom: 0.15rem;
 }
 
+/* Real-Time Live Sync & Bump Animations */
+@keyframes countBumpMain {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.26); color: #88C2A2; text-shadow: 0 0 16px rgba(136, 194, 162, 0.7); }
+  100% { transform: scale(1); color: inherit; }
+}
+
+.counter-bump {
+  display: inline-block;
+  animation: countBumpMain 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes wallSlideIn {
+  0% { opacity: 0; transform: translateY(-16px); background: rgba(46, 125, 82, 0.4); border-color: #52D890; }
+  60% { background: rgba(46, 125, 82, 0.25); border-color: #52D890; }
+  100% { opacity: 1; transform: translateY(0); background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.15); }
+}
+
+.pledge-wall li.wall-item-new {
+  animation: wallSlideIn 1.8s ease-out;
+}
+
+.live-badge-pulse {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(46, 125, 82, 0.25);
+  color: #D5E8DC;
+  border: 1px solid rgba(136, 194, 162, 0.4);
+}
+
+.live-badge-pulse .pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #52D890;
+  box-shadow: 0 0 8px #52D890;
+  animation: pulseGreen 1.6s infinite ease-in-out;
+}
+
+.badge-just-now {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  background: var(--leaf);
+  padding: 0.08rem 0.4rem;
+  border-radius: 3px;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+
 /* QR Station */
 .qr-station {
   display: flex;

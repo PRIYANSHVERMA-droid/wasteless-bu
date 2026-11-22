@@ -197,6 +197,146 @@
       border-radius: 999px;
     }
 
+    /* Real-Time Cross-Device Sync Indicators */
+    .counter-meta-pills {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .sync-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 0.26rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      transition: all 0.25s ease;
+    }
+
+    .sync-pill.status-connected {
+      background: rgba(46, 125, 82, 0.35);
+      border-color: #88C2A2;
+      color: #D5E8DC;
+    }
+
+    .sync-pill.status-connected .sync-dot {
+      background: #52D890;
+      box-shadow: 0 0 8px #52D890;
+      animation: pulseGreen 2s infinite ease-in-out;
+    }
+
+    .sync-pill.status-connecting {
+      background: rgba(217, 130, 43, 0.25);
+      border-color: #F7CFA2;
+      color: #F7CFA2;
+    }
+
+    .sync-pill.status-connecting .sync-dot {
+      background: #F7CFA2;
+      animation: pulseAmber 1s infinite alternate;
+    }
+
+    .sync-pill.status-offline {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #C0D0C7;
+    }
+
+    .sync-pill.status-offline .sync-dot {
+      background: #90A499;
+    }
+
+    .sync-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    @keyframes pulseGreen {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.35); opacity: 0.75; }
+    }
+
+    @keyframes pulseAmber {
+      0% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    .rail-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .rail-card-head h3 { margin: 0; }
+
+    .live-badge-pulse {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.32rem;
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.18rem 0.5rem;
+      border-radius: 999px;
+      background: var(--leaf-soft);
+      color: var(--forest);
+      border: 1px solid var(--border-strong);
+    }
+
+    .live-badge-pulse .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #2E7D52;
+      animation: pulseGreen 1.6s infinite ease-in-out;
+    }
+
+    /* Counter increment pulse */
+    @keyframes countBump {
+      0% { transform: scale(1); }
+      30% { transform: scale(1.24); color: #88C2A2; text-shadow: 0 0 14px rgba(136, 194, 162, 0.7); }
+      100% { transform: scale(1); color: #FFFFFF; }
+    }
+
+    .counter-bump {
+      animation: countBump 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* New pledge arrival in wall */
+    @keyframes slideDownHighlight {
+      0% { opacity: 0; transform: translateY(-16px); background: #CDE8D8; border-color: #2E7D52; box-shadow: 0 4px 14px rgba(46, 125, 82, 0.2); }
+      50% { background: #E5F1EA; border-color: #2E7D52; }
+      100% { opacity: 1; transform: translateY(0); background: var(--mist); border-color: var(--border); box-shadow: none; }
+    }
+
+    .wall-item-new {
+      animation: slideDownHighlight 1.8s ease-out;
+    }
+
+    .badge-just-now {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      background: var(--leaf);
+      padding: 0.08rem 0.4rem;
+      border-radius: 3px;
+      margin-left: 0.35rem;
+      vertical-align: middle;
+      animation: pulseGreen 2s infinite;
+    }
+
     /* Interactive Card */
     .card {
       background: #FFFFFF;
@@ -748,7 +888,13 @@
             <strong id="live-count">64</strong>
             <span>campus dining pledges logged</span>
           </div>
-          <span class="goal-pill" id="goal-pill">Goal: 100 Pledges</span>
+          <div class="counter-meta-pills">
+            <span class="sync-pill status-connecting" id="sync-pill" title="Real-time multi-device campus synchronization">
+              <span class="sync-dot"></span>
+              <span id="sync-status-text">Connecting...</span>
+            </span>
+            <span class="goal-pill" id="goal-pill">Goal: 100 Pledges</span>
+          </div>
         </div>
       </div>
 
@@ -901,8 +1047,11 @@
       </div>
 
       <div class="rail-card">
-        <h3>Recent Bennett Pledges</h3>
-        <p class="rail-sub">Synced live with your main WasteLess BU dashboard.</p>
+        <div class="rail-card-head">
+          <h3>Recent Bennett Pledges</h3>
+          <span class="live-badge-pulse" id="wall-live-badge"><span class="pulse-dot"></span> Live Feed</span>
+        </div>
+        <p class="rail-sub">Updates automatically across all phones in real time.</p>
         <ul class="wall-list" id="rail-wall"></ul>
       </div>
     </aside>
@@ -911,6 +1060,8 @@
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
   <script src="qr.js"></script>
+  <script src="mqtt.min.js"></script>
+  <script src="pledge-sync.js"></script>
   <script>
     (function () {
       "use strict";
@@ -1042,6 +1193,14 @@
       }
 
       /* ---- Render Shared State ---- */
+      function bumpCounter() {
+        const countEl = document.getElementById("live-count");
+        if (!countEl) return;
+        countEl.classList.remove("counter-bump");
+        void countEl.offsetWidth;
+        countEl.classList.add("counter-bump");
+      }
+
       function renderUI() {
         const count = totalPledgeCount();
         document.getElementById("live-count").textContent = String(count);
@@ -1060,13 +1219,17 @@
 
         const wall = document.getElementById("rail-wall");
         wall.innerHTML = (state.pledges || [])
-          .slice(0, 6)
-          .map(
-            (p) => `<li>
-              <strong>${escapeHtml(p.name || "Anonymous Diner")}${p.cohort ? ` · ${escapeHtml(p.cohort)}` : ""}</strong>
-              <span>${escapeHtml((p.commitments && p.commitments[0]) || "Committed to responsible portions")} (${escapeHtml(p.ts || "Today")})</span>
-            </li>`
-          )
+          .slice(0, 8)
+          .map((p) => {
+            const isNewClass = p._isNewArrival ? " wall-item-new" : "";
+            const justNowTag = p._isNewArrival ? '<span class="badge-just-now">Just now</span>' : "";
+            const commitmentsText = (p.commitments && p.commitments[0]) || "Committed to responsible portions";
+            const timeStr = p.time ? `${escapeHtml(p.ts || "Today")}, ${escapeHtml(p.time)}` : escapeHtml(p.ts || "Today");
+            return `<li class="${isNewClass}">
+              <strong>${escapeHtml(p.name || "Anonymous Diner")}${p.cohort ? ` · ${escapeHtml(p.cohort)}` : ""}${justNowTag}</strong>
+              <span>${escapeHtml(commitmentsText)} (${timeStr})</span>
+            </li>`;
+          })
           .join("");
       }
 
@@ -1294,14 +1457,23 @@
 
         const name = document.getElementById("inp-name").value.trim() || "Anonymous Diner";
         const cohort = document.getElementById("inp-cohort").value.trim();
-        const ts = new Date().toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
-        const entry = { name, cohort, commitments: habits, ts, isTemplate: false };
+        const now = new Date();
+        const ts = now.toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
+        const time = now.toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" });
+        const id = "p_" + Date.now() + "_" + Math.random().toString(36).substring(2, 7);
+        const entry = { id, name, cohort, commitments: habits, ts, time, isTemplate: false, _isNewArrival: true };
 
         state.pledges = state.pledges || [];
         state.pledges.unshift(entry);
         saveState();
         latestEntry = entry;
         latestSigDataUrl = hasSignedStroke ? sigCanvas.toDataURL("image/png") : "";
+
+        // Broadcast across all connected phones and laptop screens in real time
+        if (window.WasteLessSync) {
+          const realPledges = state.pledges.filter((p) => !p.isTemplate);
+          window.WasteLessSync.broadcastPledge(entry, realPledges);
+        }
 
         const pledgeNo = totalPledgeCount();
         document.getElementById("cert-num").textContent = `PLEDGE #${String(pledgeNo).padStart(3, "0")}`;
@@ -1320,6 +1492,7 @@
         document.getElementById("pledge-step-form").hidden = true;
         document.getElementById("pledge-step-done").hidden = false;
         renderUI();
+        bumpCounter();
         celebrateBurst();
         showToast(`Thank you, ${name}! Pledge #${pledgeNo} recorded.`);
       });
@@ -1380,6 +1553,53 @@
       setupSigPad();
       updateEstimate();
       renderUI();
+
+      /* ---- Real-Time Cross-Campus Synchronization ---- */
+      if (window.WasteLessSync) {
+        window.WasteLessSync.init();
+
+        window.WasteLessSync.onStatusChange((st, msg) => {
+          const pill = document.getElementById("sync-pill");
+          const txt = document.getElementById("sync-status-text");
+          if (!pill || !txt) return;
+          pill.className = "sync-pill status-" + (st === "connected" ? "connected" : st === "connecting" ? "connecting" : "offline");
+          txt.textContent = msg || (st === "connected" ? "Live Sync Active" : st === "connecting" ? "Connecting..." : "Offline (Local mode)");
+        });
+
+        window.WasteLessSync.onNewPledge((pledge, isRemote) => {
+          state.pledges = state.pledges || [];
+          const exists = state.pledges.find((p) => (p.id && p.id === pledge.id) || (p.name === pledge.name && p.cohort === pledge.cohort && p.ts === pledge.ts && JSON.stringify(p.commitments) === JSON.stringify(pledge.commitments)));
+          if (exists) return;
+
+          pledge._isNewArrival = true;
+          state.pledges.unshift(pledge);
+          saveState();
+          renderUI();
+          bumpCounter();
+
+          if (isRemote) {
+            showToast(`✨ Real-time: ${pledge.name || "A Bennett student"} just signed the pledge!`);
+          }
+        });
+
+        window.WasteLessSync.onSnapshot((data) => {
+          if (!data || !Array.isArray(data.pledges)) return;
+          let added = false;
+          state.pledges = state.pledges || [];
+          data.pledges.forEach((remoteP) => {
+            const found = state.pledges.some((p) => (p.id && p.id === remoteP.id) || (p.name === remoteP.name && p.cohort === remoteP.cohort && p.ts === remoteP.ts));
+            if (!found) {
+              state.pledges.unshift(remoteP);
+              added = true;
+            }
+          });
+          if (added) {
+            saveState();
+            renderUI();
+            bumpCounter();
+          }
+        });
+      }
     })();
   </script>
 </body>

@@ -477,7 +477,10 @@
 
           <div class="recent-pledges">
             <div class="recent-head">
-              <h3>Recent Student Pledges (<span id="pledge-wall-count">64</span> total)</h3>
+              <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;">
+                <h3>Recent Student Pledges (<span id="pledge-wall-count">64</span> total)</h3>
+                <span class="live-badge-pulse" id="index-wall-live"><span class="pulse-dot"></span> Live Sync Active</span>
+              </div>
               <div class="recent-head-actions">
                 <button type="button" class="link-light" id="export-pledges-csv">Export Pledges CSV</button>
               </div>
@@ -1009,6 +1012,8 @@
   </aside>
 
   <script src="qr.js"></script>
+  <script src="mqtt.min.js"></script>
+  <script src="pledge-sync.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
