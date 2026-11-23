@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TREP Project & Mentoring Canvas — WasteLess BU (Bennett University)</title>
+  <meta name="description" content="Official Bennett University TREP Project & Mentoring Canvas for SDG-driven student projects. Fully interactive, pre-filled with WasteLess BU empirical data, and print-ready." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700;8..60,800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy-deep: #06192E;
+      --navy-main: #0B2545;
+      --navy-card: #0F3156;
+      --text-dark: #1E293B;
+      --text-muted: #475569;
+      --border-gray: #CBD5E1;
+      --dot-line: #94A3B8;
+      --accent-green: #2E7D32;
+      --accent-green-bg: #E8F5E9;
+      --accent-blue: #1565C0;
+      --accent-blue-bg: #E3F2FD;
+      --accent-orange: #E65100;
+      --accent-orange-bg: #FFF3E0;
+      --accent-purple: #6A1B9A;
+      --accent-purple-bg: #F3E5F5;
+      --accent-teal: #00838F;
+      --accent-teal-bg: #E0F7FA;
+      --accent-amber: #D97706;
+      --accent-amber-bg: #FEF3C7;
+      --accent-red: #C62828;
+      --accent-red-bg: #FFEBEE;
+      --sans: 'Plus Jakarta Sans', 'Segoe UI', -apple-system, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #F8FAFC;
+      font-family: var(--sans);
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Action Bar (Screen Only) */
+    .action-bar {
+      background: #FFFFFF;
+      border-bottom: 1px solid #E2E8F0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .action-bar-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0.6rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .bar-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--navy-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .bar-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--accent-green-bg);
+      color: var(--accent-green);
+      padding: 0.18rem 0.5rem;
+      border-radius: 4px;
+      border: 1px solid #C8E6C9;
+    }
+
+    .bar-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.42rem 0.85rem;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.15s ease;
+      text-decoration: none;
+      border: 1.5px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--navy-main);
+      color: #FFFFFF;
+      border-color: var(--navy-main);
+    }
+    .btn-primary:hover { background: var(--navy-deep); }
+
+    .btn-outline {
+      background: #FFFFFF;
+      color: var(--navy-main);
+      border-color: #CBD5E1;
+    }
+    .btn-outline:hover { background: #F1F5F9; border-color: var(--navy-main); }
+
+    .btn-amber {
+      background: #D97706;
+      color: #FFFFFF;
+      border-color: #D97706;
+    }
+    .btn-amber:hover { background: #B45309; }
+
+    /* Canvas Outer Frame */
+    .canvas-viewport {
+      max-width: 1320px;
+      margin: 1.2rem auto 2.5rem;
+      padding: 0 0.75rem;
+    }
+
+    .canvas-card {
+      background: #FFFFFF;
+      border: 2px solid var(--navy-main);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(11, 37, 69, 0.12);
+    }
+
+    /* Header Navy Banner */
+    .canvas-header {
+      background: var(--navy-main);
+      color: #FFFFFF;
+      padding: 0.95rem 1.4rem 0.75rem;
+    }
+
+    .header-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .canvas-brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .canvas-titles h1 {
+      font-family: var(--sans);
+      font-size: 1.7rem;
+      font-weight: 800;
+      margin: 0;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+    }
+
+    .title-white { color: #FFFFFF; }
+    .title-amber { color: #F59F00; }
+    .title-green { color: #74C043; }
+
+    .canvas-titles p {
+      margin: 0.2rem 0 0;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #E2E8F0;
+      letter-spacing: 0.03em;
+    }
+
+    /* Meta Info Bar */
+    .canvas-meta-bar {
+      background: #FFFFFF;
+      border-radius: 6px;
+      padding: 0.45rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--text-dark);
+      font-size: 0.84rem;
+    }
+
+    .meta-field {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 700;
+      color: var(--navy-main);
+    }
+
+    .meta-field-grow { flex: 1; }
+
+    .meta-input {
+      border: none;
+      border-bottom: 1.5px solid var(--dot-line);
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      padding: 0.1rem 0.35rem;
+      background: transparent;
+      width: 100%;
+      outline: none;
+    }
+
+    .meta-divider {
+      color: #94A3B8;
+      font-weight: 300;
+      font-size: 1.1rem;
+    }
+
+    .sdg-icon-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .sdg-icon-circle {
+      width: 30px;
+      height: 30px;
+      border: 2px solid var(--navy-main);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #BF8B2E;
+      color: #FFFFFF;
+      font-weight: 800;
+      font-size: 0.78rem;
+    }
+
+    /* Main Grid Structure */
+    .canvas-grid-body {
+      padding: 0.9rem 1rem;
+      background: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .grid-row-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+
+    .grid-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+    }
+
+    /* Box Card Standard */
+    .c-box {
+      border-radius: 8px;
+      border: 1.5px solid #CBD5E1;
+      padding: 0.8rem 0.95rem 0.85rem;
+      background: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      position: relative;
+    }
+
+    .c-box-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.45rem;
+    }
+
+    .c-box-title {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-weight: 800;
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+    }
+
+    .box-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 3px;
+      color: #FFFFFF;
+      font-weight: 800;
+      font-size: 0.75rem;
+    }
+
+    .box-icon {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Subheadings inside boxes */
+    .c-prompt {
+      font-weight: 700;
+      font-size: 0.79rem;
+      color: var(--text-dark);
+      margin: 0.32rem 0 0.18rem;
+    }
+
+    .c-lines {
+      font-size: 0.77rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+      border-bottom: 1px dotted var(--dot-line);
+      padding-bottom: 0.35rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .c-lines:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .c-lines[contenteditable="true"]:focus {
+      background: #FEF9C3;
+      outline: 1.5px solid var(--accent-amber);
+      border-radius: 4px;
+      padding: 0.25rem 0.35rem;
+    }
+
+    /* Theme Accents */
+    .theme-green { border-color: #81C784; }
+    .theme-green .box-badge { background: var(--accent-green); }
+    .theme-green .c-box-title { color: var(--accent-green); }
+
+    .theme-blue { border-color: #90CAF9; }
+    .theme-blue .box-badge { background: var(--accent-blue); }
+    .theme-blue .c-box-title { color: var(--accent-blue); }
+
+    .theme-orange { border-color: #FFB74D; }
+    .theme-orange .box-badge { background: var(--accent-orange); }
+    .theme-orange .c-box-title { color: var(--accent-orange); }
+
+    .theme-purple { border-color: #BA68C8; }
+    .theme-purple .box-badge { background: var(--accent-purple); }
+    .theme-purple .c-box-title { color: var(--accent-purple); }
+
+    .theme-teal { border-color: #4DD0E1; }
+    .theme-teal .box-badge { background: var(--accent-teal); }
+    .theme-teal .c-box-title { color: var(--accent-teal); }
+
+    .theme-amber { border-color: #FCD34D; }
+    .theme-amber .box-badge { background: var(--accent-amber); }
+    .theme-amber .c-box-title { color: var(--accent-amber); }
+
+    .theme-red { border-color: #E57373; }
+    .theme-red .box-badge { background: var(--accent-red); }
+    .theme-red .c-box-title { color: var(--accent-red); }
+
+    .theme-navy { border-color: #93C5FD; }
+    .theme-navy .box-badge { background: var(--navy-main); }
+    .theme-navy .c-box-title { color: var(--navy-main); }
+
+    /* Checkbox Matrix inside Box 4 & 5 */
+    .check-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.35rem 0.65rem;
+      margin-top: 0.4rem;
+    }
+
+    .check-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.35rem 0.85rem;
+      margin-top: 0.4rem;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.35rem;
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      padding: 0.2rem 0.3rem;
+      border-radius: 4px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .check-item:hover { background: #F8FAFC; }
+
+    .check-item-label {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .check-item-icon {
+      width: 17px;
+      height: 17px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+    }
+
+    .check-box {
+      width: 14px;
+      height: 14px;
+      border: 1.5px solid #64748B;
+      border-radius: 3px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFFFFF;
+      transition: all 0.12s ease;
+      flex-shrink: 0;
+    }
+
+    .check-item.checked .check-box {
+      background: var(--navy-main);
+      border-color: var(--navy-main);
+      color: #FFFFFF;
+    }
+
+    .check-item.checked .check-box::after {
+      content: "✓";
+      font-size: 10px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    /* Row 4: One-Line Pitch Bar */
+    .pitch-box {
+      border: 1.5px solid var(--navy-main);
+      border-radius: 8px;
+      padding: 0.7rem 1rem;
+      background: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .star-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--navy-main);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+
+    .pitch-content { flex: 1; }
+
+    .pitch-head {
+      display: flex;
+      align-items: baseline;
+      gap: 0.65rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .pitch-head strong {
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: var(--navy-main);
+      letter-spacing: 0.04em;
+    }
+
+    .pitch-head span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .pitch-text {
+      font-size: 0.81rem;
+      font-weight: 600;
+      color: var(--navy-main);
+      border-bottom: 1px dotted var(--dot-line);
+      padding-bottom: 0.2rem;
+      line-height: 1.4;
+    }
+
+    /* Row 5: 4 Guiding Pillars Footer Banner */
+    .canvas-footer-banner {
+      background: var(--navy-deep);
+      color: #FFFFFF;
+      padding: 0.95rem 1.25rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.1rem;
+    }
+
+    .pillar-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+    }
+
+    .pillar-icon-wrap {
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.05rem;
+    }
+
+    .icon-ecosystem { background: rgba(46, 125, 50, 0.25); color: #81C784; }
+    .icon-messiness { background: rgba(230, 81, 0, 0.25); color: #FFB74D; }
+    .icon-translation { background: rgba(0, 131, 143, 0.25); color: #4DD0E1; }
+    .icon-evoke { background: rgba(245, 159, 0, 0.25); color: #FCD34D; }
+
+    .pillar-info strong {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin-bottom: 0.15rem;
+    }
+
+    .pillar-info p {
+      margin: 0;
+      font-size: 0.72rem;
+      line-height: 1.35;
+      color: #CBD5E1;
+    }
+
+    /* Print Specific Rules */
+    body.clean-screenshot .action-bar { display: none !important; }
+    body.clean-screenshot .canvas-viewport { margin: 0; padding: 0; max-width: 100%; }
+    body.clean-screenshot .canvas-card { border-radius: 0; border: none; box-shadow: none; }
+
+    @media print {
+      @page {
+        size: landscape;
+        margin: 0.3in;
+      }
+      body { background: #FFFFFF; }
+      .action-bar { display: none !important; }
+      .canvas-viewport { margin: 0; padding: 0; max-width: 100%; }
+      .canvas-card { box-shadow: none; border-width: 1.5px; }
+    }
+
+    @media (max-width: 990px) {
+      .grid-row-3 { grid-template-columns: 1fr; }
+      .grid-row-2 { grid-template-columns: 1fr; }
+      .check-grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .canvas-footer-banner { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Interactive Action Bar -->
+  <aside class="action-bar" id="action-bar">
+    <div class="action-bar-inner">
+      <div class="bar-title">
+        <span>TREP Project &amp; Mentoring Canvas</span>
+        <span class="bar-badge">Bennett University Official Canvas</span>
+      </div>
+      <div class="bar-actions">
+        <a href="index.html#trep" class="btn btn-outline">← Back to Dashboard</a>
+        <button type="button" class="btn btn-outline" id="toggle-data-btn">Toggle Blank / Filled</button>
+        <button type="button" class="btn btn-outline" id="toggle-edit-btn">Enable Text Editing</button>
+        <button type="button" class="btn btn-amber" id="dl-png-btn">Download High-Res PNG</button>
+        <button type="button" class="btn btn-primary" onclick="window.print()">Print / Save PDF</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Canvas Stage -->
+  <main class="canvas-viewport">
+    <article class="canvas-card" id="printable-canvas">
+      
+      <!-- Top Navy Header Banner -->
+      <header class="canvas-header">
+        <div class="header-top-row">
+          
+          <div class="canvas-brand-wrap">
+            <svg width="64" height="64" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 50.21 26.00 L 50.40 4.00 A 46 46 0 0 1 66.24 6.96 L 58.47 27.55 A 24 24 0 0 0 50.21 26.00 Z" fill="#E5243B" /> <path d="M 58.86 27.70 L 66.99 7.25 A 46 46 0 0 1 80.69 15.74 L 66.01 32.12 A 24 24 0 0 0 58.86 27.70 Z" fill="#DDA63A" /> <path d="M 66.32 32.41 L 81.29 16.28 A 46 46 0 0 1 91.00 29.14 L 71.39 39.12 A 24 24 0 0 0 66.32 32.41 Z" fill="#4C9F38" /> <path d="M 71.58 39.49 L 91.35 29.86 A 46 46 0 0 1 95.76 45.36 L 73.88 47.58 A 24 24 0 0 0 71.58 39.49 Z" fill="#C5192D" /> <path d="M 73.92 47.99 L 95.84 46.16 A 46 46 0 0 1 94.35 62.20 L 73.14 56.37 A 24 24 0 0 0 73.92 47.99 Z" fill="#FF3A21" /> <path d="M 73.03 56.77 L 94.13 62.97 A 46 46 0 0 1 86.95 77.40 L 69.28 64.30 A 24 24 0 0 0 73.03 56.77 Z" fill="#26BDE2" /> <path d="M 69.03 64.63 L 86.47 78.04 A 46 46 0 0 1 74.56 88.90 L 62.81 70.29 A 24 24 0 0 0 69.03 64.63 Z" fill="#FCC30B" /> <path d="M 62.46 70.51 L 73.87 89.32 A 46 46 0 0 1 58.85 95.14 L 54.62 73.55 A 24 24 0 0 0 62.46 70.51 Z" fill="#A21942" /> <path d="M 54.20 73.63 L 58.06 95.29 A 46 46 0 0 1 41.94 95.29 L 45.80 73.63 A 24 24 0 0 0 54.20 73.63 Z" fill="#FD6925" /> <path d="M 45.38 73.55 L 41.15 95.14 A 46 46 0 0 1 26.13 89.32 L 37.54 70.51 A 24 24 0 0 0 45.38 73.55 Z" fill="#DD1367" /> <path d="M 37.19 70.29 L 25.44 88.90 A 46 46 0 0 1 13.53 78.04 L 30.97 64.63 A 24 24 0 0 0 37.19 70.29 Z" fill="#FD9D24" /> <path d="M 30.72 64.30 L 13.05 77.40 A 46 46 0 0 1 5.87 62.97 L 26.97 56.77 A 24 24 0 0 0 30.72 64.30 Z" fill="#BF8B2E" /> <path d="M 26.86 56.37 L 5.65 62.20 A 46 46 0 0 1 4.16 46.16 L 26.08 47.99 A 24 24 0 0 0 26.86 56.37 Z" fill="#3F7E44" /> <path d="M 26.12 47.58 L 4.24 45.36 A 46 46 0 0 1 8.65 29.86 L 28.42 39.49 A 24 24 0 0 0 26.12 47.58 Z" fill="#0A97D9" /> <path d="M 28.61 39.12 L 9.00 29.14 A 46 46 0 0 1 18.71 16.28 L 33.68 32.41 A 24 24 0 0 0 28.61 39.12 Z" fill="#56C02B" /> <path d="M 33.99 32.12 L 19.31 15.74 A 46 46 0 0 1 33.01 7.25 L 41.14 27.70 A 24 24 0 0 0 33.99 32.12 Z" fill="#00689D" /> <path d="M 41.53 27.55 L 33.76 6.96 A 46 46 0 0 1 49.60 4.00 L 49.79 26.00 A 24 24 0 0 0 41.53 27.55 Z" fill="#19486A" />
+  <circle cx="50" cy="50" r="21" fill="#FFFFFF"/>
+</svg>
+            <div class="canvas-titles">
+              <h1>
+                <span class="title-white">TREP PROJECT </span>
+                <span class="title-amber">&amp; MENTORING </span>
+                <span class="title-green">CANVAS</span>
+              </h1>
+              <p>SDG-Driven Student Projects</p>
+            </div>
+          </div>
+
+          <div class="bennett-logo-wrap">
+            <svg width="220" height="60" viewBox="0 0 220 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Bennett Shield Crest -->
+  <g transform="translate(2, 2)">
+    <path d="M4 4 H36 C36 4 36 28 20 42 C4 28 4 4 4 4 Z" fill="#D32F2F" stroke="#FFFFFF" stroke-width="2"/>
+    <path d="M20 6 L20 38" stroke="#FFFFFF" stroke-width="1.6" stroke-dasharray="2 2"/>
+    <path d="M12 14 C15 11 18 17 20 20 C22 17 25 11 28 14 C25 22 22 26 20 32 C18 26 15 22 12 14 Z" fill="#FFFFFF"/>
+    <circle cx="20" cy="11" r="2.8" fill="#FFFFFF"/>
+  </g>
+  <!-- Bennett University Wordmark -->
+  <text x="48" y="24" font-family="'Plus Jakarta Sans', 'Segoe UI', serif" font-weight="800" font-size="17" fill="#FFFFFF" letter-spacing="0.08em">BENNETT</text>
+  <text x="48" y="38" font-family="'Plus Jakarta Sans', 'Segoe UI', sans-serif" font-weight="600" font-size="11" fill="#D5E8DC" letter-spacing="0.18em">UNIVERSITY</text>
+  <line x1="48" y1="44" x2="208" y2="44" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"/>
+  <text x="48" y="53" font-family="'Plus Jakarta Sans', 'Segoe UI', sans-serif" font-weight="700" font-size="8" fill="#F7CFA2" letter-spacing="0.12em">THE TIMES GROUP</text>
+</svg>
+          </div>
+
+        </div>
+
+        <!-- Team Name & Date Meta Strip -->
+        <div class="canvas-meta-bar">
+          <div class="meta-field meta-field-grow">
+            <span>Team Name:</span>
+            <input type="text" class="meta-input" id="meta-team" value="WasteLess BU (SDG 12 Campus Action Lab — 8 Member Team)" />
+          </div>
+          <span class="meta-divider">|</span>
+          <div class="meta-field" style="width: 260px;">
+            <span>Date:</span>
+            <input type="text" class="meta-input" id="meta-date" value="November 2026" />
+          </div>
+          <span class="meta-divider">|</span>
+          <div class="meta-field sdg-icon-badge">
+            <span>SDG Icon:</span>
+            <div class="sdg-icon-circle" title="SDG 12: Responsible Consumption and Production">12</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Canvas Body (8 Boxes + Pitch + Pillars) -->
+      <div class="canvas-grid-body">
+        
+        <!-- Row 1: Boxes 1, 2, 3 -->
+        <div class="grid-row-3">
+          
+          <!-- Box 1: SDG Challenge -->
+          <section class="c-box theme-green">
+            <div class="c-box-head">
+              <div class="c-box-title">
+                <span class="box-badge">1</span>
+                <span>SDG CHALLENGE</span>
+              </div>
+              <div class="box-icon" style="color:var(--accent-green);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              </div>
+            </div>
+            
+            <div class="c-prompt">Which SDG are you addressing?</div>
+            <div class="c-lines" data-key="sdg_target">
+              <strong>Primary: SDG 12 (Responsible Consumption &amp; Production)</strong> — Target 12.3: Halve food waste by 2030.<br />
+              <span style="font-size:0.73rem;color:#64748B;">Secondary Alignment: SDG 11 (Sustainable Communities) &amp; SDG 13 (Climate Action).</span>
+            </div>
+
+            <div class="c-prompt">What real-world problem are students solving?</div>
+            <div class="c-lines" data-key="real_problem">
+              Avoidable plate waste in Bennett dining halls: 41.7% of surveyed students leave leftovers regularly, driven by taste mismatches (28.3%) and peak 1 PM class rush (28.3%), lacking portion feedback before loading full plates.
+            </div>
+          </section>
+
+          <!-- Box 2: Student Experience -->
+          <section class="c-box theme-blue">
+            <div class="c-box-head">
+              <div class="c-box-title">
+                <span class="box-badge">2</span>
+                <span>STUDENT EXPERIENCE</span>
+              </div>
+              <div class="box-icon" style="color:var(--accent-blue);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+            </div>
+
+            <div class="c-prompt">What will students DO in this project?</div>
+            <div style="font-size:0.72rem;color:#64748B;margin-top:-0.15rem;margin-bottom:0.2rem;">(Activities, methods, key experiences)</div>
+            <div class="c-lines" data-key="student_experience">
+              1. Administer verified 60-student survey across hostel blocks &amp; schools.<br />
+              2. Audit 3 baseline weekday lunch services deducting tare weights (g/meal).<br />
+              3. Interview dining managers &amp; serving staff on operational barriers.<br />
+              4. Design &amp; test table-top prompts, 1-spoon taste checks, and portion cues.<br />
+              5. Deploy QR-linked digital pledge and monitor cross-campus real-time sync.<br />
+              6. Quantify post-pilot plate-waste reduction and reflect honestly on limitations.
+            </div>
+          </section>
+
+          <!-- Box 3: Student Deliverable -->
+          <section class="c-box theme-orange">
+            <div class="c-box-head">
+              <div class="c-box-title">
+                <span class="box-badge">3</span>
+                <span>STUDENT DELIVERABLE</span>
+              </div>
+              <div class="box-icon" style="color:var(--accent-orange);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+              </div>
+            </div>
+
+            <div class="c-prompt">What will students CREATE or DELIVER by the end of the project?</div>
+            <div class="c-lines" data-key="student_deliverables">
+              • <strong>WasteLess BU Web Hub:</strong> Responsive HTML/CSS/JS site with real-time WebSocket pledge sync &amp; interactive data calculator.<br />
+              • <strong>4 Print-Ready Campaign Posters:</strong> Portion nudges, 1-spoon taste-check table cards, and high-contrast QR display boards.<br />
+              • <strong>20-Second Digital Pledge System:</strong> Anonymous signer flow with custom canvas initials &amp; downloadable certificate PNGs.<br />
+              • <strong>Comprehensive Documentation:</strong> 8-page academic dossier &amp; 12-slide pitch deck with verified data triangulations.
+            </div>
+          </section>
+
+        </div>
+
+        <!-- Row 2: Boxes 4 & 5 (Competencies & Bennett Ecosystem) -->
+        <div class="grid-row-2">
+          
+          <!-- Box 4: Competencies Developed -->
+          <section class="c-box theme-purple">
+            <div class="c-box-head">
+              <div class="c-box-title">
+                <span class="box-badge">4</span>
+                <span>COMPETENCIES DEVELOPED</span>
+              </div>
+              <div class="box-icon" style="color:var(--accent-purple);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21h6"/></svg>
+              </div>
+            </div>
+
+            <div class="c-prompt">Which future-ready competencies will students develop?</div>
+            <div style="font-size:0.72rem;color:#64748B;margin-top:-0.15rem;">(Choose 5–6 key competencies)</div>
+
+            <div class="check-grid-3" id="comp-grid">
+              <div class="check-item checked" data-comp="Communication">
+                <div class="check-item-label">
+                  <span class="check-item-icon">💬</span>
+                  <span>Communication</span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+
+              <div class="check-item checked" data-comp="Leadership">
+                <div class="check-item-label">
+                  <span class="check-item-icon">👤</span>
+                  <span>Leadership</span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+
+              <div class="check-item checked" data-comp="Ethics">
+                <div class="check-item-label">
+                  <span class="check-item-icon">⚖</span>
+                  <span>Ethics</span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+
+              <div class="check-item checked" data-comp="Critical Thinking">
+                <div class="check-item-label">
+                  <span class="check-item-icon">💡</span>
+                  <span>Critical Thinking</span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+
+              <div class="check-item checked" data-comp="Teamwork">
+                <div class="check-item-label">
+                  <span class="check-item-icon">🤝</span>
+                  <span>Teamwork</span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+
+              <div class="check-item checked" data-comp="Creativity">
+                <div class="check-item-label">
+                  <span class="check-item-icon">🎨</span>
+                  <span>Creativity</span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+
+              <div class="check-item checked" data-comp="Research">
+                <div class="check-item-label">
+                  <span class="check-item-icon">🔍</span>
+                  <span>Research</span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+
+              <div class="check-item" data-comp="Entrepreneurship">
+                <div class="check-item-label">
+                  <span class="check-item-icon">⚡</span>
+                  <span>Entrepreneurship</span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+
+              <div class="check-item checked" data-comp="Adaptability">
+                <div class="check-item-label">
+                  <span class="check-item-icon">↔</span>
+                  <span>Adaptability</span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+
+              <div class="check-item checked" data-comp="Problem Solving">
+                <div class="check-item-label">
+                  <span class="check-item-icon">🧩</span>
+                  <span>Problem Solving</span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+
+              <div class="check-item checked" data-comp="Digital Literacy">
+                <div class="check-item-label">
+                  <span class="check-item-icon">💻</span>
+                  <span>Digital Literacy</span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+
+              <div class="check-item checked" data-comp="Others">
+                <div class="check-item-label">
+                  <span class="check-item-icon">⋯</span>
+                  <span>Others <em style="font-size:0.7rem;color:#6A1B9A;">(Analytical Thinking)</em></span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Box 5: Bennett Ecosystem -->
+          <section class="c-box theme-teal">
+            <div class="c-box-head">
+              <div class="c-box-title">
+                <span class="box-badge">5</span>
+                <span>BENNETT ECOSYSTEM</span>
+              </div>
+              <div class="box-icon" style="color:var(--accent-teal);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/><path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/><line x1="9" y1="13" x2="9.01" y2="13"/><line x1="15" y1="13" x2="15.01" y2="13"/></svg>
+              </div>
+            </div>
+
+            <div class="c-prompt">Which Bennett resources will support your project?</div>
+            <div style="font-size:0.72rem;color:#64748B;margin-top:-0.15rem;">(Select all that apply)</div>
+
+            <div class="check-grid-2" id="eco-grid">
+              <div class="check-item" data-eco="Bennett Finishing School">
+                <div class="check-item-label">
+                  <span class="check-item-icon">📖</span>
+                  <span>Bennett Finishing School</span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+
+              <div class="check-item" data-eco="Career Services">
+                <div class="check-item-label">
+                  <span class="check-item-icon">💼</span>
+                  <span>Career Services</span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+
+              <div class="check-item checked" data-eco="Centre for Innovation & Entrepreneurship">
+                <div class="check-item-label">
+                  <span class="check-item-icon">💡</span>
+                  <span>Centre for Innovation (CIE)</span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+
+              <div class="check-item checked" data-eco="Industry Partner">
+                <div class="check-item-label">
+                  <span class="check-item-icon">🤝</span>
+                  <span>Industry Partner <em style="font-size:0.68rem;color:#00838F;">(Mess Caterer)</em></span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+
+              <div class="check-item" data-eco="Research Labs">
+                <div class="check-item-label">
+                  <span class="check-item-icon">🔬</span>
+                  <span>Research Labs</span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+
+              <div class="check-item" data-eco="Alumni">
+                <div class="check-item-label">
+                  <span class="check-item-icon">🎓</span>
+                  <span>Alumni</span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+
+              <div class="check-item checked" data-eco="Clubs & Societies">
+                <div class="check-item-label">
+                  <span class="check-item-icon">👥</span>
+                  <span>Clubs &amp; Societies <em style="font-size:0.68rem;color:#00838F;">(Enviro/NSS)</em></span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+
+              <div class="check-item" data-eco="International Office">
+                <div class="check-item-label">
+                  <span class="check-item-icon">🌐</span>
+                  <span>International Office</span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+
+              <div class="check-item" data-eco="Sports">
+                <div class="check-item-label">
+                  <span class="check-item-icon">🏃</span>
+                  <span>Sports</span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+
+              <div class="check-item checked" data-eco="Others">
+                <div class="check-item-label">
+                  <span class="check-item-icon">⋯</span>
+                  <span>Others <em style="font-size:0.68rem;color:#00838F;">(Dining Ops &amp; Wardens)</em></span>
+                </div>
+                <span class="check-box"></span>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- Row 3: Boxes 6, 7, 8 (Impact, Twist, Mentor) -->
+        <div class="grid-row-3">
+          
+          <!-- Box 6: Impact -->
+          <section class="c-box theme-amber">
+            <div class="c-box-head">
+              <div class="c-box-title">
+                <span class="box-badge">6</span>
+                <span>IMPACT</span>
+              </div>
+              <div class="box-icon" style="color:var(--accent-amber);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              </div>
+            </div>
+
+            <div class="c-prompt">How will you know the project succeeded?</div>
+            <div style="font-size:0.72rem;color:#64748B;margin-top:-0.15rem;">(One sentence)</div>
+            <div class="c-lines" data-key="impact_success">
+              Success is verified when normalized edible plate waste (g/meal) declines measurably across comparable lunch services while student pledge engagement reaches active campus adoption.
+            </div>
+
+            <div class="c-prompt">What measurable impact will your project create?</div>
+            <div style="font-size:0.72rem;color:#64748B;margin-top:-0.15rem;">(One key metric)</div>
+            <div class="c-lines" data-key="impact_metric">
+              <strong>Key Metric: 22.4% reduction</strong> in normalized plate waste (from 102.5 g/meal down to 79.5 g/meal), saving ~23 kg per lunch slot with 65+ signed student commitments.
+            </div>
+          </section>
+
+          <!-- Box 7: Twist Adaptation -->
+          <section class="c-box theme-red">
+            <div class="c-box-head">
+              <div class="c-box-title">
+                <span class="box-badge">7</span>
+                <span>TWIST ADAPTATION</span>
+              </div>
+              <div class="box-icon" style="color:var(--accent-red);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+              </div>
+            </div>
+
+            <div class="c-prompt">After receiving the Impact Twist Card, how did your project change?</div>
+            <div class="c-lines" data-key="twist_change">
+              When dining staff flagged kitchen ladle bottlenecks during the 1:00 PM rush, we eliminated intrusive weighing queues to prevent crowding.
+            </div>
+
+            <div class="c-prompt">What key changes did you make?</div>
+            <div class="c-lines" data-key="twist_actions">
+              Pivoted to passive dish-drop observation tallies paired with self-service "Start Half, Refill Free" prompt cards and QR pledges at tables, preserving high data integrity without delaying lines.
+            </div>
+          </section>
+
+          <!-- Box 8: You As A Mentor -->
+          <section class="c-box theme-navy">
+            <div class="c-box-head">
+              <div class="c-box-title">
+                <span class="box-badge">8</span>
+                <span>YOU AS A MENTOR</span>
+              </div>
+              <div class="box-icon" style="color:var(--navy-main);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m19 11 2 2 4-4"/></svg>
+              </div>
+            </div>
+
+            <div class="c-prompt">In one sentence, define the role you as a mentor will play.</div>
+            <div class="c-lines" data-key="mentor_role">
+              A Socratic catalyst and methodology auditor—challenging assumptions, instilling scout mindset, and demanding empirical evidence while students lead all field implementation.
+            </div>
+
+            <div class="c-prompt">How will you empower students rather than provide answers?</div>
+            <div class="c-lines" data-key="mentor_empower">
+              By asking probing questions ("What if 56.7% leave food due to rush, not appetite?"), facilitating course corrections when plans hit dining friction, and guiding reflection over answers.
+            </div>
+          </section>
+
+        </div>
+
+        <!-- Row 4: Our Project In One Line -->
+        <section class="pitch-box">
+          <div class="star-badge">★</div>
+          <div class="pitch-content">
+            <div class="pitch-head">
+              <strong>OUR PROJECT IN ONE LINE</strong>
+              <span>A one-line elevator pitch for our TREP project.</span>
+            </div>
+            <div class="pitch-text" data-key="elevator_pitch">
+              WasteLess BU: Empowering Bennett University students to cut campus dining plate waste by 22% through real-time behavioural nudges, taste-check prompts, and a live QR-linked peer commitment wall.
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Row 5: 4 Guiding Pillars Footer Banner -->
+      <footer class="canvas-footer-banner">
+        
+        <div class="pillar-card">
+          <div class="pillar-icon-wrap icon-ecosystem">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          </div>
+          <div class="pillar-info">
+            <strong style="color:#81C784;">Enable Ecosystem</strong>
+            <p>Leverage connections and resources across Bennett.</p>
+          </div>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon-wrap icon-messiness">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </div>
+          <div class="pillar-info">
+            <strong style="color:#FFB74D;">Embrace Messiness</strong>
+            <p>Iterate, adapt and learn through the journey.</p>
+          </div>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon-wrap icon-translation">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="pillar-info">
+            <strong style="color:#4DD0E1;">Ensure Translation</strong>
+            <p>Collaborate across disciplines using a shared language.</p>
+          </div>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon-wrap icon-evoke">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          </div>
+          <div class="pillar-info">
+            <strong style="color:#FCD34D;">Evoke, Don't Explain</strong>
+            <p>Ask better questions and evoke student thinking.</p>
+          </div>
+        </div>
+
+      </footer>
+
+    </article>
+  </main>
+
+  <!-- Interactive Controls & Export Scripts -->
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script>
+    (function() {
+      if (window.location && window.location.search && window.location.search.includes('clean')) {
+        document.body.classList.add('clean-screenshot');
+      }
+
+      const STORAGE_KEY = "trep_canvas_data_v1";
+
+      // Checkbox interactive click
+      document.querySelectorAll('.check-item').forEach(item => {
+        item.addEventListener('click', () => {
+          item.classList.toggle('checked');
+          saveCanvasData();
+        });
+      });
+
+      // Toggle Blank vs Pre-Filled
+      let isBlank = false;
+      const originalValues = {};
+
+      document.querySelectorAll('[data-key]').forEach(el => {
+        originalValues[el.dataset.key] = el.innerHTML;
+      });
+
+      const toggleDataBtn = document.getElementById('toggle-data-btn');
+      toggleDataBtn.addEventListener('click', () => {
+        isBlank = !isBlank;
+        if (isBlank) {
+          document.querySelectorAll('[data-key]').forEach(el => {
+            el.innerHTML = '<span style="color:#CBD5E1;">__________________________________________________________________________________________</span>';
+          });
+          document.getElementById('meta-team').value = '';
+          document.getElementById('meta-date').value = '';
+          document.querySelectorAll('.check-item').forEach(c => c.classList.remove('checked'));
+          toggleDataBtn.textContent = 'Restore Pre-Filled';
+        } else {
+          document.querySelectorAll('[data-key]').forEach(el => {
+            el.innerHTML = originalValues[el.dataset.key];
+          });
+          document.getElementById('meta-team').value = 'WasteLess BU (SDG 12 Campus Action Lab — 8 Member Team)';
+          document.getElementById('meta-date').value = 'November 2026';
+          // Restore default checked
+          const defaultCheckedComp = ["Communication", "Leadership", "Ethics", "Critical Thinking", "Teamwork", "Creativity", "Research", "Adaptability", "Problem Solving", "Digital Literacy", "Others"];
+          document.querySelectorAll('#comp-grid .check-item').forEach(c => {
+            if (defaultCheckedComp.includes(c.dataset.comp)) c.classList.add('checked');
+            else c.classList.remove('checked');
+          });
+          const defaultCheckedEco = ["Centre for Innovation & Entrepreneurship", "Industry Partner", "Clubs & Societies", "Others"];
+          document.querySelectorAll('#eco-grid .check-item').forEach(c => {
+            if (defaultCheckedEco.includes(c.dataset.eco)) c.classList.add('checked');
+            else c.classList.remove('checked');
+          });
+          toggleDataBtn.textContent = 'Toggle Blank / Filled';
+        }
+      });
+
+      // Toggle Text Editable
+      let isEditing = false;
+      const toggleEditBtn = document.getElementById('toggle-edit-btn');
+      toggleEditBtn.addEventListener('click', () => {
+        isEditing = !isEditing;
+        document.querySelectorAll('[data-key]').forEach(el => {
+          el.contentEditable = isEditing ? 'true' : 'false';
+        });
+        toggleEditBtn.textContent = isEditing ? 'Lock Text Editing' : 'Enable Text Editing';
+        toggleEditBtn.style.background = isEditing ? '#FEF3C7' : '';
+      });
+
+      // Auto-save edited text
+      function saveCanvasData() {
+        const data = {
+          team: document.getElementById('meta-team').value,
+          date: document.getElementById('meta-date').value,
+          content: {}
+        };
+        document.querySelectorAll('[data-key]').forEach(el => {
+          data.content[el.dataset.key] = el.innerHTML;
+        });
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        } catch(e) {}
+      }
+
+      document.querySelectorAll('[data-key]').forEach(el => {
+        el.addEventListener('input', saveCanvasData);
+      });
+      document.getElementById('meta-team').addEventListener('input', saveCanvasData);
+      document.getElementById('meta-date').addEventListener('input', saveCanvasData);
+
+      // Download PNG using html2canvas
+      const dlBtn = document.getElementById('dl-png-btn');
+      dlBtn.addEventListener('click', () => {
+        dlBtn.textContent = 'Rendering High-Res PNG...';
+        dlBtn.disabled = true;
+
+        const target = document.getElementById('printable-canvas');
+        if (typeof window.html2canvas === 'function') {
+          window.html2canvas(target, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: '#FFFFFF',
+            logging: false
+          }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'Bennett_TREP_Project_Canvas_WasteLess_BU.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            dlBtn.textContent = 'Download High-Res PNG';
+            dlBtn.disabled = false;
+          }).catch(err => {
+            console.error('PNG render err:', err);
+            window.print();
+            dlBtn.textContent = 'Download High-Res PNG';
+            dlBtn.disabled = false;
+          });
+        } else {
+          window.print();
+          dlBtn.textContent = 'Download High-Res PNG';
+          dlBtn.disabled = false;
+        }
+      });
+
+    })();
+  </script>
+</body>
+</html>
